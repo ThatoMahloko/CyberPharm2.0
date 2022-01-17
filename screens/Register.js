@@ -87,12 +87,14 @@ const styles = StyleSheet.create({
     }
     ,
     textLink: {
-        fontWeight: "900",
-        color: '#000'
+        fontWeight: "bold",
+        color: '#000',
+        fontSize: 15
     }
     ,
     textLink_: {
-        fontWeight: "900",
-        color: '#3E64FF'
+        fontWeight: "bold",
+        color: '#3E64FF',        
+        fontSize: 15
     }
 })

@@ -11,6 +11,7 @@ export default diagnosis = [
         mostConcerningDescription: "Inguinal hernia;Femoral hernia;Umbilical hernia;Ventral hernia;Diaphragmatic hernia;Other abdominal hernia;Unspecified abdominal hernia",
         mostConcerningSpecialist: "Surgery, General practice",
         femaleDiagnosis: ""
+        
     },
     {
         tagId: 238,

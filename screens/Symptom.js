@@ -6,27 +6,28 @@ import SymptomList from '../Api/SymptomList'
 import Treatment_Diagnosis from '../Api/Treatment_Diagnosis'
 
 const Symptom = () => {
+    var femaleDiagnosis, leastConcerning
     const [value, setValue] = useState('female');
     const [expanded, setExpanded] = useState(false);
-
     const handlePress = () => setExpanded(!expanded);
-
     const [visible, setVisible] = React.useState(false);
-
     const showModal = () => setVisible(true);
     const hideModal = () => setVisible(false);
     const containerStyle = { backgroundColor: 'white', padding: 20 };
-    const [symptomId, setSymptomId] = useState('');
+    const [symptomId, setSymptomId] = useState();
     const [title, setTitle] = useState('');
     const [birthYear, setBirthYear] = useState('');
 
 
     const Pressable = (symptomId, title) => {
         console.log(symptomId, title, value, birthYear)
-        { Treatment_Diagnosis.}
         setTitle(title)
         setSymptomId(symptomId);
     }
+
+
+
+
 
 
     return (
@@ -75,16 +76,26 @@ const Symptom = () => {
                 <Text style={styles.text}>SUBMIT</Text>
             </TouchableOpacity>
 
+
             <Provider>
                 <Portal>
                     <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-                        <NativeBaseProvider>
-                            <Center>
-                                <VStack alignItems="center">
-                                    <Spinner size="lg" color="emerald.500" />
-                                </VStack>
-                            </Center>
-                        </NativeBaseProvider>
+                        <Text>Birth Year: {birthYear}</Text>
+                        <Text>Gender: {value}</Text>
+                        {
+                            Treatment_Diagnosis.filter(userHealthData => userHealthData.tagId === symptomId)
+                                .map(userHealthData =>
+                                    <>
+                                        <Text key={userHealthData.tagId}>Least Concerning Diagnosis:{userHealthData.leastConcerningDiagnosis}</Text>
+                                        <Text key={userHealthData.tagId}>Least Concerning Descrpition:{userHealthData.leastConcerningDescription}</Text>
+                                        <Text key={userHealthData.tagId}>Least Concerning Specialist:{userHealthData.leastConcerningSpecialist}</Text>
+                                        <Text key={userHealthData.tagId}>Most Concerning Diagnosis:{userHealthData.mostConcerningDiagnosis}</Text>
+                                        <Text key={userHealthData.tagId}>Most Concerning Description:{userHealthData.mostConcerningDescription}</Text>
+                                        <Text key={userHealthData.tagId}>Most Concerning Specialist:{userHealthData.mostConcerningSpecialist}</Text>
+                                        <Text key={userHealthData.tagId}>Female Diagnosis:{userHealthData.femaleDiagnosis}</Text>
+                                    </>
+                                )
+                        }
                     </Modal>
                 </Portal>
             </Provider>

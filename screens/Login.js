@@ -35,18 +35,20 @@ const Login = ({ navigation }) => {
                     <Text style={styles.text}>LOGIN</Text>
                 </TouchableOpacity>
 
-                <View style={styles.linkText}>
-                    <Text style={styles.textLink}>Don't have an account? </Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-                        <Text style={styles.textLink_}>Register Here</Text>
-                    </TouchableOpacity>
-                </View>
+                <View style={styles.links}>
+                    <View style={styles.linkText}>
+                        <Text style={styles.textLink}>Don't have an account? </Text>
+                        <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+                            <Text style={styles.textLink_}>Register Here</Text>
+                        </TouchableOpacity>
+                    </View>
 
-                <View style={styles.linkText}>
-                    <Text style={styles.textLink}>Forgot Password? </Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('ResetPassword')}>
-                        <Text style={styles.textLink_}>Reset Here</Text>
-                    </TouchableOpacity>
+                    <View style={styles.linkTextBottom}>
+                        <Text style={styles.textLink}>Forgot Password? </Text>
+                        <TouchableOpacity onPress={() => navigation.navigate('ResetPassword')}>
+                            <Text style={styles.textLink_}>Reset Here</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </ImageBackground>
         </View>
@@ -87,19 +89,31 @@ const styles = StyleSheet.create({
         color: '#fff',
     }
     ,
+    links:{
+marginTop:140
+    }
+    ,
     linkText: {
         alignSelf: 'center',
-        marginTop: 50,
+        marginTop: 10,
+        flexDirection: 'row'
+    }
+    ,
+    linkTextBottom: {
+        alignSelf: 'center',
+        marginTop: 15,
         flexDirection: 'row'
     }
     ,
     textLink: {
-        fontWeight: "900",
-        color: '#000'
+        fontWeight: "bold",
+        color: '#000',
+        fontSize: 15
     }
     ,
     textLink_: {
-        fontWeight: "900",
-        color: '#3E64FF'
+        fontWeight: "bold",
+        color: '#3E64FF',
+        fontSize: 15
     }
 })
