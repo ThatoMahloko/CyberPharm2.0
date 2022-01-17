@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, StatusBar, TextInput, TouchableOpacity, ScrollV
 import { Title, RadioButton, List, Modal, Provider, Portal } from 'react-native-paper'
 import { Spinner, VStack, Cente, NativeBaseProvider, Center } from 'native-base'
 import SymptomList from '../Api/SymptomList'
+import Treatment_Diagnosis from '../Api/Treatment_Diagnosis'
 
 const Symptom = () => {
     const [value, setValue] = useState('female');
@@ -22,6 +23,7 @@ const Symptom = () => {
 
     const Pressable = (symptomId, title) => {
         console.log(symptomId, title, value, birthYear)
+        { Treatment_Diagnosis.}
         setTitle(title)
         setSymptomId(symptomId);
     }
