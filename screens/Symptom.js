@@ -80,20 +80,29 @@ const Symptom = () => {
             <Provider>
                 <Portal>
                     <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-                        <Text>Birth Year: {birthYear}</Text>
-                        <Text>Gender: {value}</Text>
+                        <View style={styles.diagnosisData}>
+                        <Title style={styles.titleData}>Birth Year: {birthYear}</Title>
+                        <Title style={styles.titleData}>Gender: {value}</Title>
+                        </View>
                         {
                             Treatment_Diagnosis.filter(userHealthData => userHealthData.tagId === symptomId)
                                 .map(userHealthData =>
-                                    <>
-                                        <Text key={userHealthData.tagId}>Least Concerning Diagnosis:{userHealthData.leastConcerningDiagnosis}</Text>
-                                        <Text key={userHealthData.tagId}>Least Concerning Descrpition:{userHealthData.leastConcerningDescription}</Text>
-                                        <Text key={userHealthData.tagId}>Least Concerning Specialist:{userHealthData.leastConcerningSpecialist}</Text>
-                                        <Text key={userHealthData.tagId}>Most Concerning Diagnosis:{userHealthData.mostConcerningDiagnosis}</Text>
-                                        <Text key={userHealthData.tagId}>Most Concerning Description:{userHealthData.mostConcerningDescription}</Text>
-                                        <Text key={userHealthData.tagId}>Most Concerning Specialist:{userHealthData.mostConcerningSpecialist}</Text>
-                                        <Text key={userHealthData.tagId}>Female Diagnosis:{userHealthData.femaleDiagnosis}</Text>
-                                    </>
+                                    <View style={styles.diagnosisData}>
+                                        <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Diagnosis:</Title>
+                                        <Text >{userHealthData.leastConcerningDiagnosis}</Text>
+                                        <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Descrpition:</Title>
+                                        <Text>{userHealthData.leastConcerningDescription}</Text>
+                                        <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Specialist:</Title>
+                                        <Text>{userHealthData.leastConcerningSpecialist}</Text>
+                                        <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Diagnosis:</Title>
+                                        <Text>{userHealthData.mostConcerningDiagnosis}</Text>
+                                        <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Description:</Title>
+                                        <Text>{userHealthData.mostConcerningDescription}</Text>
+                                        <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Specialist:</Title>
+                                        <Text>{userHealthData.mostConcerningSpecialist}</Text>
+                                        <Title style={styles.titleData} key={userHealthData.tagId}>Female Diagnosis:</Title>
+                                        <Text>{userHealthData.femaleDiagnosis}</Text>
+                                    </View>
                                 )
                         }
                     </Modal>
@@ -142,6 +151,14 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         alignSelf: 'center',
         marginTop: 20
+    },
+    diagnosisData: {
+        alignItems: 'center'
+    },
+    titleData: {
+        justifyContent: 'center', 
+        fontWeight:'bold', 
+        backgroundColor:"#fff"
     },
     text: {
         alignSelf: 'center',
