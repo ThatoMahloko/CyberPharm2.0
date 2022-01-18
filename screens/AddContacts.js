@@ -3,6 +3,32 @@ import { StyleSheet, Text, View, StatusBar, TextInput, TouchableOpacity } from '
 import { Title } from 'react-native-paper'
 
 const AddContacts = () => {
+
+    const [firstName, setFirstName] = useState();
+    const [lastName, setLastName] = useState();
+    const [phoneNumber, setPhoneNumber] = useState();
+    const [email, setEmail] = useState();
+
+
+    function save() {
+        const ud = getUSER();
+        console.log(ud)
+
+        db.collection('Contacts').doc(ud).collection('Contact_List').add(
+            {
+                Email: email,
+                FirstName: firstName,
+                LastName: lastName,
+                PhoneNumber: phoneNumber
+            }
+        ).then(() => {
+
+            alert('Constact has been successfully added')
+        }).catch((error) => {
+            console.error('Error adding document', error)
+        })
+    }
+
     return (
         <View style={styles.container}>
             <StatusBar
@@ -13,13 +39,15 @@ const AddContacts = () => {
             />
 
             <Title style={styles.title}>Name</Title>
-            <TextInput style={styles.input} placeholder='Enter you email address' />
+            <TextInput style={styles.input} placeholder='Enter your name' onChangeText={(firstName) => setFirstName(firstName)} />
             <Title style={styles.title}>Surname</Title>
-            <TextInput style={styles.input} placeholder='Enter you email address' />
+            <TextInput style={styles.input} placeholder='Enter your surname' onChangeText={(lastName) => setLastName(lastName)} />
             <Title style={styles.title}>Phone number</Title>
-            <TextInput style={styles.input} placeholder='+27 _ _   _ _ _   _ _ _ _' />
+            <TextInput style={styles.input} keyboardType='phone-pad' placeholder='+27 _ _   _ _ _   _ _ _ _' onChangeText={(phoneNumber) => setPhoneNumber(phoneNumber)} />
+            <Title style={styles.title}>Enter your email</Title>
+            <TextInput style={styles.input} placeholder='name@mailservice.com' onChangeText={(email) => setEmail(email)} />
 
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={save}>
                 <Text style={styles.text}>SAVE</Text>
             </TouchableOpacity>
         </View>
