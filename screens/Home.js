@@ -42,8 +42,6 @@ const Home = ({ navigation }) => {
                 translucent={false}
             />
 
-
-
             <View style={styles.iconGroup}>
                 <TouchableOpacity onLongPress={() => navigation.navigate('SOS')}>
                     <Image style={styles.icon} source={require('../assets/icons/SosIcon.png')} />
@@ -76,7 +74,7 @@ const Home = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
 
-            <TouchableOpacity onPress={() => navigation.navigate('Vaccination')}>
+            <TouchableOpacity onPress={() => navigation.navigate('ScanCard')}>
                 <Image style={styles.covidInfo} source={require('../assets/icons/covid-19.png')} />
             </TouchableOpacity>
 

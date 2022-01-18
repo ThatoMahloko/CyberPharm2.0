@@ -18,6 +18,7 @@ import Contacts from './screens/Contacts';
 import AddContacts from './screens/AddContacts';
 import Maps from './screens/Maps';
 import ResetPassword from './screens/ResetPassword';
+import ScanCard from './screens/ScanCard';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -39,6 +40,7 @@ export default function App() {
         <Stack.Screen name="AddContacts" component={AddContacts} />
         <Stack.Screen name="Maps" component={Maps} />
         <Stack.Screen name="ResetPassword" component={ResetPassword} />
+        <Stack.Screen name="ScanCard" component={ScanCard} />
       </Stack.Navigator>
     </NavigationContainer>
   );

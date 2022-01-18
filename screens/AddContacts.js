@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Text, View, StatusBar, TextInput, TouchableOpacity } from 'react-native'
 import { Title } from 'react-native-paper'
+import getUSER from '../config/user'
+import { db } from '../config/firebase'
 
 const AddContacts = () => {
 
