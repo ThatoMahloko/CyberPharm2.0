@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, StatusBar, Image, TouchableOpacity, Alert } from 'react-native'
+import { StyleSheet, Text, View, StatusBar, Image, TouchableOpacity, Alert, Dimensions } from 'react-native'
 import { Modal, Provider, Portal } from 'react-native-paper'
 import signOut from '../auth/signOut'
 
@@ -34,7 +34,7 @@ const Home = ({ navigation }) => {
     }
 
     return (
-        <View>
+        <View style={styles.container}>
             <StatusBar
                 animated={false}
                 barStyle='dark-content'
@@ -88,7 +88,7 @@ const Home = ({ navigation }) => {
                         <TouchableOpacity onPress={confirmLogout}>
                             <Text>LOG OUT</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={()=>navigation.navigate('AddContacts')}>
+                        <TouchableOpacity onPress={() => navigation.navigate('AddContacts')}>
                             <Text>Add Contacts</Text>
                         </TouchableOpacity>
                     </Modal>
@@ -104,8 +104,10 @@ const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
         justifyContent: 'center',
-        width: '100%',
-        height: '100%'
+        // width: '100%',
+        // height: '100%'
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
     }
     ,
     iconGroup: {
