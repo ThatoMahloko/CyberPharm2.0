@@ -13,9 +13,9 @@ const AddContacts = () => {
             />
 
             <Title style={styles.title}>Name</Title>
-            <TextInput style={styles.input} placeholder='Enter you email address' />
+            <TextInput style={styles.input} placeholder='Enter your name' />
             <Title style={styles.title}>Surname</Title>
-            <TextInput style={styles.input} placeholder='Enter you email address' />
+            <TextInput style={styles.input} placeholder='Enter your Surname' />
             <Title style={styles.title}>Phone number</Title>
             <TextInput style={styles.input} placeholder='+27 _ _   _ _ _   _ _ _ _' />
 
