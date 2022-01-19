@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, StatusBar, Image, TouchableOpacity, Alert, Dimensions } from 'react-native'
+import { StyleSheet, Text, View, StatusBar, Image, TouchableOpacity, Alert, Dimensions, ScrollView, SafeAreaView } from 'react-native'
 import { Modal, Provider, Portal } from 'react-native-paper'
 import signOut from '../auth/signOut'
 
