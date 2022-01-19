@@ -57,20 +57,25 @@ const Home = ({ navigation }) => {
             </View>
 
             <View style={styles.clickIconsGroup}>
-                <TouchableOpacity onPress={() => navigation.navigate('Vaccination')}>
-                    <Image style={styles.clickIcons} source={require('../assets/icons/vaccinate.png')} />
+                <TouchableOpacity style={styles.clickIcons} onPress={() => navigation.navigate('Vaccination')}>
+                    <Image  source={require('../assets/icon/syringe.png')} />
+                    <Text style={styles.imageText}>Vaccination</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('Doctors')}>
-                    <Image style={styles.clickIcons} source={require('../assets/icons/bookDr.png')} />
+                <TouchableOpacity style={styles.clickIcons}  onPress={() => navigation.navigate('Doctors')}>
+                    <Image source={require('../assets/icon/maskedDoctor.png')} />
+                    <Text style={styles.imageText}>Book Dr.</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('Donate')}>
-                    <Image style={styles.clickIcons} source={require('../assets/icons/donateBlood.png')} />
+                <TouchableOpacity style={styles.clickIcons}  onPress={() => navigation.navigate('Donate')}>
+                    <Image  source={require('../assets/icon/bloodDonate.png')} />
+                    <Text style={styles.imageText}>DonateBlood</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('Contacts')}>
-                    <Image style={styles.clickIcons} source={require('../assets/icons/SOScontacts.png')} />
+                <TouchableOpacity style={styles.clickIcons}  onPress={() => navigation.navigate('Contacts')}>
+                    <Image source={require('../assets/icon/contactIcon.png')} />
+                    <Text style={styles.imageText}>Contacts</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('Symptom')}>
-                    <Image style={styles.clickIcons} source={require('../assets/icons/symptoms.png')} />
+                <TouchableOpacity style={styles.clickIcons}  onPress={() => navigation.navigate('Symptom')}>
+                    <Image source={require('../assets/icon/selfDiagnose.png')} />
+                    <Text style={styles.imageText}>Self Diagnose</Text>
                 </TouchableOpacity>
             </View>
 
@@ -136,7 +141,18 @@ const styles = StyleSheet.create({
         width: 72,
         height: 77,
         top: 1,
+        backgroundColor: "#7ACEFA",
+        borderRadius: 20,
+        margin: 2, 
+        alignItems:'center', justifyContent:'center'
+
     },
+    imageText: {
+        fontSize: 9,
+        textAlign: 'center', 
+        color:'#fff'
+    }
+    ,
     covidInfo: {
         height: 460,
         width: 360,
