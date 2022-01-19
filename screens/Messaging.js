@@ -1,10 +1,16 @@
 import React from 'react'
-import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, TextInput, View, TouchableOpacity, StatusBar } from 'react-native'
 import { Title } from 'react-native-paper'
 
 const Messaging = () => {
     return (
         <View style={styles.container}>
+            <StatusBar
+                animated={false}
+                barStyle='dark-content'
+                hidden={false}
+                translucent={false}
+            />
             <Title style={styles.title}>Email Address</Title>
             <TextInput style={styles.input} placeholder='Enter you email address' />
             <TextInput selectionColor={'#3E64FF'} multiline={true} maxLength={256} numberOfLines={5} style={styles.inputMessage} placeholder='Write your message here' />
