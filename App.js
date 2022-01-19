@@ -18,6 +18,7 @@ import Contacts from './screens/Contacts';
 import AddContacts from './screens/AddContacts';
 import Maps from './screens/Maps';
 import ResetPassword from './screens/ResetPassword';
+import QRCode from './screens/QRCode'
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -39,6 +40,8 @@ export default function App() {
         <Stack.Screen name="AddContacts" component={AddContacts} />
         <Stack.Screen name="Maps" component={Maps} />
         <Stack.Screen name="ResetPassword" component={ResetPassword} />
+        <Stack.Screen name="QRCode" component={QRCode} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

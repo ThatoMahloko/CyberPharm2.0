@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, StatusBar, TextInput, TouchableOpacity, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, StatusBar, TextInput, TouchableOpacity, ScrollView, Image } from 'react-native'
 import { Title, RadioButton, List, Modal, Provider, Portal } from 'react-native-paper'
 import { Spinner, VStack, Cente, NativeBaseProvider, Center } from 'native-base'
 import SymptomList from '../Api/SymptomList'
@@ -31,13 +31,15 @@ const Symptom = () => {
 
 
     return (
-        <View style={styles.container}>
-            <StatusBar
+
+
+        <View style={styles.container}>  <StatusBar
                 animated={false}
                 barStyle='dark-content'
                 hidden={false}
                 translucent={false}
             />
+            <Image style={styles.diagnose} source={require('../assets/icons/diagnose.png')} />
             <Title style={styles.title}>Birth Year</Title>
             <TextInput placeholder={'BIRTH YEAR'} style={styles.input} onChangeText={(birthYear) => setBirthYear(birthYear)} />
 
@@ -65,9 +67,9 @@ const Symptom = () => {
             <Title style={styles.title}>Gender</Title>
             <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value}>
                 <View style={styles.groupCenter}>
-                    <Title style={styles.titleGender}>male</Title>
+                    <Title style={styles.titleGender}>Male</Title>
                     <RadioButton value="male" />
-                    <Title style={styles.titleGender}>female</Title>
+                    <Title style={styles.titleGender}>Female</Title>
                     <RadioButton value="female" />
                 </View>
             </RadioButton.Group>
@@ -81,8 +83,9 @@ const Symptom = () => {
                 <Portal>
                     <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
                         <View style={styles.diagnosisData}>
-                        <Title style={styles.titleData}>Birth Year: {birthYear}</Title>
-                        <Title style={styles.titleData}>Gender: {value}</Title>
+                            <Image style={styles.diagnose} source={require('../assets/icons/diagnose.png')} />
+                            <Title style={styles.titleData}>Birth Year: {birthYear}</Title>
+                            <Title style={styles.titleData}>Gender: {value}</Title>
                         </View>
                         {
                             Treatment_Diagnosis.filter(userHealthData => userHealthData.tagId === symptomId)
@@ -109,6 +112,7 @@ const Symptom = () => {
                 </Portal>
             </Provider>
         </View>
+
     )
 }
 
@@ -117,7 +121,6 @@ export default Symptom
 const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
-        marginTop: 60
     },
     input: {
         width: 342,
@@ -156,12 +159,17 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     titleData: {
-        justifyContent: 'center', 
-        fontWeight:'bold', 
-        backgroundColor:"#fff"
+        justifyContent: 'center',
+        fontWeight: 'bold',
+        backgroundColor: "#fff"
     },
     text: {
         alignSelf: 'center',
         color: '#fff',
+    },
+    diagnose: {
+        height: 150,
+        width: 300,
+        marginLeft: 20
     }
 })

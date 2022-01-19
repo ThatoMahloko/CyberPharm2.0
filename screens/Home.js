@@ -76,7 +76,7 @@ const Home = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
 
-            <TouchableOpacity onPress={() => navigation.navigate('Vaccination')}>
+            <TouchableOpacity onPress={() => navigation.navigate('QRCode')}>
                 <Image style={styles.covidInfo} source={require('../assets/icons/covid-19.png')} />
             </TouchableOpacity>
 
