@@ -1,6 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, Image, TouchableOpacity, Linking } from 'react-native';
 import { Title, Paragraph } from 'react-native-paper'
+
+const url = 'https://sacoronavirus.co.za/evds/';
 
 const Vaccination = () => {
     return (
@@ -46,8 +48,12 @@ const Vaccination = () => {
                 </View>
             </View>
 
-            <TouchableOpacity style={styles.button}>
-                <Text style={styles.text}>REGISTER FOR VACCINATION</Text>
+            <TouchableOpacity style={styles.button} onPress={() => Linking.openURL(url)}>
+                <Text 
+                style={styles.text}
+                >
+                    REGISTER FOR VACCINATION
+                </Text>
             </TouchableOpacity>
 
         </View>
