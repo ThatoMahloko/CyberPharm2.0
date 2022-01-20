@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, StatusBar, Image, Button, TouchableOpacity, Linking } from 'react-native'
+import { StyleSheet, Text, View, StatusBar, Image, Button, TouchableOpacity, Linking, ScrollView, SafeAreaView } from 'react-native'
 import { Title, Paragraph } from 'react-native-paper'
 
 const Doctor = ({ navigation }) => {
@@ -10,7 +10,8 @@ const Doctor = ({ navigation }) => {
         Linking.openURL('mailto:oloratopule716@gmail.com')
     }
     return (
-        <View>
+        <SafeAreaView>
+            <ScrollView>
             <StatusBar
                 animated={false}
                 barStyle='dark-content'
@@ -72,20 +73,14 @@ const Doctor = ({ navigation }) => {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.contactGroup}>
-                    <Image style={styles.contactIcon} source={require('../assets/icons/Doctors/contact/video.png')} />
-                    <View>
-                        <Title>Video Call</Title>
-                        <Paragraph>See your doctor LIVE!</Paragraph>
-                    </View>
-                </TouchableOpacity>
+               
             </View>
 
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Appointments')}>
                 <Text style={styles.text}>BOOK APPOINTMENT</Text>
             </TouchableOpacity>
-
-        </View>
+            </ScrollView>
+        </SafeAreaView>
     )
 }
 

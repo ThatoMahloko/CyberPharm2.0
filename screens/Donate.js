@@ -26,23 +26,26 @@ const Donate = () => {
                 <View style={styles.infoText}>
                     <Image style={styles.syringIcon} source={require('../assets/icons/blood.png')} />
                     <Paragraph style={styles.paragraph}>
-                    You will be required to complete a Donor Qestionnaire. The questions are aimed at assessing your health and lifestyle to eliminate any effects that could pose a risk to your health and the health of a recipient.
+                    You will be required to complete a Donor Qestionnaire. The questions are aimed at {'\n'}assessing 
+                    your health and lifestyle to  {'\n'}eliminate any effects that could pose a risk  {'\n'}to your health and
+                    the health of a recipient.
                     </Paragraph>
                 </View>
 
                 <View style={styles.infoText}>
                     <Image style={styles.syringIcon} source={require('../assets/icons/blood.png')} />
                     <Paragraph style={styles.paragraph}>
-                    This is followed by a one-on-one interview with the nurse who goes through the questions to ensure that the questions are understood and that the donor understands the importance of being honest on the
-                    questionnaire
+                    This is followed by a one-on-one interview  {'\n'}with the nurse who goes through
+                    the  {'\n'}questions to ensure that the questions are understood and that the donor 
+                    understands  {'\n'}the importance of being honest on the  {'\n'}questionnaire
                     </Paragraph>
                 </View>
 
                 <View style={styles.infoText}>
                     <Image style={styles.syringIcon} source={require('../assets/icons/blood.png')} />
                     <Paragraph style={styles.paragraph}>
-                    Your blood pressure and haemoglobin (iron) levels are checked. (The
-                        checking of your iron level is done with a small prick to your
+                    Your blood pressure and haemoglobin (iron)  {'\n'}levels are checked. (The
+                        checking of your iron  {'\n'}level is done with a small prick to your
                         finger).
                     </Paragraph>
                 </View>
@@ -66,7 +69,7 @@ const styles = StyleSheet.create({
     paragraph: {
         alignSelf: 'center',
         marginTop: 20,
-        width: 360
+        marginLeft:10
     },
     info: {
         flexDirection: 'column'
@@ -88,7 +91,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         alignSelf: 'center',
         marginTop: 20,
-        top:160
+        top:120
     },
     text: {
         alignSelf: 'center',

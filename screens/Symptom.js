@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, StatusBar, TextInput, TouchableOpacity, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, StatusBar, TextInput, TouchableOpacity, ScrollView, Image } from 'react-native'
 import { Title, RadioButton, List, Modal, Provider, Portal } from 'react-native-paper'
 import { Spinner, VStack, Cente, NativeBaseProvider, Center } from 'native-base'
 import SymptomList from '../Api/SymptomList'
@@ -33,18 +33,16 @@ const Symptom = () => {
 
     return (
         <View style={styles.container}>
+           
+            <Image style={styles.img} source={require('../assets/icons/diagnose.png')}/>
             <StatusBar
                 animated={false}
                 barStyle='dark-content'
                 hidden={false}
                 translucent={false}
             />
-            {
-                <Title style={styles.title}>Birth Year</Title>
-            }
+            
             <TextInput placeholder={'BIRTH YEAR'} style={styles.input} onChangeText={(birthYear) => setBirthYear(birthYear)} />
-
-            <Title style={styles.title}>Symptom</Title>
             <List.Section>
                 <List.Accordion
                     title="                SYMPTOM LIST"
@@ -53,7 +51,8 @@ const Symptom = () => {
                     onPress={handlePress}>
 
 
-                    <ScrollView horizontal={false} style={styles.listHeight}>
+                    <ScrollView
+                    lView horizontal={false} style={styles.listHeight}>
                         {SymptomList.map((symptom) => {
                             return (
                                 <TouchableOpacity onPress={() => Pressable(symptom.tagId, symptom.title)}>
@@ -70,7 +69,7 @@ const Symptom = () => {
                 <View style={styles.groupCenter}>
                     <Title style={styles.titleGender}>male</Title>
                     <RadioButton value="male" />
-                    <Title style={styles.titleGender}>female</Title>
+                    <Title style={styles.titleGenderFemale}>female</Title>
                     <RadioButton value="female" />
                 </View>
             </RadioButton.Group>
@@ -89,7 +88,7 @@ const Symptom = () => {
                         {
                             Treatment_Diagnosis.filter(userHealthData => userHealthData.tagId === symptomId)
                                 .map(userHealthData =>
-                                    <ScrollView horizontal={false} contentContainerStyle={generatedData}>
+                                    <ScrollView horizontal={false} contentContainerStyle={generatedData}>                                     
                                         <Title style={styles.titleData}>Birth Year: {birthYear}</Title>
                                         <Title style={styles.titleData}>Gender: {value}</Title>
                                         <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Diagnosis:</Title>
@@ -112,6 +111,7 @@ const Symptom = () => {
                     </Modal>
                 </Portal>
             </Provider>
+           
         </View>
     )
 }
@@ -121,7 +121,7 @@ export default Symptom
 const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
-        marginTop: 60
+        marginTop: 20
     },
     input: {
         width: 342,
@@ -134,7 +134,11 @@ const styles = StyleSheet.create({
     },
     groupCenter: {
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        display:'flex',
+        flexDirection:'row',
+       
+        
     },
     title: {
         alignSelf: 'center'
@@ -143,7 +147,13 @@ const styles = StyleSheet.create({
         height: 100
     },
     titleGender: {
-        color: '#3E64FF'
+        color: '#3E64FF',
+        
+    },
+    titleGenderFemale: {
+        color: '#3E64FF',
+        marginLeft:'25%'
+        
     },
 
     button: {
@@ -154,7 +164,8 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         borderRadius: 10,
         alignSelf: 'center',
-        marginTop: 20
+        marginTop: 20,
+  
     },
     diagnosisData: {
         alignItems: 'center',
@@ -168,5 +179,8 @@ const styles = StyleSheet.create({
     text: {
         alignSelf: 'center',
         color: '#fff',
+    },
+    img:{
+        height:200
     }
 })

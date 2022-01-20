@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#fbed80",
         "activityBar.activeBorder": "#06b9a5",
@@ -19,4 +20,7 @@
         "titleBar.inactiveForeground": "#15202b99"
     },
     "peacock.color": "#f9e64f"
+=======
+    "files.autoSave": "afterDelay"
+>>>>>>> 97ada5660155c8b6466319acec27440c4e42fb55
 }

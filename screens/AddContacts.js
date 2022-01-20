@@ -25,7 +25,7 @@ const AddContacts = () => {
             }
         ).then(() => {
 
-            alert('Constact has been successfully added')
+            alert('Contact has been successfully added')
         }).catch((error) => {
             console.error('Error adding document', error)
         })

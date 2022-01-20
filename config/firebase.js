@@ -8,7 +8,7 @@ const firebaseConfig = {
     projectId: "cyberphamacy",
     storageBucket: "cyberphamacy.appspot.com",
     messagingSenderId: "801494470175",
-    appId: "1:801494470175:web:fc723a15683e545ee80f2a",
+    appId: "1:801494470175:web:fc723a15683e545ee80f2a",                         
     measurementId: "G-E57JPNBF9B"
 }
 
