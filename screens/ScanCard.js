@@ -5,11 +5,9 @@ import * as ImagePicker from 'expo-image-picker'
 import { db } from '../config/firebase'
 import getUSER from '../config/user'
 
-
 const ScanCard = () => {
 
   const [image, setImage] = useState(null);
-
 
 
   useEffect(() => {

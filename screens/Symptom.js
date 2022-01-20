@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, StatusBar, TextInput, TouchableOpacity, ScrollView, Image } from 'react-native'
+import { StyleSheet, Text, View, StatusBar, TextInput, TouchableOpacity, ScrollView } from 'react-native'
 import { Title, RadioButton, List, Modal, Provider, Portal } from 'react-native-paper'
-import { Spinner, VStack, NativeBaseProvider, Center } from 'native-base'
+import { Spinner, VStack, Cente, NativeBaseProvider, Center } from 'native-base'
 import SymptomList from '../Api/SymptomList'
 import Treatment_Diagnosis from '../Api/Treatment_Diagnosis'
 
@@ -13,7 +13,8 @@ const Symptom = () => {
     const [visible, setVisible] = React.useState(false);
     const showModal = () => setVisible(true);
     const hideModal = () => setVisible(false);
-    const containerStyle = { backgroundColor: 'white', padding: 20 };
+    const containerStyle = { backgroundColor: 'white', padding: 20, height: 400, alignItems: 'center', textAlign: 'center' };
+    const generatedData = { alignItems: 'center' }
     const [symptomId, setSymptomId] = useState();
     const [title, setTitle] = useState('');
     const [birthYear, setBirthYear] = useState('');
@@ -31,16 +32,16 @@ const Symptom = () => {
 
 
     return (
-
-
-        <View style={styles.container}>  <StatusBar
-            animated={false}
-            barStyle='dark-content'
-            hidden={false}
-            translucent={false}
-        />
-            <Image style={styles.diagnose} source={require('../assets/icons/diagnose.png')} />
-            <Title style={styles.title}>Birth Year</Title>
+        <View style={styles.container}>
+            <StatusBar
+                animated={false}
+                barStyle='dark-content'
+                hidden={false}
+                translucent={false}
+            />
+            {
+                <Title style={styles.title}>Birth Year</Title>
+            }
             <TextInput placeholder={'BIRTH YEAR'} style={styles.input} onChangeText={(birthYear) => setBirthYear(birthYear)} />
 
             <Title style={styles.title}>Symptom</Title>
@@ -67,9 +68,9 @@ const Symptom = () => {
             <Title style={styles.title}>Gender</Title>
             <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value}>
                 <View style={styles.groupCenter}>
-                    <Title style={styles.titleGender}>Male</Title>
+                    <Title style={styles.titleGender}>male</Title>
                     <RadioButton value="male" />
-                    <Title style={styles.titleGender}>Female</Title>
+                    <Title style={styles.titleGender}>female</Title>
                     <RadioButton value="female" />
                 </View>
             </RadioButton.Group>
@@ -83,36 +84,35 @@ const Symptom = () => {
                 <Portal>
                     <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
                         <View style={styles.diagnosisData}>
-                            <Image style={styles.diagnose} source={require('../assets/icons/diagnose.png')} />
-                            <Title style={styles.titleData}>Birth Year: {birthYear}</Title>
-                            <Title style={styles.titleData}>Gender: {value}</Title>
+
                         </View>
                         {
                             Treatment_Diagnosis.filter(userHealthData => userHealthData.tagId === symptomId)
                                 .map(userHealthData =>
-                                    <View style={styles.diagnosisData}>
+                                    <ScrollView horizontal={false} contentContainerStyle={generatedData}>
+                                        <Title style={styles.titleData}>Birth Year: {birthYear}</Title>
+                                        <Title style={styles.titleData}>Gender: {value}</Title>
                                         <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Diagnosis:</Title>
-                                        <Text >{userHealthData.leastConcerningDiagnosis}</Text>
+                                        <Text style={styles.diagnosisData}>{userHealthData.leastConcerningDiagnosis}</Text>
                                         <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Descrpition:</Title>
-                                        <Text>{userHealthData.leastConcerningDescription}</Text>
+                                        <Text style={styles.diagnosisData}>{userHealthData.leastConcerningDescription}</Text>
                                         <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Specialist:</Title>
-                                        <Text>{userHealthData.leastConcerningSpecialist}</Text>
+                                        <Text style={styles.diagnosisData}>{userHealthData.leastConcerningSpecialist}</Text>
                                         <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Diagnosis:</Title>
-                                        <Text>{userHealthData.mostConcerningDiagnosis}</Text>
+                                        <Text style={styles.diagnosisData}>{userHealthData.mostConcerningDiagnosis}</Text>
                                         <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Description:</Title>
-                                        <Text>{userHealthData.mostConcerningDescription}</Text>
+                                        <Text style={styles.diagnosisData}>{userHealthData.mostConcerningDescription}</Text>
                                         <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Specialist:</Title>
-                                        <Text>{userHealthData.mostConcerningSpecialist}</Text>
+                                        <Text style={styles.diagnosisData}>{userHealthData.mostConcerningSpecialist}</Text>
                                         <Title style={styles.titleData} key={userHealthData.tagId}>Female Diagnosis:</Title>
-                                        <Text>{userHealthData.femaleDiagnosis}</Text>
-                                    </View>
+                                        <Text style={styles.diagnosisData}>{userHealthData.femaleDiagnosis}</Text>
+                                    </ScrollView>
                                 )
                         }
                     </Modal>
                 </Portal>
             </Provider>
         </View>
-
     )
 }
 
@@ -121,6 +121,7 @@ export default Symptom
 const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
+        marginTop: 60
     },
     input: {
         width: 342,
@@ -156,20 +157,16 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     diagnosisData: {
-        alignItems: 'center'
+        alignItems: 'center',
+        textAlign: 'center'
     },
     titleData: {
-        justifyContent: 'center',
+        // justifyContent: 'center',
         fontWeight: 'bold',
         backgroundColor: "#fff"
     },
     text: {
         alignSelf: 'center',
         color: '#fff',
-    },
-    diagnose: {
-        height:300,
-        width: 300,
-        marginLeft: 20
     }
 })
