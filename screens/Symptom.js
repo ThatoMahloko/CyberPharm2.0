@@ -13,7 +13,8 @@ const Symptom = () => {
     const [visible, setVisible] = React.useState(false);
     const showModal = () => setVisible(true);
     const hideModal = () => setVisible(false);
-    const containerStyle = { backgroundColor: 'white', padding: 20 };
+    const containerStyle = { backgroundColor: 'white', padding: 20, height: 400, alignItems: 'center', textAlign: 'center' };
+    const generatedData = { alignItems: 'center' }
     const [symptomId, setSymptomId] = useState();
     const [title, setTitle] = useState('');
     const [birthYear, setBirthYear] = useState('');
@@ -38,7 +39,9 @@ const Symptom = () => {
                 hidden={false}
                 translucent={false}
             />
-            <Title style={styles.title}>Birth Year</Title>
+            {
+                <Title style={styles.title}>Birth Year</Title>
+            }
             <TextInput placeholder={'BIRTH YEAR'} style={styles.input} onChangeText={(birthYear) => setBirthYear(birthYear)} />
 
             <Title style={styles.title}>Symptom</Title>
@@ -81,28 +84,29 @@ const Symptom = () => {
                 <Portal>
                     <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
                         <View style={styles.diagnosisData}>
-                        <Title style={styles.titleData}>Birth Year: {birthYear}</Title>
-                        <Title style={styles.titleData}>Gender: {value}</Title>
+
                         </View>
                         {
                             Treatment_Diagnosis.filter(userHealthData => userHealthData.tagId === symptomId)
                                 .map(userHealthData =>
-                                    <View style={styles.diagnosisData}>
+                                    <ScrollView horizontal={false} contentContainerStyle={generatedData}>
+                                        <Title style={styles.titleData}>Birth Year: {birthYear}</Title>
+                                        <Title style={styles.titleData}>Gender: {value}</Title>
                                         <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Diagnosis:</Title>
-                                        <Text >{userHealthData.leastConcerningDiagnosis}</Text>
+                                        <Text style={styles.diagnosisData}>{userHealthData.leastConcerningDiagnosis}</Text>
                                         <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Descrpition:</Title>
-                                        <Text>{userHealthData.leastConcerningDescription}</Text>
+                                        <Text style={styles.diagnosisData}>{userHealthData.leastConcerningDescription}</Text>
                                         <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Specialist:</Title>
-                                        <Text>{userHealthData.leastConcerningSpecialist}</Text>
+                                        <Text style={styles.diagnosisData}>{userHealthData.leastConcerningSpecialist}</Text>
                                         <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Diagnosis:</Title>
-                                        <Text>{userHealthData.mostConcerningDiagnosis}</Text>
+                                        <Text style={styles.diagnosisData}>{userHealthData.mostConcerningDiagnosis}</Text>
                                         <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Description:</Title>
-                                        <Text>{userHealthData.mostConcerningDescription}</Text>
+                                        <Text style={styles.diagnosisData}>{userHealthData.mostConcerningDescription}</Text>
                                         <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Specialist:</Title>
-                                        <Text>{userHealthData.mostConcerningSpecialist}</Text>
+                                        <Text style={styles.diagnosisData}>{userHealthData.mostConcerningSpecialist}</Text>
                                         <Title style={styles.titleData} key={userHealthData.tagId}>Female Diagnosis:</Title>
-                                        <Text>{userHealthData.femaleDiagnosis}</Text>
-                                    </View>
+                                        <Text style={styles.diagnosisData}>{userHealthData.femaleDiagnosis}</Text>
+                                    </ScrollView>
                                 )
                         }
                     </Modal>
@@ -153,12 +157,13 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     diagnosisData: {
-        alignItems: 'center'
+        alignItems: 'center',
+        textAlign: 'center'
     },
     titleData: {
-        justifyContent: 'center', 
-        fontWeight:'bold', 
-        backgroundColor:"#fff"
+        // justifyContent: 'center',
+        fontWeight: 'bold',
+        backgroundColor: "#fff"
     },
     text: {
         alignSelf: 'center',

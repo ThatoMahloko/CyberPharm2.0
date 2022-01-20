@@ -1,6 +1,8 @@
 import React from 'react'
-import { StyleSheet, Text, View, StatusBar, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, StatusBar, Image, TouchableOpacity, Linking } from 'react-native'
 import { Title, Paragraph } from 'react-native-paper'
+
+const url = 'https://sanbs.org.za/donation-process/';
 
 const Donate = () => {
     return (
@@ -46,7 +48,7 @@ const Donate = () => {
                 </View>
             </View>
 
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={() => Linking.openURL(url)}>
                 <Text style={styles.text}>DONATE BLOOD</Text>
             </TouchableOpacity>
         </View>

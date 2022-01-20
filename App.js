@@ -1,6 +1,7 @@
+
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native'
 import Login from './screens/Login';
@@ -18,6 +19,7 @@ import Contacts from './screens/Contacts';
 import AddContacts from './screens/AddContacts';
 import Maps from './screens/Maps';
 import ResetPassword from './screens/ResetPassword';
+import ScanCard from './screens/ScanCard';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -39,6 +41,7 @@ export default function App() {
         <Stack.Screen name="AddContacts" component={AddContacts} />
         <Stack.Screen name="Maps" component={Maps} />
         <Stack.Screen name="ResetPassword" component={ResetPassword} />
+        <Stack.Screen name="ScanCard" component={ScanCard} />
       </Stack.Navigator>
     </NavigationContainer>
   );

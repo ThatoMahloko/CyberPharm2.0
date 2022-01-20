@@ -1,8 +1,14 @@
 import React from 'react'
-import { StyleSheet, Text, View, StatusBar, Image, Button, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, StatusBar, Image, Button, TouchableOpacity, Linking } from 'react-native'
 import { Title, Paragraph } from 'react-native-paper'
 
 const Doctor = ({ navigation }) => {
+    const triggerCall = () => {
+        Linking.openURL('tel:0818855766')
+    };
+    const triggerMail = () => {
+        Linking.openURL('mailto:oloratopule716@gmail.com')
+    }
     return (
         <View>
             <StatusBar
@@ -50,7 +56,7 @@ const Doctor = ({ navigation }) => {
             <View style={styles.infoContent}>
                 <Title style={styles.infoContentTitle}>Communication</Title>
 
-                <TouchableOpacity style={styles.contactGroup} onPress={() => navigation.navigate('Messaging')}>
+                <TouchableOpacity style={styles.contactGroup} onPress={triggerMail}>
                     <Image style={styles.contactIcon} source={require('../assets/icons/Doctors/contact/text.png')} />
                     <View>
                         <Title>Messaging</Title>
@@ -58,7 +64,7 @@ const Doctor = ({ navigation }) => {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.contactGroup}>
+                <TouchableOpacity style={styles.contactGroup} onPress={triggerCall}>
                     <Image style={styles.contactIcon} source={require('../assets/icons/Doctors/contact/call.png')} />
                     <View>
                         <Title>Audio Call</Title>
