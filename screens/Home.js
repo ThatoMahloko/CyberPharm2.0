@@ -129,13 +129,13 @@ const styles = StyleSheet.create({
     icon: {
         width: 40,
         height: 40,
-        marginLeft: 20,
-        margin: 10
+        marginLeft: '10%',
+        margin: '10%'
     },
     clickIconsGroup: {
         flexDirection: 'row',
         alignSelf: 'center',
-        marginTop: 20,
+        marginTop: '1%',
     },
     clickIcons: {
         width: 72,
@@ -154,10 +154,10 @@ const styles = StyleSheet.create({
     }
     ,
     covidInfo: {
-        height: 460,
-        width: 360,
+        height: '60%',
+        width: '90%',
         alignSelf: 'center',
-        marginTop: 20,
+        marginTop: '10%',
         backgroundColor: '#054EDE',
         borderRadius: 20
     },
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
     locateMedi: {
         flexDirection: 'row',
         backgroundColor: '#054EDE',
-        height: 80,
+        height: '10%',
         width: '90%',
         justifyContent: 'center',
         marginTop: 20,
