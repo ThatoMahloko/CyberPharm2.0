@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#1597E5',
         borderRadius: 20,
         alignItems: 'center',
-        justifyContent:'center',
+        justifyContent: 'center',
         margin: 5
     },
     imageText: {
@@ -186,7 +186,15 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         justifyContent: 'center',
         marginTop: 10,
-        borderRadius: 20
+        borderRadius: 20,
+        width: '90%'
+    },
+    rowcontentLoacte: {
+        flexDirection: 'column',
+        right: 70
+    },
+    locateText: {
+        color: '#fff'
     },
     iconsText: {
         fontWeight: 'bold',
