@@ -16,10 +16,10 @@ const Vaccination = () => {
             <Title style={styles.Title}>Why is vaccination important?</Title>
 
             <Paragraph style={styles.paragraph}>
-                Vaccination is a safe and effective way to prevent disease and save lives. When we get vaccinated we are not just protecting ourselves, but
-                also those around us. Some people, like those who are seriously ill, are
-                advised not to get certain vaccines – so they depend on the rest of us
-                to get vaccinated and help reduce the spread of disease.
+                Vaccination is a safe and effective way to prevent disease and save lives. When we get
+                 vaccinated we are not just protecting ourselves, but also those around us. Some people, 
+                 like those who are seriously ill, are advised not to get certain vaccines – so they depend 
+                 on the rest of us to get vaccinated and help reduce the spread of disease.
             </Paragraph>
 
             <Title style={styles.Title}>Why is vaccination important?</Title>
@@ -35,15 +35,15 @@ const Vaccination = () => {
                     <Image style={styles.syringIcon} source={require('../assets/icons/syringe.png')} />
                     <Paragraph style={styles.paragraph}>
                         produces antibodies. Antibodies are proteins produced naturally by
-                        the immune system to fight disease
+                        the immune system  {'\n'}to fight disease
                     </Paragraph>
                 </View>
 
                 <View style={styles.infoText}>
                     <Image style={styles.syringIcon} source={require('../assets/icons/syringe.png')} />
                     <Paragraph style={styles.paragraph}>
-                        prodremembers the disease and how to fight it. If you are then exposed to the germ in the future, your immune system can quickly destroy it
-                        before you become unwell.
+                        prodremembers the disease and how to fight  {'\n'}it. If you are then exposed to the germ 
+                        in the  {'\n'}future, your immune system can quickly  {'\n'}destroy it before you become unwell.
                     </Paragraph>
                 </View>
             </View>
@@ -66,12 +66,14 @@ const styles = StyleSheet.create({
     Title: {
         marginLeft: 16,
         fontSize: 30,
-        marginTop: 20
+        marginTop: 20,
+        
     },
     paragraph: {
         alignSelf: 'center',
         marginTop: 20,
-        width: 360
+        marginLeft:10,
+
     },
     info: {
         flexDirection: 'column'
@@ -81,8 +83,10 @@ const styles = StyleSheet.create({
     },
     syringIcon: {
         width: 25,
-        height: 25, alignSelf: 'center',
-        marginRight: 10, marginLeft: 10
+        height: 25, 
+        alignSelf: 'center',
+        marginRight: 10, 
+        marginLeft: 5
     },
     button: {
         width: 360,

@@ -26,7 +26,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Symptom" component={Symptom} />
+     
 
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
@@ -37,6 +37,7 @@ export default function App() {
         <Stack.Screen name="Appointments" component={Appointments} />
         <Stack.Screen name="Donate" component={Donate} />
         <Stack.Screen name="Messaging" component={Messaging} />
+        <Stack.Screen name="Symptom" component={Symptom} />
         <Stack.Screen name="SOS" component={SOS} />
         <Stack.Screen name="Contacts" component={Contacts} />
         <Stack.Screen name="AddContacts" component={AddContacts} />
