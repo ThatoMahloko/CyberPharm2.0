@@ -24,11 +24,7 @@
     "react-native-google-maps-directions": "^2.1.1",
     "react-native-google-places-autocomplete": "^2.4.1",
     "react-native-image-picker": "^4.7.1",
-<<<<<<< HEAD
     "react-native-maps": "^0.30.1",
-=======
-    "react-native-maps": "0.28.1",
->>>>>>> 04a6cbf3276be657dea209f0e42c049c763f42dc
     "react-native-paper": "^4.9.2",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
