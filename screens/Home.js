@@ -184,19 +184,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#054EDE',
         height: 80,
         alignSelf: 'center',
+        justifyContent: 'center',
         marginTop: 10,
-        borderRadius: 20,
-        width: '90%',
-        paddingLeft: 10,
-        justifyContent: 'center'
-    },
-    rowcontentLoacte: {
-        flexDirection: 'column'
-    },
-    locateText: {
-        color: '#fff',
-        marginBottom: -10,
-        right: 70
+        borderRadius: 20
     },
     iconsText: {
         fontWeight: 'bold',
