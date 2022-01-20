@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, StatusBar, Image, TouchableOpacity, Alert, Dimensions, ScrollView } from 'react-native'
-import { Modal, Provider, Portal } from 'react-native-paper'
+import { Modal, Provider, Portal, Title } from 'react-native-paper'
 import signOut from '../auth/signOut'
 
 const Home = ({ navigation }) => {

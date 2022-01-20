@@ -51,7 +51,7 @@ const Symptom = () => {
                     onPress={handlePress}>
 
 
-                    <ScrollView>
+                    <ScrollView
                     lView horizontal={false} style={styles.listHeight}>
                         {SymptomList.map((symptom) => {
                             return (
