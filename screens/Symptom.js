@@ -34,11 +34,11 @@ const Symptom = () => {
 
 
         <View style={styles.container}>  <StatusBar
-                animated={false}
-                barStyle='dark-content'
-                hidden={false}
-                translucent={false}
-            />
+            animated={false}
+            barStyle='dark-content'
+            hidden={false}
+            translucent={false}
+        />
             <Image style={styles.diagnose} source={require('../assets/icons/diagnose.png')} />
             <Title style={styles.title}>Birth Year</Title>
             <TextInput placeholder={'BIRTH YEAR'} style={styles.input} onChangeText={(birthYear) => setBirthYear(birthYear)} />
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
         color: '#fff',
     },
     diagnose: {
-        height: 150,
+        height:300,
         width: 300,
         marginLeft: 20
     }

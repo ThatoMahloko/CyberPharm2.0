@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, StatusBar, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet,  View, StatusBar, Image, TouchableOpacity } from 'react-native'
 import { useEffect } from 'react'
 import { db } from '../config/firebase'
 import ContactItem from '../components/ContactItem'
@@ -50,6 +50,7 @@ const Contacts = ({ navigation }) => {
                 ))
 
             }
+            
             <TouchableOpacity onPress={() => navigation.navigate('AddContacts')}>
                 <Image style={styles.add} source={require('../assets/icons/add.png')} />
             </TouchableOpacity>

@@ -136,10 +136,10 @@ const styles = StyleSheet.create({
     clickIcons: {
         width: 92,
         height: 92,
-        top:1, 
-       
-      
-        
+        top: 1,
+
+
+
     },
     covidInfo: {
         height: 460,
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginTop: 10
     },
- 
+
     iconsText: {
 
         fontWeight: 'bold',
