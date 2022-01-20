@@ -142,17 +142,10 @@ const styles = StyleSheet.create({
     clickIcons: {
         width: 92,
         height: 92,
-<<<<<<< HEAD
         top: 1,
-
-
-
-=======
-        top:1, 
        
       
         
->>>>>>> 04a6cbf3276be657dea209f0e42c049c763f42dc
     },
     imageText: {
         fontSize: 9,
@@ -193,11 +186,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginTop: 10
     },
-<<<<<<< HEAD
-
-=======
  
->>>>>>> 04a6cbf3276be657dea209f0e42c049c763f42dc
     iconsText: {
 
         fontWeight: 'bold',
