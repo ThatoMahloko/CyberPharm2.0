@@ -67,7 +67,7 @@ const Home = ({ navigation }) => {
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.clickIcons}  onPress={() => navigation.navigate('Donate')}>
                     <Image  source={require('../assets/icon/bloodDonate.png')} />
-                    <Text style={styles.imageText}>DonateBlood</Text>
+                    <Text style={styles.imageText}>Blood Bank</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.clickIcons}  onPress={() => navigation.navigate('Contacts')}>
                     <Image source={require('../assets/icon/contactIcon.png')} />
@@ -75,7 +75,7 @@ const Home = ({ navigation }) => {
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.clickIcons}  onPress={() => navigation.navigate('Symptom')}>
                     <Image source={require('../assets/icon/selfDiagnose.png')} />
-                    <Text style={styles.imageText}>Self Diagnose</Text>
+                    <Text style={styles.imageText}>Self Help</Text>
                 </TouchableOpacity>
             </View>
 
