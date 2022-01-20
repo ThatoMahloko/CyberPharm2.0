@@ -2,7 +2,7 @@ import { firebase } from '../config/firebase';
 
 const getUSER = (() => {
 
-    const id = firebase.auth().currentUser;
+    const id = firebase.auth().currentUser.uid;
 
     return id;
 })
