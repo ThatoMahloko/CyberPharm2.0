@@ -24,7 +24,9 @@ export default ContactItem
 const styles = StyleSheet.create({
     contactContainer: {
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center', 
+        alignSelf:'center', 
+        marginRight:58
     }
     ,
     avatarIcon: {

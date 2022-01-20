@@ -81,12 +81,19 @@ const Home = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
 
-            <TouchableOpacity onPress={() => navigation.navigate('ScanCard')}>
-                <Image style={styles.covidInfo} source={require('../assets/icons/covid-19.png')} />
+            <TouchableOpacity style={styles.covidInfo} onPress={() => navigation.navigate('ScanCard')}>
+                <Title style={styles.covidCardText}>Create A Digital</Title>
+                <Title style={styles.covidCardText}>Vaccination</Title>
+                <Title style={styles.covidCardText}>Card</Title>
+                <Image style={styles.doctorAnime} source={require('../assets/icons/doctorAnime.png')} />
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigation.navigate('Maps')}>
-                <Image style={styles.locateMedi} source={require('../assets/icons/locate.png')} />
+            <TouchableOpacity style={styles.locateMedi} onPress={() => navigation.navigate('Maps')}>
+                <View style={styles.rowcontentLoacte}>
+                    <Title style={styles.locateText}>Locate Nearst</Title>
+                    <Title style={styles.locateText}>Medical Facility</Title>
+                </View>
+                <Image style={styles.mapIcon} source={require('../assets/icons/mapIcon.png')} />
             </TouchableOpacity>
 
             <Provider>
@@ -118,7 +125,7 @@ const styles = StyleSheet.create({
     ,
     iconGroup: {
         flexDirection: 'row',
-        marginLeft: 200,
+        marginLeft: '50%',
 
     },
     icon: {
@@ -140,15 +147,41 @@ const styles = StyleSheet.create({
       
         
     },
+    imageText: {
+        fontSize: 9,
+        textAlign: 'center', 
+        color:'#fff'
+    }
+    ,
     covidInfo: {
         height: 460,
         width: 360,
         alignSelf: 'center',
-        marginTop: 20
+        marginTop: 20,
+        backgroundColor: '#054EDE',
+        borderRadius: 20
+    },
+    covidCardText: {
+        color: '#fff',
+        textAlign: 'left',
+        fontSize: 30,
+        marginTop: 20,
+        marginLeft: 10
+    },
+    doctorAnime: {
+        width: '98%',
+        height: '60%',
+        alignSelf: 'center',
+        marginTop: 19
     }
     ,
+    mapIcon: {
+        left: 70,
+        alignSelf: 'center'
+    },
     locateMedi: {
-        width: 360,
+        flexDirection: 'row',
+        backgroundColor: '#054EDE',
         height: 80,
         alignSelf: 'center',
         marginTop: 10

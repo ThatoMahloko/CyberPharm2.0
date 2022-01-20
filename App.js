@@ -36,6 +36,7 @@ export default function App() {
         <Stack.Screen name="Doctor" component={Doctor} />
         <Stack.Screen name="Appointments" component={Appointments} />
         <Stack.Screen name="Donate" component={Donate} />
+        <Stack.Screen name="Symptom" component={Symptom} />
         <Stack.Screen name="Messaging" component={Messaging} />
         <Stack.Screen name="Symptom" component={Symptom} />
         <Stack.Screen name="SOS" component={SOS} />
