@@ -88,7 +88,7 @@ const Home = ({ navigation }) => {
 
             <TouchableOpacity style={styles.locateMedi} onPress={() => navigation.navigate('Maps')}>
                 <View style={styles.rowcontentLoacte}>
-                    <Title style={styles.locateText}>Locate Nearst</Title>
+                    <Title style={styles.locateText}>Locate Nearest</Title>
                     <Title style={styles.locateText}>Medical Facility</Title>
                 </View>
                 <Image style={styles.mapIcon} source={require('../assets/icons/mapIcon.png')} />
@@ -138,8 +138,8 @@ const styles = StyleSheet.create({
         marginTop: '1%',
     },
     clickIcons: {
-        width: 72,
-        height: 77,
+        width: 65,
+        height:70,
         top: 1,
         backgroundColor: "#7ACEFA",
         borderRadius: 20,
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
     locateText: {
         color: '#fff',
         marginTop: 0,
-        right: 70
+        right: '10%'
     }
     ,
     iconsText: {
