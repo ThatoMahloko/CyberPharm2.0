@@ -71,7 +71,8 @@ const styles = StyleSheet.create({
         marginTop: 100,
     },
     add: {
-        marginTop: 400,
-        marginLeft: 280,
+        
+        marginRight:300,
+        alignSelf: 'center',
     }
 })

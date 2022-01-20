@@ -138,14 +138,12 @@ const styles = StyleSheet.create({
         marginTop: '1%',
     },
     clickIcons: {
-        width: 65,
-        height:70,
+        width: 92,
+        height: 92,
         top: 1,
-        backgroundColor: "#7ACEFA",
-        borderRadius: 20,
-        margin: 2, 
-        alignItems:'center', justifyContent:'center'
-
+       
+      
+        
     },
     imageText: {
         fontSize: 9,
@@ -182,23 +180,11 @@ const styles = StyleSheet.create({
     locateMedi: {
         flexDirection: 'row',
         backgroundColor: '#054EDE',
-        height: '10%',
-        width: '90%',
-        justifyContent: 'center',
-        marginTop: 20,
-        borderRadius: 20
-    }
-    ,
-    rowcontentLoacte: {
-        flexDirection: 'column'
-    }
-    ,
-    locateText: {
-        color: '#fff',
-        marginTop: 0,
-        right: '10%'
-    }
-    ,
+        height: 80,
+        alignSelf: 'center',
+        marginTop: 10
+    },
+ 
     iconsText: {
 
         fontWeight: 'bold',

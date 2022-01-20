@@ -26,7 +26,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center', 
         alignSelf:'center', 
-        marginRight:58
+        marginRight:58, 
+        marginTop:60,
+        padding:0
     }
     ,
     avatarIcon: {
