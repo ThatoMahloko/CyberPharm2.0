@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, StatusBar, Image, TouchableOpacity, Alert, Dimensions, ImageBackground } from 'react-native'
+import { StyleSheet, Text, View, StatusBar, Image, TouchableOpacity, Alert, Dimensions, ScrollView } from 'react-native'
 import { Modal, Provider, Portal, Title } from 'react-native-paper'
 import signOut from '../auth/signOut'
 
@@ -47,9 +47,11 @@ const Home = ({ navigation }) => {
                     <Image style={styles.icon} source={require('../assets/icons/SosIcon.png')} />
                 </TouchableOpacity >
 
-                <TouchableOpacity>
-                    <Image style={styles.icon} source={require('../assets/icons/notify.png')} />
-                </TouchableOpacity>
+                <View style={styles.iconGroup}>
+                    <TouchableOpacity>
+                        <Image style={styles.icon} source={require('../assets/icons/notify.png')} />
+                    </TouchableOpacity>
+                </View>
 
                 <TouchableOpacity onPress={showModal}>
                     <Image style={styles.icon} source={require('../assets/icons/girl.png')} />
@@ -57,25 +59,25 @@ const Home = ({ navigation }) => {
             </View>
 
             <View style={styles.clickIconsGroup}>
-                <TouchableOpacity style={styles.clickIcons} onPress={() => navigation.navigate('Vaccination')}>
-                    <Image  source={require('../assets/icon/syringe.png')} />
-                    <Text style={styles.imageText}>Vaccination</Text>
+                <TouchableOpacity onPress={() => navigation.navigate('Vaccination')}>
+                    <Image style={styles.clickIcons} source={require('../assets/icons/vaccinate.png')} />
+                    <Text style={styles.iconsText}>Vaccination</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.clickIcons}  onPress={() => navigation.navigate('Doctors')}>
-                    <Image source={require('../assets/icon/maskedDoctor.png')} />
-                    <Text style={styles.imageText}>Book Dr.</Text>
+                <TouchableOpacity onPress={() => navigation.navigate('Doctors')}>
+                    <Image style={styles.clickIcons} source={require('../assets/icons/bookDr.png')} />
+                    <Text style={styles.iconsText}>Book a Dr</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.clickIcons}  onPress={() => navigation.navigate('Donate')}>
-                    <Image  source={require('../assets/icon/bloodDonate.png')} />
-                    <Text style={styles.imageText}>DonateBlood</Text>
+                <TouchableOpacity onPress={() => navigation.navigate('Donate')}>
+                    <Image style={styles.clickIcons} source={require('../assets/icons/donateBlood.png')} />
+                    <Text style={styles.donateBloodText}>Donate Blood</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.clickIcons}  onPress={() => navigation.navigate('Contacts')}>
-                    <Image source={require('../assets/icon/contactIcon.png')} />
-                    <Text style={styles.imageText}>Contacts</Text>
+                <TouchableOpacity onPress={() => navigation.navigate('Contacts')}>
+                    <Image style={styles.clickIcons} source={require('../assets/icons/SOScontacts.png')} />
+                    <Text style={styles.iconsText}>Contacts </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.clickIcons}  onPress={() => navigation.navigate('Symptom')}>
-                    <Image source={require('../assets/icon/selfDiagnose.png')} />
-                    <Text style={styles.imageText}>Self Diagnose</Text>
+                <TouchableOpacity onPress={() => navigation.navigate('Symptom')}>
+                    <Image style={styles.clickIcons} source={require('../assets/icons/symptoms.png')} />
+                    <Text style={styles.iconsText}>Symptoms </Text>
                 </TouchableOpacity>
             </View>
 
@@ -117,8 +119,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-        height: '100%',
-
+        height: '100%'
+      
     }
     ,
     iconGroup: {
@@ -135,15 +137,22 @@ const styles = StyleSheet.create({
     clickIconsGroup: {
         flexDirection: 'row',
         alignSelf: 'center',
-        marginTop: 20,
+        marginTop: 20
     },
     clickIcons: {
         width: 92,
         height: 92,
+<<<<<<< HEAD
         top: 1,
 
 
 
+=======
+        top:1, 
+       
+      
+        
+>>>>>>> 04a6cbf3276be657dea209f0e42c049c763f42dc
     },
     imageText: {
         fontSize: 9,
@@ -184,7 +193,11 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginTop: 10
     },
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 04a6cbf3276be657dea209f0e42c049c763f42dc
     iconsText: {
 
         fontWeight: 'bold',
@@ -193,7 +206,15 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'black'
     },
+    donateBloodText: {
+        fontWeight: 'bold',
+        marginTop: -26,
+        fontSize: 10,
+        textAlign: 'center',
+        color: 'black',
 
+
+    }
 
 })
 
