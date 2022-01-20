@@ -58,22 +58,22 @@ const Home = ({ navigation }) => {
 
             <View style={styles.clickIconsGroup}>
                 <TouchableOpacity style={styles.clickIcons} onPress={() => navigation.navigate('Vaccination')}>
-                    <Image  source={require('../assets/icon/syringe.png')} />
+                    <Image source={require('../assets/icon/syringe.png')} />
                     <Text style={styles.imageText}>Vaccination</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.clickIcons}  onPress={() => navigation.navigate('Doctors')}>
+                <TouchableOpacity style={styles.clickIcons} onPress={() => navigation.navigate('Doctors')}>
                     <Image source={require('../assets/icon/maskedDoctor.png')} />
                     <Text style={styles.imageText}>Book Dr.</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.clickIcons}  onPress={() => navigation.navigate('Donate')}>
-                    <Image  source={require('../assets/icon/bloodDonate.png')} />
+                <TouchableOpacity style={styles.clickIcons} onPress={() => navigation.navigate('Donate')}>
+                    <Image source={require('../assets/icon/bloodDonate.png')} />
                     <Text style={styles.imageText}>Blood Bank</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.clickIcons}  onPress={() => navigation.navigate('Contacts')}>
+                <TouchableOpacity style={styles.clickIcons} onPress={() => navigation.navigate('Contacts')}>
                     <Image source={require('../assets/icon/contactIcon.png')} />
                     <Text style={styles.imageText}>Contacts</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.clickIcons}  onPress={() => navigation.navigate('Symptom')}>
+                <TouchableOpacity style={styles.clickIcons} onPress={() => navigation.navigate('Symptom')}>
                     <Image source={require('../assets/icon/selfDiagnose.png')} />
                     <Text style={styles.imageText}>Self Help</Text>
                 </TouchableOpacity>
@@ -138,17 +138,19 @@ const styles = StyleSheet.create({
         marginTop: '1%',
     },
     clickIcons: {
-        width: 92,
-        height: 92,
+        width: 70,
+        height: 80,
         top: 1,
-       
-      
-        
+        backgroundColor: '#1597E5',
+        borderRadius: 20,
+        alignItems: 'center',
+        justifyContent:'center',
+        margin: 5
     },
     imageText: {
         fontSize: 9,
-        textAlign: 'center', 
-        color:'#fff'
+        textAlign: 'center',
+        color: '#fff'
     }
     ,
     covidInfo: {
@@ -182,11 +184,21 @@ const styles = StyleSheet.create({
         backgroundColor: '#054EDE',
         height: 80,
         alignSelf: 'center',
-        marginTop: 10
+        marginTop: 10,
+        borderRadius: 20,
+        width: '90%',
+        paddingLeft: 10,
+        justifyContent: 'center'
     },
- 
+    rowcontentLoacte: {
+        flexDirection: 'column'
+    },
+    locateText: {
+        color: '#fff',
+        marginBottom: -10,
+        right: 70
+    },
     iconsText: {
-
         fontWeight: 'bold',
         marginTop: -26,
         fontSize: 11,
