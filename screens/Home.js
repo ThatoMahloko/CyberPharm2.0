@@ -182,7 +182,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#054EDE',
         height: 80,
         alignSelf: 'center',
-        marginTop: 10
+        justifyContent: 'center',
+        marginTop: 10,
+        borderRadius: 20
     },
  
     iconsText: {
