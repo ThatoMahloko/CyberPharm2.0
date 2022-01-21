@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import { StyleSheet, View, StatusBar, Image, TouchableOpacity } from 'react-native'
-import { useEffect } from 'react'
+import React from 'react'
+import { StyleSheet, View, StatusBar, Image, TouchableOpacity, ScrollView, SafeAreaView, Text, BottomNavbar } from 'react-native'
+import { useEffect, useState } from 'react'
 import { db } from '../config/firebase'
 import ContactItem from '../components/ContactItem'
 import getUSER from '../config/user'
-import { ScrollView } from 'react-native-gesture-handler'
+import AddButton from '../components/AddButton'
 
 const Contacts = ({ navigation }) => {
     const [user, setUser] = useState([
@@ -33,27 +33,31 @@ const Contacts = ({ navigation }) => {
     }, []);
 
     return (
-        <ScrollView>
-            <StatusBar
-                animated={false}
-                barStyle='dark-content'
-                hidden={false}
-                translucent={false}
-            />
+        <View style={styles.container}>
+            <View style={styles.containerContent}>
+                <ScrollView horizontal={false} style={styles.scrollView} >
+                    <StatusBar
+                        animated={false}
+                        barStyle='dark-content'
+                        hidden={false}
+                        translucent={false}
+                    />
 
-            {contact.length == 0 ?
-                <Image style={styles.emptyIcon} source={require('../assets/icons/emptyContacts.png')} />
-                :
-                contact.map((data, k) => (
-                    <View style={styles.contactItem}>
-                        <ContactItem key={k} data={data} />
-                    </View>
-                ))
+                    {contact.length == 0 ?
+                        <Image style={styles.emptyIcon} source={require('../assets/icons/emptyContacts.png')} />
+                        :
+                        contact.map((data, k) => (
+                            <View style={styles.contactItem}>
+                                <ContactItem key={k} data={data} />
+                            </View>
+                        ))
 
-            }
+                    }
 
-            <TouchableOpacity onPress={() => navigation.navigate('AddContacts')}>
-                <Image style={styles.add} source={require('../assets/icons/add.png')} />
+                </ScrollView>
+            </View>
+            <TouchableOpacity style={styles.add} onPress={() => navigation.navigate('AddContacts')}>
+                <Text style={styles.addText}>+</Text>
             </TouchableOpacity>
         </ScrollView>
     )
@@ -62,7 +66,19 @@ const Contacts = ({ navigation }) => {
 export default Contacts
 
 const styles = StyleSheet.create({
+
+    container: {
+        marginTop: 0,
+        paddingBottom: 0,
+        marginBottom: 0,
+        height: '100%',
+    },
+
     contactItem: {
+        alignItems: 'center',
+        marginBottom: -40,
+        marginRight: 100,
+        padding: 0
     }
     ,
     emptyIcon: {
@@ -71,9 +87,27 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginTop: 100,
     },
-    add: {
 
-        marginRight: 300,
-        alignSelf: 'center',
+    scrollView: {
+        height: '100%',
+        marginTop: 0,
+        marginBottom: 0
+    },
+    add: {
+        backgroundColor: '#3E64FF',
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        justifyContent: 'center',
+        end: -310,
+        top: -70,
+    },
+    addText: {
+        textAlign: 'center',
+        fontSize: 40,
+        color: '#fff',
+        position: 'relative',
+        zIndex: -1
     }
+
 })
