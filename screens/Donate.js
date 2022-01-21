@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         borderRadius: 10,
         alignSelf: 'center',
-        marginTop: 20,
+        marginTop: -10,
         top:120
     },
     text: {
