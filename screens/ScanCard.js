@@ -89,34 +89,35 @@ const ScanCard = () => {
         hidden={false}
         translucent={false}
       />
-      <View>
+      <View style={styles.imagePreviewContainer}>
         <Image source={{ uri: image }} style={styles.imagePreview} />
       </View>
-      <TouchableOpacity style={styles.button} onPress={pickImage}>
-        <Text style={styles.text}>Select Image</Text>
-      </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} onPress={openCamera}>
-        <Text style={styles.text}>Caputure Image</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={pickImage}>
+          <Text style={styles.text}>Select Image</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} onPress={saveImage}>
-        <Text style={styles.text}>Save</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={openCamera}>
+          <Text style={styles.text}>Caputure Image</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={saveImage}>
+          <Text style={styles.text}>Save</Text>
+        </TouchableOpacity>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   button: {
-    width: 360,
-    height: 50,
+    width: "90%",
+    height: "6%",
     backgroundColor: '#3E64FF',
     justifyContent: 'center',
     alignContent: 'center',
-    borderRadius: 10,
+    borderRadius: 20,
     alignSelf: 'center',
-    marginTop: 20
+    marginTop: "5%"
   },
   text: {
     alignSelf: 'center',
@@ -125,16 +126,29 @@ const styles = StyleSheet.create({
   imageContainer: {
     borderWidth: 1,
     borderColor: '#000',
-    width: '80%'
+    width: '80%',
+    // marginBottom:-50
   },
-  imagePreview: {
+  imagePreviewContainer:{
     backgroundColor: "#eee",
-    height: 470,
+    height: "70%",
     width: '80%',
     borderWidth: 1,
     borderColor: 'black',
     alignSelf: 'center',
-    marginTop: 40
+    marginTop: "1%", 
+    justifyContent:'center'
+  },
+  imagePreview: {
+    backgroundColor: "#eee",
+    height: "100%",
+    width: '100%',
+    borderColor: 'black',
+    alignSelf: 'center',
+  },
+  buttonGroup:{
+    height:"60%", 
+    marginBottom:'30%'
   }
 })
 

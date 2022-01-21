@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { StyleSheet,  View, StatusBar, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, StatusBar, Image, TouchableOpacity } from 'react-native'
 import { useEffect } from 'react'
 import { db } from '../config/firebase'
 import ContactItem from '../components/ContactItem'
 import getUSER from '../config/user'
+import { ScrollView } from 'react-native-gesture-handler'
 
 const Contacts = ({ navigation }) => {
     const [user, setUser] = useState([
@@ -32,7 +33,7 @@ const Contacts = ({ navigation }) => {
     }, []);
 
     return (
-        <View>
+        <ScrollView>
             <StatusBar
                 animated={false}
                 barStyle='dark-content'
@@ -50,11 +51,11 @@ const Contacts = ({ navigation }) => {
                 ))
 
             }
-            
+
             <TouchableOpacity onPress={() => navigation.navigate('AddContacts')}>
                 <Image style={styles.add} source={require('../assets/icons/add.png')} />
             </TouchableOpacity>
-        </View>
+        </ScrollView>
     )
 }
 
@@ -71,8 +72,8 @@ const styles = StyleSheet.create({
         marginTop: 100,
     },
     add: {
-        
-        marginRight:300,
+
+        marginRight: 300,
         alignSelf: 'center',
     }
 })
