@@ -59,7 +59,7 @@ const Contacts = ({ navigation }) => {
             <TouchableOpacity style={styles.add} onPress={() => navigation.navigate('AddContacts')}>
                 <Text style={styles.addText}>+</Text>
             </TouchableOpacity>
-        </ScrollView>
+        </View>
     )
 }
 
