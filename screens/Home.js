@@ -51,7 +51,7 @@ const Home = ({ navigation }) => {
                     <Image style={styles.icon} source={require('../assets/icons/notify.png')} />
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={showModal}>
+                <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
                     <Image style={styles.icon} source={require('../assets/icons/girl.png')} />
                 </TouchableOpacity>
             </View>
@@ -93,19 +93,6 @@ const Home = ({ navigation }) => {
                 </View>
                 <Image style={styles.mapIcon} source={require('../assets/icons/mapIcon.png')} />
             </TouchableOpacity>
-
-            <Provider>
-                <Portal>
-                    <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-                        <TouchableOpacity onPress={confirmLogout}>
-                            <Text>LOG OUT</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => navigation.navigate('AddContacts')}>
-                            <Text>Add Contacts</Text>
-                        </TouchableOpacity>
-                    </Modal>
-                </Portal>
-            </Provider>
         </View>
     )
 }

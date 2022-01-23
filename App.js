@@ -20,14 +20,18 @@ import AddContacts from './screens/AddContacts';
 import Maps from './screens/Maps';
 import ResetPassword from './screens/ResetPassword';
 import ScanCard from './screens/ScanCard';
+import Profile from './screens/Profile';
+import EditProfile from './screens/EditProfile';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="ResetPassword" component={ResetPassword} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Vaccination" component={Vaccination} />
         <Stack.Screen name="Doctors" component={Doctors} />
@@ -39,8 +43,8 @@ export default function App() {
         <Stack.Screen name="SOS" component={SOS} />
         <Stack.Screen name="Contacts" component={Contacts} />
         <Stack.Screen name="AddContacts" component={AddContacts} />
-        <Stack.Screen name="ResetPassword" component={ResetPassword} />
         <Stack.Screen name="ScanCard" component={ScanCard} />
+        <Stack.Screen name="EditProfile" component={EditProfile} />
       </Stack.Navigator>
     </NavigationContainer>
   );
