@@ -7,7 +7,7 @@ import getUSER from '../config/user'
 
 const ScanCard = () => {
 
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState('');
 
 
   useEffect(() => {
@@ -65,17 +65,17 @@ const ScanCard = () => {
     const ud = getUSER();
     console.log(ud);
 
-    if (image !== null) {
-      db.collection('VaxCards').doc(ud).collection('SavedCards').add(
+    if (image !== '') {
+      db.collection('VaxCards').doc(ud).collection('SavedCards').doc('Card').set(
         {
           SavedImage: image
         }
       ).then(() => {
-        Alert.alert('Image has been saved successfully!')
+        Alert.alert('Image has been saved !')
       }).catch((error) => {
         console.log('Error adding document', error)
       })
-    } else {
+    } else  {
       Alert.alert('Image needs to be selected or captured!')
     }
 
@@ -93,17 +93,17 @@ const ScanCard = () => {
         <Image source={{ uri: image }} style={styles.imagePreview} />
       </View>
 
-        <TouchableOpacity style={styles.button} onPress={pickImage}>
-          <Text style={styles.text}>Select Image</Text>
-        </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={pickImage}>
+        <Text style={styles.text}>Select Image</Text>
+      </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button} onPress={openCamera}>
-          <Text style={styles.text}>Caputure Image</Text>
-        </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={openCamera}>
+        <Text style={styles.text}>Caputure Image</Text>
+      </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button} onPress={saveImage}>
-          <Text style={styles.text}>Save</Text>
-        </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={saveImage}>
+        <Text style={styles.text}>Save</Text>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -129,15 +129,15 @@ const styles = StyleSheet.create({
     width: '80%',
     // marginBottom:-50
   },
-  imagePreviewContainer:{
+  imagePreviewContainer: {
     backgroundColor: "#eee",
     height: "70%",
     width: '80%',
     borderWidth: 1,
     borderColor: 'black',
     alignSelf: 'center',
-    marginTop: "1%", 
-    justifyContent:'center'
+    marginTop: "1%",
+    justifyContent: 'center'
   },
   imagePreview: {
     backgroundColor: "#eee",
@@ -146,9 +146,9 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     alignSelf: 'center',
   },
-  buttonGroup:{
-    height:"60%", 
-    marginBottom:'30%'
+  buttonGroup: {
+    height: "60%",
+    marginBottom: '30%'
   }
 })
 
