@@ -1,19 +1,53 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { Card, Title } from 'react-native-paper';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { db, firebase } from '../config/firebase'
+import getUSER from '../config/user';
 
 const Profile = ({ navigation }) => {
+    const user = getUSER()
+    const [file, setFile] = useState('')
+    const [image, setImage] = useState('');
+    const myUser = firebase.auth().currentUser
+
+    // useEffect(() => {
+    //     var docRef = db.collection('VaxCards').doc(user).collection('SavedCards').doc('Card')
+    //     docRef.get().then((doc) => {
+    //         if (doc.exists) {
+    //             console.log("Document data:", doc.data());
+    //             setFile(doc.data)
+    //         } else {
+    //             // doc.data() will be undefined in this case
+    //             console.log("No such document!");
+    //         }
+    //     }).catch((error) => {
+    //         console.log("Error getting document:", error);
+    //     });
+    // }, [])
+
     return (
         <View style={styles.container}>
             <Card style={styles.doctorCover}>
-                <Image style={styles.imageIcon} source={require('../assets/image/thato.jpg')} />
-                <Title style={styles.userName}>DR. Thato Mahloko</Title>
-                <Text style={styles.userEmail}>thato732mahloko@gmail.com</Text>
-                <Text style={styles.usePhone}>0718752396</Text>
+                {
+                    user.photoURL !== null ?
+                        <>
+                            <Image style={styles.imageIcon} source={require('../assets/icon/user.png')} />
+                            <Title style={styles.userName}>{myUser.displayName}</Title>
+                            <Text style={styles.userEmail}>{myUser.email}</Text>
+                            <Text style={styles.usePhone}>0718752396</Text>
+                        </>
+                        :
+                        <>
+                            <Image style={styles.imageIcon} source={{ uri: user.photoURL }} />
+                            <Title style={styles.userName}>Username</Title>
+                            <Text style={styles.userEmail}>userEmail</Text>
+                            <Text style={styles.usePhone}>Phone Number</Text>
+                        </>
+                }
             </Card>
             <Title style={styles.vaxcardTitle}>Vaccination Card</Title>
             <View style={styles.imagePreviewContainer}>
-                <Image source={require('../assets/image/thato.jpg')} style={styles.imagePreview} />
+                <Image resizeMode='stretch' source={require('../assets/image/OIP.jpg')} style={styles.imagePreview} />
             </View>
 
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('EditProfile')}>
@@ -22,6 +56,9 @@ const Profile = ({ navigation }) => {
         </View>
     );
 };
+
+
+
 
 export default Profile;
 
@@ -42,6 +79,9 @@ const styles = StyleSheet.create({
         height: 160,
         alignSelf: 'center',
         borderRadius: 100,
+        // backgroundColor: 'black',
+        borderColor: 'black',
+        borderWidth: 1
     },
     userName: {
         alignSelf: 'center'
@@ -52,7 +92,6 @@ const styles = StyleSheet.create({
     },
     usePhone: {
         alignSelf: 'center',
-        margin: 10
     },
     vaxcardTitle: {
         alignSelf: 'center',

@@ -95,17 +95,10 @@ const Appointments = () => {
                     style={styles.inputText}
                     onChangeText={(text) => setFullName(fullName) }
                 />
-                 <Text style={styles.age}><b>Age</b></Text>
-      <Picker
-        selectedValue={selectedValue}
-        style={{ height: 30, width: 250, borderRadius: 20, }}
-        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-      >
-        <Picker.Item label="20-25" value="20-25" />
-        <Picker.Item label="26-30" value="26-30" />
-        <Picker.Item label="31-40" value="31-40" />
-        <Picker.Item label="26-30" value="26-30" />
-      </Picker>
+                <Text style={{ marginTop: 30, paddingLeft: 6, fontWeight:'bold' }}>Age</Text>
+                
+                    
+                        <Text style={{ marginTop: 10, left: 6, textAlign: 'center' }}>26-30</Text>
                         <TouchableOpacity>
                             <Image source={require('../assets/icon/drop-down-arrow.png')} style={styles.img} />
                         </TouchableOpacity>
