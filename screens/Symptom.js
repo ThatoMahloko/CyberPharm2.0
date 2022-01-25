@@ -31,28 +31,29 @@ const Symptom = () => {
 
 
 
+
     return (
         <View style={styles.container}>
-           
-            <Image style={styles.img} source={require('../assets/icons/diagnose.png')}/>
+
+            <Image style={styles.img} source={require('../assets/icons/diagnose.png')} />
             <StatusBar
                 animated={false}
                 barStyle='dark-content'
                 hidden={false}
                 translucent={false}
             />
-            
+
             <TextInput placeholder={'BIRTH YEAR'} style={styles.input} onChangeText={(birthYear) => setBirthYear(birthYear)} />
-            <List.Section>
+            <List.Section style={styles.lists}>
                 <List.Accordion
-                    title="                SYMPTOM LIST"
+                    title="SYMPTOM LIST"
                     left={props => <List.Icon {...props} icon="" />}
                     expanded={expanded}
                     onPress={handlePress}>
 
 
                     <ScrollView
-                    lView horizontal={false} style={styles.listHeight}>
+                        lView horizontal={false} style={styles.listHeight}>
                         {SymptomList.map((symptom) => {
                             return (
                                 <TouchableOpacity onPress={() => Pressable(symptom.tagId, symptom.title)}>
@@ -88,7 +89,7 @@ const Symptom = () => {
                         {
                             Treatment_Diagnosis.filter(userHealthData => userHealthData.tagId === symptomId)
                                 .map(userHealthData =>
-                                    <ScrollView horizontal={false} contentContainerStyle={generatedData}>                                     
+                                    <ScrollView horizontal={false} contentContainerStyle={generatedData}>
                                         <Title style={styles.titleData}>Birth Year: {birthYear}</Title>
                                         <Title style={styles.titleData}>Gender: {value}</Title>
                                         <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Diagnosis:</Title>
@@ -111,7 +112,7 @@ const Symptom = () => {
                     </Modal>
                 </Portal>
             </Provider>
-           
+
         </View>
     )
 }
@@ -135,10 +136,10 @@ const styles = StyleSheet.create({
     groupCenter: {
         alignItems: 'center',
         justifyContent: 'center',
-        display:'flex',
-        flexDirection:'row',
-       
-        
+        display: 'flex',
+        flexDirection: 'row',
+
+
     },
     title: {
         alignSelf: 'center'
@@ -148,12 +149,12 @@ const styles = StyleSheet.create({
     },
     titleGender: {
         color: '#3E64FF',
-        
+
     },
     titleGenderFemale: {
         color: '#3E64FF',
-        marginLeft:'25%'
-        
+        marginLeft: '25%'
+
     },
 
     button: {
@@ -165,7 +166,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         alignSelf: 'center',
         marginTop: 20,
-  
+
     },
     diagnosisData: {
         alignItems: 'center',
@@ -180,7 +181,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         color: '#fff',
     },
-    img:{
-        height:200
-    }
+    img: {
+        height: 200
+    },
 })
