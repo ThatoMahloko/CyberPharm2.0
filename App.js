@@ -34,9 +34,9 @@ export default function App() {
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Vaccination" component={Vaccination} />
       <Stack.Screen name="Doctors" component={Doctors} />
-      <Stack.Screen name="Doctor" component={Doctor} />
+      <Stack.Screen name="Doctor" component={Doctor} /> */}
       <Stack.Screen name="Appointments" component={Appointments} />
-      <Stack.Screen name="Donate" component={Donate} /> */}
+      <Stack.Screen name="Donate" component={Donate} />
       <Stack.Screen name="Symptom" component={Symptom} />
       <Stack.Screen name="Messaging" component={Messaging} />
       <Stack.Screen name="SOS" component={SOS} />
