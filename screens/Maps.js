@@ -1,10 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, Dimensions, StatusBar } from 'react-native'
 import MapView, { Callout, Marker, Circle } from 'react-native-maps';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { db } from '../config/firebase';
 
 // AIzaSyCqHU8b6qdNaReZQDXDJwoG8qL5s2v9f5U
 const Maps = () => {
+    const [location, setLocation] = useState([])
+
+    useEffect(() => {
+        db.collection("cities").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                // console.log(doc.data()+"000000000000000000000000000000000000000000");
+                setLocation(doc.data())
+                console.log(location)
+            });
+        });
+    }, [])
+
+
     const [pin, setPin] = useState({
         latitude: -28.72186009301135,
         longitude: 24.7457629814744,
@@ -62,26 +77,32 @@ const Maps = () => {
                 }}
                 provider="google"
             >
-                <Marker coordinate={{
-                    latitude: -28.72186009301135,
-                    longitude: 24.7457629814744,
-                }}
 
-                    draggable={true}
-                    onDragStart={(e) => {
-                        console.log("Drag start", e.nativeEvent.coordinate)
+
+
+                {
+                    <Marker coordinate={{
+                        latitude: -28.72186009301135,
+                        longitude: 24.7457629814744,
                     }}
-                    onDragEnd={(e) => {
-                        setPin({
-                            latitude: e.nativeEvent.coordinate.latitude,
-                            longitude: e.nativeEvent.coordinate.longitude
-                        })
-                    }}
-                >
-                    <Callout>
-                        <Text>I'm here</Text>
-                    </Callout>
-                </Marker>
+
+
+                        draggable={true}
+                        onDragStart={(e) => {
+                            console.log("Drag start", e.nativeEvent.coordinate)
+                        }}
+                        onDragEnd={(e) => {
+                            setPin({
+                                latitude: e.nativeEvent.coordinate.latitude,
+                                longitude: e.nativeEvent.coordinate.longitude
+                            })
+                        }}
+                    >
+                        <Callout>
+                            <Text>I'm here</Text>
+                        </Callout>
+                    </Marker>
+                }
                 <Circle
                     center={pin}
                     radius={1000} />
