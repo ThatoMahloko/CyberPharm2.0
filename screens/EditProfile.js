@@ -1,18 +1,115 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput, Alert } from 'react-native';
 import { Card, Title } from 'react-native-paper';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import * as ImagePicker from 'expo-image-picker'
+import getUSER from '../config/user';
+import { firebase } from '../config/firebase'
 
 const EditProfile = () => {
     const [userEmail, setUserEmail] = useState('')
     const [lastName, setLastName] = useState('')
     const [firstName, setFirstName] = useState('')
     const [mobileNumber, setMobileNumber] = useState('')
+    const [image, setImage] = useState('');
+    const [profileImage, seProfileImage] = useState('');
+
+    const [displayName, setDisplayName] = useState('')
+    const [displayEmail, setDisplayEmail] = useState('')
+    const [displayPhoto, setDisplayPhoto] = useState('')
+
+    const user = firebase.auth().currentUser;
+
+
+
+
+    useEffect(() => {
+        (async () => {
+            if (user != null) {
+                const displayName = user.displayName;
+                const email = user.email;
+                const photoURL = user.photoURL;
+                const emailVerified = user.emailVerified;
+            }
+
+        })();
+    }, []);
+
+
+    useEffect(() => {
+        (async () => {
+            if (Platform.OS !== 'web') {
+                const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+                if (status !== 'granted') {
+                    alert('Sorry, we need camera roll permissions to make this work!');
+                }
+            }
+        })();
+    }, []);
+
+    useEffect(() => {
+        (async () => {
+            if (Platform.OS !== 'web') {
+                const { status } = await ImagePicker.getCameraPermissionsAsync();
+                if (status !== 'granted') {
+                    Alert.alert('Sorry, we need camera permission to make this work!')
+                }
+            }
+        })();
+    }, [])
+
+    const changePhoto = async () => {
+        const result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [1, 1],
+            quality: 1,
+        });
+        console.log(result);
+        if (!result.cancelled) {
+            seProfileImage(result.uri);
+            setImage(profileImage)
+        }
+    }
+
+    const saveInformation = () => {
+        const user = firebase.auth().currentUser;
+        console.log(profileImage)
+
+        if (userEmail === '' && lastName === '' && firstName === '' && mobileNumber === '' && image === '') {
+            Alert.alert("Fill in the required fields!")
+
+        } else {
+
+            user.updateProfile({
+                displayName: `${firstName + " " + lastName}`,
+                photoURL: `${image}`
+            }).then(() => {
+                Alert.alert("Profile Updated Successfully")
+            }).catch((error) => {
+                Alert.alert("Error: " + error)
+            })
+
+            user.updateEmail(userEmail).then(() => {
+            }).catch((error) => {
+                Alert.alert("Error: " + error)
+            })
+        }
+
+
+    }
 
     return (
         <View style={styles.container}>
+
             <Card style={styles.doctorCover}>
-                <Image style={styles.imageIcon} source={require('../assets/image/thato.jpg')} />
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('EditProflie')}>
+                {
+                    image === '' ?
+                        <Image style={styles.imageIcon} source={require('../assets/icon/user.png')} />
+                        :
+                        <Image style={styles.imageIcon} source={{ uri: profileImage }} />
+                }
+
+                <TouchableOpacity style={styles.button} onPress={changePhoto}>
                     <Text style={styles.text}>Change Photo</Text>
                 </TouchableOpacity>
             </Card>
@@ -22,7 +119,7 @@ const EditProfile = () => {
             <TextInput placeholder={'Email Address'} style={styles.input} onChangeText={(userEmail) => setUserEmail(userEmail)} />
             <TextInput placeholder={'Phone Number'} style={styles.input} onChangeText={(mobileNumber) => setMobileNumber(mobileNumber)} />
 
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={saveInformation}>
                 <Text style={styles.text}>Save Personal Info</Text>
             </TouchableOpacity>
         </View>
@@ -47,6 +144,8 @@ const styles = StyleSheet.create({
         height: 160,
         alignSelf: 'center',
         borderRadius: 100,
+        borderColor: 'black',
+        borderWidth: 1
     },
     userName: {
         alignSelf: 'center'

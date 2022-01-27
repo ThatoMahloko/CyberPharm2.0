@@ -111,7 +111,6 @@ const styles = StyleSheet.create({
     iconGroup: {
         flexDirection: 'row',
         marginLeft: '50%',
-
     },
     icon: {
         width: 40,

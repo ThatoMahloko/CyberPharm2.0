@@ -32,7 +32,10 @@ const Register = ({ navigation }) => {
                 <TextInput placeholder={'Email Address'} style={styles.input} onChangeText={(userEmail) => setUserEmail(userEmail)} />
                 <TextInput placeholder={'Password'} style={styles.input} onChangeText={(password) => setPassword(password)} />
                 <TextInput placeholder={'Confirm Password'} style={styles.input} onChangeText={(confirmPassword) => setConfirmPassword(confirmPassword)} />
-               
+
+                <TouchableOpacity style={styles.button} onPress={register}>
+                    <Text style={styles.text}>REGISTER</Text>
+                </TouchableOpacity>
 
                 <View style={styles.linkText}>
                     <Text style={styles.textLink}>Already have an account? </Text>
@@ -40,6 +43,7 @@ const Register = ({ navigation }) => {
                         <Text style={styles.textLink_}>Login Here</Text>
                     </TouchableOpacity>
                 </View>
+
             </ImageBackground>
         </View>
     )
@@ -92,7 +96,7 @@ const styles = StyleSheet.create({
     ,
     textLink_: {
         fontWeight: "bold",
-        color: '#3E64FF',        
+        color: '#3E64FF',
         fontSize: 15
     }
 })
