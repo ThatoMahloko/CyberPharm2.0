@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, Image } from 'react-native'
 import { Card } from 'react-native-paper';
 
 const Appointments = () => {
+    const [getAge, setAge] = useState('');
     return (
         <View style={styles.container}>
             <Text></Text>
@@ -95,31 +96,31 @@ const Appointments = () => {
                     onChangeText={(text) => setFullName(fullName) }
                 />
                 <Text style={{ marginTop: 30, paddingLeft: 6, fontWeight:'bold' }}>Age</Text>
-                <Card style={styles.mainCard}>
-                    <View style={{ flexDirection: 'row', }}>
+                
+                    
                         <Text style={{ marginTop: 10, left: 6, textAlign: 'center' }}>26-30</Text>
                         <TouchableOpacity>
                             <Image source={require('../assets/icon/drop-down-arrow.png')} style={styles.img} />
                         </TouchableOpacity>
-                    </View>
-                </Card>
+                    
+                
 
                 <View style={styles.gender}>
                     <Text style={{fontWeight: 'bold'}}>Gender</Text>
                 </View>
 
-                <View style={styles.card}>
-                    <Card style={styles.card1}>
-                        <TouchableOpacity>
+                <View style={styles.button}>
+                    
+                        <TouchableOpacity style={styles.btn1}>
                         <Text style={{ color: '#fff', paddingTop: 5 }}>Male</Text>
                         </TouchableOpacity>
-                    </Card>
                     
-                    <Card style={styles.card2}>
-                    <TouchableOpacity>
+                    
+                  
+                    <TouchableOpacity style={styles.btn2}>
                     <Text style={{paddingTop: 5}}>Female</Text>
                     </TouchableOpacity>
-                    </Card>
+                    
                 </View>
 
             </View>
@@ -139,7 +140,7 @@ export default Appointments
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 40,
+        marginTop: 20,
         backgroundColor: '#fff',
         padding: 8,
         left: 2,
@@ -169,45 +170,46 @@ const styles = StyleSheet.create({
         marginTop: 5,
         right: -200
     },
-    card: {
+    button: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingRight: 70,
         left: 6,
         marginTop: 5,
     },
-    card1: {
+    btn1: {
         backgroundColor: '#3E64FF',
-        height: '150%',
-        width: '30%',
+        height: 50,
+        width: 60,
         alignItems: 'center',
+        justifyContent: 'center',
+        alignSelf: 'center',
         borderRadius: 10,
     },
-    card2: {
+    btn2: {
         backgroundColor: '#EEEEEE',
-        height: '150%',
-        width: '30%',
+        height: 50,
+        width: 60,
         alignItems: 'center',
         justifyContent: 'center',
         alignSelf: 'center',
         borderRadius: 10,
     },
     mainText: {
-        marginTop: 40,
+        marginTop: 30,
     },
       input: {
         marginTop: 5,
         borderRadius: 5,
-        height: 200,
-        width: 380,
+        height: 90,
+        width: 300,
         backgroundColor: '#EEEEEE',
         paddingLeft: 10,
-        paddingBottom: 100,
     },
       btnText: {color:"#fff"
     },
     gender: {
-        marginTop: 30,
+        marginTop: 20,
         left: 6,
     },
     group1: {
@@ -235,7 +237,7 @@ const styles = StyleSheet.create({
         borderRadius: 13,
     },
     inputText: {
-        marginTop: 20,
+        marginTop: 10,
         borderRadius: 5,
         height: 50,
         width: 380,

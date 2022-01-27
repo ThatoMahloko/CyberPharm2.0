@@ -4,7 +4,7 @@ import MapView, { Callout, Marker, Circle } from 'react-native-maps';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { db } from '../config/firebase';
 
-// AIzaSyCqHU8b6qdNaReZQDXDJwoG8qL5s2v9f5U
+
 const Maps = () => {
     const [location, setLocation] = useState([])
 
@@ -78,7 +78,7 @@ const Maps = () => {
                 provider="google"
             >
 
-         
+
 
                 {
                     <Marker coordinate={{
