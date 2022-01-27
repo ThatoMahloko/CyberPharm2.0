@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Dimensions, StatusBar } from 'react-native'
 import MapView, { Callout, Marker, Circle } from 'react-native-maps';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
-// AIzaSyCqHU8b6qdNaReZQDXDJwoG8qL5s2v9f5U
+
 const Maps = () => {
     const [pin, setPin] = useState({
         latitude: -28.72186009301135,

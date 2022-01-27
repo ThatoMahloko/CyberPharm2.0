@@ -22,12 +22,14 @@ import ResetPassword from './screens/ResetPassword';
 import ScanCard from './screens/ScanCard';
 import Profile from './screens/Profile';
 import EditProfile from './screens/EditProfile';
+import FacilityInfo from './screens/FacilityInfo';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="FacilityInfo" component={FacilityInfo} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="ResetPassword" component={ResetPassword} />
