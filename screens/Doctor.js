@@ -3,15 +3,15 @@ import { StyleSheet, Text, View, StatusBar, Image, Button, TouchableOpacity, Lin
 import { Title, Paragraph } from 'react-native-paper';
 import { db } from '../config/firebase';
 
-const Doctor = ({ navigation }) => {
+const Doctor = ({ navigation, route }) => {
 
     const triggerCall = () => {
-        Linking.openURL('tel:0818855766')
+        Linking.openURL(route.params.Phone)
     };
     const triggerMail = () => {
-        Linking.openURL('mailto:oloratopule716@gmail.com')
-    }  
-   
+        Linking.openURL(route.params.Email)
+    }
+
 
     return (
         <SafeAreaView>
@@ -25,23 +25,23 @@ const Doctor = ({ navigation }) => {
 
                 <View style={styles.doctorCover}>
                     <Image style={styles.imageIcon} source={require('../assets/image/thato.jpg')} />
-                    <Title style={styles.drName}>DR. Thato Mahloko</Title>
+                    <Title style={styles.drName}>{route.params.Name}</Title>
                     <Text style={styles.drName}>Virologist</Text>
 
                     <View style={styles.medicalHistory}>
                         <View style={styles.hisIcon}>
                             <Image style={styles.hisIconIcon} source={require('../assets/icons/Doctors/patient.png')} />
-                            <Title style={styles.mediHistTextDetail}>1000+</Title>
+                            <Title style={styles.mediHistTextDetail}>{route.params.Patients}</Title>
                             <Text style={styles.mediHistTextDetail}>Patients</Text>
                         </View>
                         <View style={styles.hisIcon}>
                             <Image style={styles.hisIconIcon} source={require('../assets/icons/Doctors/experience.png')} />
-                            <Title style={styles.mediHistTextDetail}>10yrs</Title>
+                            <Title style={styles.mediHistTextDetail}>{route.params.Experience}</Title>
                             <Text style={styles.mediHistTextDetail}>Experience</Text>
                         </View>
                         <View style={styles.hisIcon}>
                             <Image style={styles.hisIconIcon} source={require('../assets/icons/Doctors/rating.png')} />
-                            <Title style={styles.mediHistTextDetail}>4.5</Title>
+                            <Title style={styles.mediHistTextDetail}>{route.params.Ratings}</Title>
                             <Text style={styles.mediHistTextDetail}>Ratings</Text>
                         </View>
                     </View>
@@ -50,12 +50,10 @@ const Doctor = ({ navigation }) => {
                 <View style={styles.infoContent}>
                     <Title style={styles.infoContentTitle}>About Doctor</Title>
                     <Paragraph>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Veritatis voluptate tempora, architecto ipsum dolor sapiente?
-                        Reiciendis nam laborum culpa vitae.
+                        {route.params.About}
                     </Paragraph>
                     <Title style={styles.infoContentTitle}>Working Time</Title>
-                    <Paragraph>MON - SAT (08:30 AM - 09:00)</Paragraph>
+                    <Paragraph>{route.params.WorkingTime}</Paragraph>
                 </View>
 
                 <View style={styles.infoContent}>
@@ -80,7 +78,7 @@ const Doctor = ({ navigation }) => {
 
                 </View>
 
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Appointments')}>
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Appointments', route)}>
                     <Text style={styles.text}>BOOK APPOINTMENT</Text>
                 </TouchableOpacity>
             </ScrollView>

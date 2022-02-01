@@ -6,7 +6,7 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { db } from '../config/firebase';
 import getUSER from '../config/user';
 
-const Appointments = () => {
+const Appointments = (route) => {
   const [expanded, setExpanded] = useState(false);
   const handlePress = () => setExpanded(!expanded);
   const [time, setTime] = useState("");

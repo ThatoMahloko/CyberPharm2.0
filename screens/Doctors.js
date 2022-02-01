@@ -1,3 +1,4 @@
+import { ScrollView } from 'native-base'
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, StatusBar, TextInput, Image, TouchableOpacity } from 'react-native'
 import { DataTable, List, Title } from 'react-native-paper'
@@ -73,40 +74,24 @@ const Doctors = ({ navigation }) => {
             {/*create a table of each doctor & each cell should be a touchable opacity*/}
 
             {
-                doctor.map((dr) => {
-                    return (
-                        <View style={styles.doctors}>
-                            <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
-                                <View style={styles.doctor}>
-                                    <Image style={styles.imageIcon} source={{uri:dr.ProfileImage}} />
-                                    <Text style={styles.drName}>{dr.Name}</Text>
+                <View style={styles.doctors}>
+                    {
+                        doctor.map((dr) => {
+                            return (
+                                <View>
+                                    <TouchableOpacity onPress={() => navigation.navigate('Doctor', dr)}>
+                                        <View style={styles.doctor}>
+                                            <Image style={styles.imageIcon} source={{ uri: dr.ProfileImage }} />
+                                            <Text style={styles.drName}>{dr.Name}</Text>
+                                        </View>
+                                    </TouchableOpacity>
                                 </View>
-                            </TouchableOpacity>
-                        </View>
-                    )
-                })
+                            )
+                        })
+                    }
+                </View>
             }
 
-            {
-                // <View style={styles.doctors}>
-                //     <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
-                //         <View style={styles.doctor}>
-                //             <Image style={styles.imageIcon} source={require('../assets/image/thato.jpg')} />
-                //             <Text style={styles.drName}>DR. Thato Mahloko</Text>
-                //         </View>
-                //     </TouchableOpacity>
-                //     <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
-                //         <View style={styles.doctor}>
-                //             <Image style={styles.imageIcon} source={require('../assets/image/thato.jpg')} />
-                //             <Text style={styles.drName}>DR. Thato Mahloko</Text>
-                //         </View>
-                //     </TouchableOpacity>
-                // </View>
-                //     <TouchableOpacity onPress={() => navigation.navigate('Doctor', dr)}>
-                //     <Image style={styles.imageIcon} source={{ uri: dr.ProfileImage }} />
-                //     <Text style={styles.drName}>{dr.Name}</Text>
-                // </TouchableOpacity>
-            }
 
         </View>
     )
@@ -152,14 +137,14 @@ const styles = StyleSheet.create({
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'center',
-        flex:0
+        flex: 0
     },
     doctor: {
         backgroundColor: '#1597E5',
         width: 170,
         height: 170,
         margin: 5,
-        borderRadius: 20, 
+        borderRadius: 20,
     },
     imageIcon: {
         width: 80,
