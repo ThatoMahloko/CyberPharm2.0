@@ -154,7 +154,7 @@ export class AssetExample extends Component {
           </Picker>
         </View>
         <Title style={styles.title}>Gender</Title>
-        <RadioButton.Group>
+        <RadioButton.Group >
           <View style={styles.groupCenter}>
             <Title style={styles.titleGender}>male</Title>
             <RadioButton value="male" />
@@ -171,7 +171,15 @@ export class AssetExample extends Component {
 
           <View style={{ flex: 1, justifyContent: 'flex-end' }}>
             {this.renderOutsideTouchable(onTouchOutside)}
-            <View style={{ backgroundColor: 'rgba(196, 196, 196, 0.47)', width: '100%', borderTopRightRadius: 10, borderTopLeftRadius: 10, paddingHorizontal: 10, maxHeight: deviceHeight * 0.4, }}>
+            <View style={{ 
+              backgroundColor: '#516BEB', 
+              width: '100%', 
+              borderTopRightRadius: 10, 
+              borderTopLeftRadius: 10, 
+              paddingHorizontal: 10,
+              maxHeight: deviceHeight * 0.4,
+              justifyContent:'center'
+              }}>
               {this.renderTitle()}
               {this.renderContent()}
             </View>
