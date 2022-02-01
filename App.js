@@ -44,6 +44,7 @@ export default function App() {
       <Stack.Screen name="SOS" component={SOS} />
       <Stack.Screen name="Contacts" component={Contacts} />
       <Stack.Screen name="AddContacts" component={AddContacts} />
+      <Stack.Screen name="Maps" component={Maps} /> 
       <Stack.Screen name="ScanCard" component={ScanCard} />
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="EditProfile" component={EditProfile} />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, StatusBar, TextInput, Image, TouchableOpacity } from 'react-native'
-import { DataTable, } from 'react-native-paper'
+import { DataTable,Title } from 'react-native-paper'
 const Doctors = ({ navigation }) => {
 
     return (
@@ -51,10 +51,16 @@ const Doctors = ({ navigation }) => {
 
             <View style={styles.doctors}>
                 <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
-                    <View style={styles.doctor}></View>
+                    <View style={styles.doctor}>
+                        <Image style={styles.imageIcon} source={require('../assets/image/thato.jpg')} />
+                        <Text style={styles.drName}>DR. Thato Mahloko</Text>
+                    </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
-                    <View style={styles.doctor}></View>
+                    <View style={styles.doctor}>
+                        <Image style={styles.imageIcon} source={require('../assets/image/thato.jpg')} />
+                        <Text style={styles.drName}>DR. Thato Mahloko</Text>
+                    </View>
                 </TouchableOpacity>
             </View>
 
@@ -108,6 +114,18 @@ const styles = StyleSheet.create({
         height: 170,
         margin: 5,
         borderRadius: 20
-    }
+    },
+    imageIcon: {
+        width: 80,
+        height: 80,
+        alignSelf: 'center',
+        borderRadius: 55,
+        marginTop: 15
+    },
+    drName: {
+        alignSelf: 'center', 
+        color:'#fff', 
+        marginTop:20
+    },
 
 })

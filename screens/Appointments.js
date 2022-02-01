@@ -1,247 +1,194 @@
-import React, {useState} from 'react'
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, Image } from 'react-native'
-import { Card } from 'react-native-paper';
+import { ScrollView } from 'native-base';
+import React, { useState } from 'react'
+import { StyleSheet, Text, View, TouchableOpacity, Image, StatusBar, Alert } from 'react-native'
+import { List, Title, TextInput, Provider, useTheme } from 'react-native-paper';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+import { db } from '../config/firebase';
+import getUSER from '../config/user';
 
 const Appointments = () => {
-    const [getAge, setAge] = useState('');
-    return (
-        <View style={styles.container}>
-            <Text></Text>
-            <TouchableOpacity style={styles.btn}>
-                <Text style={{ color: '#FFF' }}>Select Date</Text>
-            </TouchableOpacity>
-            <View style={styles.group1}>
-        <Card>
-          <TouchableOpacity>
-            <Text>09:00 AM</Text>
+  const [expanded, setExpanded] = useState(false);
+  const handlePress = () => setExpanded(!expanded);
+  const [time, setTime] = useState("");
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [message, setMesage] = useState("")
+  const [date, setDate] = useState("")
+  const ud = getUSER()
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleConfirm = (date) => {
+    Alert.alert('Date selected');
+    setDate(date)
+    hideDatePicker();
+  };
+
+  const timeNine = () => {
+    setTime('09:00AM :: 12:00AM')
+    Alert.alert('Time Slected ' + '09:00AM :: 12:00AM')
+    handlePress();
+  }
+  const timeTwelve = () => {
+    setTime('12:00AM :: 15:00PM')
+    Alert.alert('Time Slected ' + '12:00AM :: 15:00PM')
+    handlePress();
+  }
+  const timeThree = () => {
+    setTime('15:00PM :: 18:00PM')
+    Alert.alert('Time Slected ' + '15:00PM :: 18:00PM')
+    handlePress();
+  }
+  const timeNinen = () => {
+    setTime('21:00AM :: 22:00PM')
+    Alert.alert('Time Slected ' + '21:00AM :: 22:00PM')
+    handlePress();
+  }
+
+  const addBooking = () => {
+    db.collection("AppointmentBookings").doc(ud).collection("Booking").add(
+      {
+        Day: date,
+        Time: time,
+        Message: message
+      }
+    ).then(() => {
+      Alert.alert("Appointment Booked Successfully")
+    }).catch()
+  }
+
+  const handleSubmitAppointment = () => {
+
+    const mm = [date, time, message]
+    if (mm[0] === "" || mm[1] === "" || message[2] === "") {
+      Alert.alert(
+        "Failed",
+        "Date, Time, and Message need to be set befor appointment can be made",
+        [
+          {
+            text: "Cancel",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel"
+          },
+          { text: "OK", onPress: () => console.log("OK Pressed") }
+        ]
+      )
+    } else {
+
+
+      addBooking()
+    }
+
+
+
+  }
+
+
+  return (
+    <View style={styles.container}>
+      <StatusBar
+        animated={false}
+        barStyle='dark-content'
+        hidden={false}
+        translucent={false}
+      />
+
+
+      <TouchableOpacity style={styles.button} onPress={showDatePicker}>
+        <Text style={styles.text}>SELECT DATE</Text>
+      </TouchableOpacity>
+
+      <List.Section>
+        <List.Accordion
+          title="SELECT TIME"
+          left={props => <List.Icon {...props} icon="" />}
+          expanded={expanded}
+          onPress={handlePress}
+        // style={styles.listHeight}
+        >
+
+          <TouchableOpacity onPress={timeNine}>
+            <List.Item title='09:00AM :: 12:00AM' />
           </TouchableOpacity>
-        </Card>
 
-        <Card>
-          <TouchableOpacity>
-            <Text>09:30 AM</Text>
+          <TouchableOpacity onPress={timeTwelve}>
+            <List.Item title='12:00AM :: 15:00PM' />
           </TouchableOpacity>
-        </Card>
 
-        <Card>
-          <TouchableOpacity>
-            <Text>10:00 AM</Text>
+          <TouchableOpacity onPress={timeThree}>
+            <List.Item title='15:00PM :: 18:00PM' />
           </TouchableOpacity>
-        </Card>
 
-        <Card>
-          <TouchableOpacity>
-            <Text>10:30 AM</Text>
+          <TouchableOpacity onPress={timeNinen}>
+            <List.Item title='21:00AM :: 22:00PM' />
           </TouchableOpacity>
-        </Card>
-      </View>
 
-      <View style={styles.group1}>
-        <Card>
-          <TouchableOpacity>
-            <Text>12:00 PM</Text>
-          </TouchableOpacity>
-        </Card>
 
-        <Card style={styles.group2}>
-          <TouchableOpacity>
-            <Text>12:30 PM</Text>
-          </TouchableOpacity>
-        </Card>
 
-        <Card>
-          <TouchableOpacity>
-            <Text>01:00 PM</Text>
-          </TouchableOpacity>
-        </Card>
+        </List.Accordion>
+      </List.Section>
+      {
+        time == "" ? <></> : <Title style={styles.message}>Selected Time: {time}</Title>
+      }
 
-        <Card>
-          <TouchableOpacity>
-            <Text>01:30 PM</Text>
-          </TouchableOpacity>
-        </Card>
-      </View>
+      <Title style={styles.message}>Message</Title>
+      <TextInput
+        label="Message"
+        value={message}
+        onChangeText={(message) => setMesage(message)}
+        style={styles.input}
+        numberOfLines={10}
+        multiline
+      />
+      <TouchableOpacity style={styles.button} onPress={handleSubmitAppointment}>
+        <Text style={styles.text}>SET APPOINTMENT</Text>
+      </TouchableOpacity>
 
-      <View style={styles.group3}>
-        <Card>
-          <TouchableOpacity>
-            <Text>03:00 PM</Text>
-          </TouchableOpacity>
-        </Card>
-
-        <Card>
-          <TouchableOpacity>
-            <Text>04:30 PM</Text>
-          </TouchableOpacity>
-        </Card>
-
-        <Card>
-          <TouchableOpacity>
-            <Text>05:00 PM</Text>
-          </TouchableOpacity>
-        </Card>
-
-        <Card>
-          <TouchableOpacity>
-            <Text>05:30 PM</Text>
-          </TouchableOpacity>
-        </Card>
-      </View>
-
-            <View>
-                <Text style={{ fontWeight: 'bold' }}>Patient Details</Text>
-                <TextInput
-                    placeholder='Full name'
-                    style={styles.inputText}
-                    onChangeText={(text) => setFullName(fullName) }
-                />
-                <Text style={{ marginTop: 30, paddingLeft: 6, fontWeight:'bold' }}>Age</Text>
-                
-                    
-                        <Text style={{ marginTop: 10, left: 6, textAlign: 'center' }}>26-30</Text>
-                        <TouchableOpacity>
-                            <Image source={require('../assets/icon/drop-down-arrow.png')} style={styles.img} />
-                        </TouchableOpacity>
-                    
-                
-
-                <View style={styles.gender}>
-                    <Text style={{fontWeight: 'bold'}}>Gender</Text>
-                </View>
-
-                <View style={styles.button}>
-                    
-                        <TouchableOpacity style={styles.btn1}>
-                        <Text style={{ color: '#fff', paddingTop: 5 }}>Male</Text>
-                        </TouchableOpacity>
-                    
-                    
-                  
-                    <TouchableOpacity style={styles.btn2}>
-                    <Text style={{paddingTop: 5}}>Female</Text>
-                    </TouchableOpacity>
-                    
-                </View>
-
-            </View>
-            <View style={styles.mainText}>
-                <Text style={{fontWeight: 'bold'}}>Write your problem</Text>
-                <TextInput placeholder="Write your problem" 
-                    style={styles.input} 
-                />
-            </View>
-
-        </View>
-    )
+      <DateTimePickerModal
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleConfirm}
+        onCancel={hideDatePicker}
+      />
+    </View>
+  )
 }
 
 export default Appointments
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        marginTop: 20,
-        backgroundColor: '#fff',
-        padding: 8,
-        left: 2,
-    },
-    btn: {
-        margin: 10,
-        borderRadius: 60,
-        height: 40,
-        width: 320,
-        backgroundColor: '#3E64FF',
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignSelf: 'center',
-    },
-    inputText: {
-        marginTop: 20,
-        borderRadius: 5,
-        height: 50,
-        width: 300,
-        backgroundColor: '#EEEEEE',
-        paddingLeft: 6,
-    },
-    img: {
-        height: 15,
-        width: 15,
-        marginLeft: 10,
-        marginTop: 5,
-        right: -200
-    },
-    button: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingRight: 70,
-        left: 6,
-        marginTop: 5,
-    },
-    btn1: {
-        backgroundColor: '#3E64FF',
-        height: 50,
-        width: 60,
-        alignItems: 'center',
-        justifyContent: 'center',
-        alignSelf: 'center',
-        borderRadius: 10,
-    },
-    btn2: {
-        backgroundColor: '#EEEEEE',
-        height: 50,
-        width: 60,
-        alignItems: 'center',
-        justifyContent: 'center',
-        alignSelf: 'center',
-        borderRadius: 10,
-    },
-    mainText: {
-        marginTop: 30,
-    },
-      input: {
-        marginTop: 5,
-        borderRadius: 5,
-        height: 90,
-        width: 300,
-        backgroundColor: '#EEEEEE',
-        paddingLeft: 10,
-    },
-      btnText: {color:"#fff"
-    },
-    gender: {
-        marginTop: 20,
-        left: 6,
-    },
-    group1: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginTop: 5,
-        borderColor: '#DDDDDD',
-        height: 50,
-        borderRadius: 13,
-    },
-      group2: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginTop: 5,
-        borderColor: '#DDDDDD',
-        height: 50,
-        borderRadius: 13,
-    },
-      group3: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginTop: 5,
-        borderColor: '#DDDDDD',
-        height: 50,
-        borderRadius: 13,
-    },
-    inputText: {
-        marginTop: 10,
-        borderRadius: 5,
-        height: 50,
-        width: 380,
-        backgroundColor: '#EEEEEE',
-        paddingLeft: 6,
-    },
+  container: {
+    backgroundColor: '#FFF',
+    height: '100%'
+  },
+  button: {
+    width: 360,
+    height: 50,
+    backgroundColor: '#3E64FF',
+    justifyContent: 'center',
+    alignContent: 'center',
+    borderRadius: 10,
+    alignSelf: 'center',
+    marginTop: 20
+  },
+  text: {
+    alignSelf: 'center',
+    color: '#fff',
+  },
+  listHeight: {
+    height: 500
+  },
+  message: {
+    alignSelf: 'center'
+  },
+  input: {
+    height: '55%',
+    width: '90%',
+    alignSelf: 'center'
+  }
 })
