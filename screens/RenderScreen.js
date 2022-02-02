@@ -15,33 +15,31 @@ const RenderScreen = () => {
     };
 
 
-    const d = ((symptomId )=>{
-        
+    const d = ((symptomId) => {
+
         console.log(Treatment_Diagnosis)
         return (
             Treatment_Diagnosis.filter(userHealthData => userHealthData.tagId === 238)
-            .map(userHealthData =>
-                <ScrollView horizontal={false} contentContainerStyle={generatedData}>
-                 
-                   
-                    <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Diagnosis:</Title>
-                    <Text style={styles.diagnosisData}>{userHealthData.leastConcerningDiagnosis}</Text>
-                    <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Descrpition:</Title>
-                    <Text style={styles.diagnosisData}>{userHealthData.leastConcerningDescription}</Text>
-                    <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Specialist:</Title>
-                    <Text style={styles.diagnosisData}>{userHealthData.leastConcerningSpecialist}</Text>
-                    <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Diagnosis:</Title>
-                    <Text style={styles.diagnosisData}>{userHealthData.mostConcerningDiagnosis}</Text>
-                    <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Description:</Title>
-                    <Text style={styles.diagnosisData}>{userHealthData.mostConcerningDescription}</Text>
-                    <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Specialist:</Title>
-                    <Text style={styles.diagnosisData}>{userHealthData.mostConcerningSpecialist}</Text>
-                    <Title style={styles.titleData} key={userHealthData.tagId}>Female Diagnosis:</Title>
-                    <Text style={styles.diagnosisData}>{userHealthData.femaleDiagnosis}</Text>
-                </ScrollView>
-            )
+                .map(userHealthData =>
+                    <ScrollView horizontal={false} contentContainerStyle={generatedData}>
+                        <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Diagnosis:</Title>
+                        <Text style={styles.diagnosisData}>{userHealthData.leastConcerningDiagnosis}</Text>
+                        <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Descrpition:</Title>
+                        <Text style={styles.diagnosisData}>{userHealthData.leastConcerningDescription}</Text>
+                        <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Specialist:</Title>
+                        <Text style={styles.diagnosisData}>{userHealthData.leastConcerningSpecialist}</Text>
+                        <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Diagnosis:</Title>
+                        <Text style={styles.diagnosisData}>{userHealthData.mostConcerningDiagnosis}</Text>
+                        <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Description:</Title>
+                        <Text style={styles.diagnosisData}>{userHealthData.mostConcerningDescription}</Text>
+                        <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Specialist:</Title>
+                        <Text style={styles.diagnosisData}>{userHealthData.mostConcerningSpecialist}</Text>
+                        <Title style={styles.titleData} key={userHealthData.tagId}>Female Diagnosis:</Title>
+                        <Text style={styles.diagnosisData}>{userHealthData.femaleDiagnosis}</Text>
+                    </ScrollView>
+                )
         )
-        
+
     })
 
     return (
@@ -52,7 +50,7 @@ const RenderScreen = () => {
                     title="Results"
                     ref={(target) => (popupRef = target)}
                     onTouchOutside={onClosePopup}
-                     d={d}
+                    d={d}
                 />
                 <View style={styles.button}>
                     <TouchableWithoutFeedback onPress={onShowPopup}  >

@@ -6,7 +6,7 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { db } from '../config/firebase';
 import getUSER from '../config/user';
 
-const Appointments = (route) => {
+const Appointments = ({ route }) => {
   const [expanded, setExpanded] = useState(false);
   const handlePress = () => setExpanded(!expanded);
   const [time, setTime] = useState("");
@@ -55,7 +55,9 @@ const Appointments = (route) => {
       {
         Day: date,
         Time: time,
-        Message: message
+        Message: message,
+        Doctor: route.params.Name,
+        User: ud
       }
     ).then(() => {
       Alert.alert("Appointment Booked Successfully")

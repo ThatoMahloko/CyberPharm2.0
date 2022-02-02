@@ -78,7 +78,7 @@ const Doctor = ({ navigation, route }) => {
 
                 </View>
 
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Appointments', route)}>
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Appointments', route.params)}>
                     <Text style={styles.text}>BOOK APPOINTMENT</Text>
                 </TouchableOpacity>
             </ScrollView>
