@@ -78,8 +78,7 @@ const styles = StyleSheet.create({
     },
     button: {
         width: 200,
-        height: 50
-        ,
+        height: 50,
         backgroundColor: '#3E64FF',
         justifyContent: 'center',
         alignContent: 'center',
@@ -93,11 +92,12 @@ const styles = StyleSheet.create({
         marginLeft: -70,
     },
     diagnosisData: {
-        marginLeft: 50,
+        marginLeft: 2,
         width: '50%',
         marginRight: 70,
         textAlign: 'center',
         justifyContent: 'center',
+        fontSize:13,
 
     },
     data: {
