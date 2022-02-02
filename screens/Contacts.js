@@ -63,7 +63,8 @@ const Contacts = ({ navigation }) => {
                 </ScrollView>
             </View>
             <TouchableOpacity style={styles.add} onPress={() => navigation.navigate('AddContacts')}>
-                <Text style={styles.addText}>+</Text>
+                <Text style={styles.addText}>add</Text>
+
             </TouchableOpacity>
         </View>
     )
@@ -105,16 +106,17 @@ const styles = StyleSheet.create({
         width: 60,
         height: 60,
         borderRadius: 30,
-        justifyContent: 'center',
         end: -310,
         top: -70,
+        justifyContent: 'center',
+        alignContent: 'center',
     },
     addText: {
-        textAlign: 'center',
-        fontSize: 40,
+        fontSize: 15,
         color: '#fff',
-        position: 'relative',
-        zIndex: -1
+        marginLeft: 16, 
+        marginBottom:5
+
     }
 
 })
