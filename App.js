@@ -24,6 +24,7 @@ import EditProfile from './screens/EditProfile';
 import FacilityInfo from './screens/FacilityInfo';
 import AssetExample from './screens/AssetExample';
 import RenderScreen from './screens/RenderScreen';
+import Notifications from './screens/Notifications'
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -50,6 +51,7 @@ export default function App() {
       <Stack.Screen name="EditProfile" component={EditProfile} />
       <Stack.Screen name="RenderScreen" component={RenderScreen} />
       <Stack.Screen name="FacilityInfo" component={FacilityInfo} />
+      <Stack.Screen name="Notifications" component={Notifications} />
       </Stack.Navigator>
     </NavigationContainer>
   );
