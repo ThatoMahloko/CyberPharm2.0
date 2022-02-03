@@ -10,7 +10,7 @@ const Contacts = ({ navigation }) => {
     const [user, setUser] = useState([
         { FirstName: '' },
     ])
-
+    
     const [contact, setContact] = useState([
         {},
     ])
@@ -32,6 +32,9 @@ const Contacts = ({ navigation }) => {
             });
     }, []);
 
+   
+    
+
     return (
         <View style={styles.container}>
             <View style={styles.containerContent}>
@@ -44,14 +47,17 @@ const Contacts = ({ navigation }) => {
                     />
 
                     {contact.length == 0 ?
-                        <Image style={styles.emptyIcon} source={require('../assets/icons/emptyContacts.png')} />
+                   
+                         <Image style={styles.emptyIcon} source={require('../assets/icons/emptyContacts.png')} />
+                    
+                       
                         :
                         contact.map((data, k) => (
                             <View style={styles.contactItem}>
                                 <ContactItem key={k} data={data} />
                             </View>
                         ))
-
+                       
                     }
 
                 </ScrollView>
@@ -78,7 +84,8 @@ const styles = StyleSheet.create({
     contactItem: {
         alignItems: 'center',
         marginBottom: -40,
-        marginRight: 100,
+        flexDirection:'row',
+        marginLeft:20,
         padding: 0
     }
     ,

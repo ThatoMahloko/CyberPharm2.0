@@ -13,7 +13,8 @@ export class AssetExample extends Component {
       show: false,
       symptomId: '',
       title: "",
-      birthYear: ""
+      birthYear: "",
+      checked: 'first'
     };
   }
   symptomId = () => {
@@ -135,10 +136,12 @@ export class AssetExample extends Component {
       popupRef.close();
     };
     const Pressable = (symptomId, title) => { };
+    const { checked } = this.state;
     
     return (
       <View>
         <Image source={require('../assets/icons/diagnose.png')} style={styles.img} />
+        <Text style={styles.text1}>What symptoms do experience?</Text>
         <TextInput placeholder={'BIRTH YEAR'} style={styles.input} />
 
         <View style={styles.view}>
@@ -154,12 +157,18 @@ export class AssetExample extends Component {
           </Picker>
         </View>
         <Title style={styles.title}>Gender</Title>
-        <RadioButton.Group>
+        <RadioButton.Group >
           <View style={styles.groupCenter}>
             <Title style={styles.titleGender}>male</Title>
-            <RadioButton value="male" />
+            <RadioButton value="male" 
+              status={checked === 'first' ? 'checked' : 'unchecked'}
+              onPress={() => { this.setState({ checked: 'first' }); }}
+            />
             <Title style={styles.titleGenderFemale}>female</Title>
-            <RadioButton value="female" />
+            <RadioButton value="female" 
+              status={checked === 'second' ? 'checked' : 'unchecked'}
+              onPress={() => { this.setState({ checked: 'second' }); }}
+            />
           </View>
         </RadioButton.Group>
 
@@ -171,7 +180,15 @@ export class AssetExample extends Component {
 
           <View style={{ flex: 1, justifyContent: 'flex-end' }}>
             {this.renderOutsideTouchable(onTouchOutside)}
-            <View style={{ backgroundColor: 'rgba(196, 196, 196, 0.47)', width: '100%', borderTopRightRadius: 10, borderTopLeftRadius: 10, paddingHorizontal: 10, maxHeight: deviceHeight * 0.4, }}>
+            <View style={{ 
+              backgroundColor: '#516BEB', 
+              width: '100%',
+              borderTopRightRadius: 20, 
+              borderTopLeftRadius: 10, 
+              paddingHorizontal: 10,
+              maxHeight: deviceHeight * 0.5,
+              justifyContent:'center',
+              }}>
               {this.renderTitle()}
               {this.renderContent()}
             </View>
@@ -207,6 +224,8 @@ const styles = StyleSheet.create({
   },
   title: {
     alignSelf: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   picker: {
     width: 300,
@@ -225,8 +244,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   img: {
-    width: 600,
-    height: 200
+    width: 400,
+    height: 290
+  },
+  text1:{
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginLeft:40,
+    marginTop:10
   }
 });
 

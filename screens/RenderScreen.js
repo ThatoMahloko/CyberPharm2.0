@@ -3,7 +3,7 @@ import React from 'react';
 import AssetExample from './AssetExample';
 import Treatment_Diagnosis from '../Api/Treatment_Diagnosis';
 import { Title } from 'react-native-paper';
-const generatedData = { alignItems: 'center' }
+const generatedData = { alignItems: 'center', paddingTop: 10 }
 const RenderScreen = () => {
     let popupRef = React.createRef();
 
@@ -21,7 +21,7 @@ const RenderScreen = () => {
         return (
             Treatment_Diagnosis.filter(userHealthData => userHealthData.tagId === 238)
                 .map(userHealthData =>
-                    <ScrollView horizontal={false} contentContainerStyle={generatedData}>
+                    <ScrollView horizontal={false} contentContainerStyle={generatedData} style={styles.data}>
                         <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Diagnosis:</Title>
                         <Text style={styles.diagnosisData}>{userHealthData.leastConcerningDiagnosis}</Text>
                         <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Descrpition:</Title>
@@ -31,7 +31,7 @@ const RenderScreen = () => {
                         <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Diagnosis:</Title>
                         <Text style={styles.diagnosisData}>{userHealthData.mostConcerningDiagnosis}</Text>
                         <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Description:</Title>
-                        <Text style={styles.diagnosisData}>{userHealthData.mostConcerningDescription}</Text>
+                        <Text numberOfLines={6} style={styles.diagnosisData}>{userHealthData.mostConcerningDescription}</Text>
                         <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Specialist:</Title>
                         <Text style={styles.diagnosisData}>{userHealthData.mostConcerningSpecialist}</Text>
                         <Title style={styles.titleData} key={userHealthData.tagId}>Female Diagnosis:</Title>
@@ -78,8 +78,7 @@ const styles = StyleSheet.create({
     },
     button: {
         width: 200,
-        height: 50
-        ,
+        height: 50,
         backgroundColor: '#3E64FF',
         justifyContent: 'center',
         alignContent: 'center',
@@ -87,4 +86,28 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginTop: 20,
     },
+    titleData: {
+        // justifyContent: 'center',
+        fontWeight: 'bold',
+        marginLeft: -70,
+    },
+    diagnosisData: {
+        marginLeft: 2,
+        width: '50%',
+        marginRight: 70,
+        textAlign: 'center',
+        justifyContent: 'center',
+        fontSize:13,
+
+    },
+    data: {
+        height: 280
+    },
+    descriptionData: {
+        marginLeft: -30,
+        width: 400,
+        marginRight: -70,
+        textAlign: 'center'
+    }
+
 });
