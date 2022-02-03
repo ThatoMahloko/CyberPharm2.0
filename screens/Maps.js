@@ -34,6 +34,10 @@ const Maps = () => {
         ,
     ])
 
+    const _getLocation = async () =>{
+        
+    }
+
     useEffect(() => {
         db.collection("MedicalFascilities").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
@@ -42,7 +46,7 @@ const Maps = () => {
                 console.log(doc)
                 setLocation(doc)
 
-               
+
             });
         });
     }, [])
@@ -108,33 +112,33 @@ const Maps = () => {
 
 
                 {
-                    location.map(makrkerPointer => {
+                    // location.map(makrkerPointer => {
 
-                        return (
-                            <Marker coordinate={{
+                    //     return (
+                    //         <Marker coordinate={{
 
-                                latitude: makrkerPointer.latitude,
-                                longitude: makrkerPointer.longitude,
-                            }}
+                    //             latitude: makrkerPointer.latitude,
+                    //             longitude: makrkerPointer.longitude,
+                    //         }}
 
 
-                                draggable={true}
-                                onDragStart={(e) => {
-                                    console.log("Drag start", e.nativeEvent.coordinate)
-                                }}
-                                onDragEnd={(e) => {
-                                    setPin({
-                                        latitude: e.nativeEvent.coordinate.latitude,
-                                        longitude: e.nativeEvent.coordinate.longitude
-                                    })
-                                }}
-                            >
-                                <Callout>
-                                    <Text>I'm here</Text>
-                                </Callout>
-                            </Marker>
-                        )
-                    })
+                    //             draggable={true}
+                    //             onDragStart={(e) => {
+                    //                 console.log("Drag start", e.nativeEvent.coordinate)
+                    //             }}
+                    //             onDragEnd={(e) => {
+                    //                 setPin({
+                    //                     latitude: e.nativeEvent.coordinate.latitude,
+                    //                     longitude: e.nativeEvent.coordinate.longitude
+                    //                 })
+                    //             }}
+                    //         >
+                    //             <Callout>
+                    //                 <Text>I'm here</Text>
+                    //             </Callout>
+                    //         </Marker>
+                    //     )
+                    // })
 
 
                 }
