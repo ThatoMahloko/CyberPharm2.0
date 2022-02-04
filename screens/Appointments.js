@@ -62,6 +62,20 @@ const Appointments = ({ route }) => {
     ).then(() => {
       Alert.alert("Appointment Booked Successfully")
     }).catch()
+
+    db.collection("DoctorsAppointments").doc(route.params.Email).collection("Booking").add(
+      {
+        Day: date,
+        Time: time,
+        Message: message,
+        Doctor: route.params.Name,
+        User: ud
+      }
+    ).then(() => {
+      Alert.alert("Appointment Booked Successfully")
+    }).catch()
+
+    
   }
 
   const handleSubmitAppointment = () => {
