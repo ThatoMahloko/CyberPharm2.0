@@ -47,7 +47,7 @@ const Home = ({ navigation }) => {
                     <Image style={styles.icon} source={require('../assets/icons/SosIcon.png')} />
                 </TouchableOpacity >
 
-                <TouchableOpacity onPress={() => navigation.navigate('Notifications ')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Notifications')}>
                     <Image style={styles.icon} source={require('../assets/icons/notify.png')} />
                 </TouchableOpacity>
 

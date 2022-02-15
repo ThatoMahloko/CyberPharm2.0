@@ -1,51 +1,64 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity,ScrollView, } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, } from 'react-native';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import getDirections from 'react-native-google-maps-directions'
 
-const FacilityInfo = () => {
+const FacilityInfo = ({ route }) => {
+    const [permission, setPermission] = useState();
+    const [currentLatitude, setCurrentLatitude] = useState();
+    const [currentLongitude, setCurrentLogitude] = useState();
 
-
-   const  handleGetDirections = () => {
-        const data = {
-           source: {
-            latitude: -33.8356372,
-            longitude: 18.6947617
-          },
-          destination: {
-            latitude: -33.8600024,
-            longitude: 18.697459
-          },
-          params: [
-            {
-              key: "travelmode",
-              value: "driving"        // may be "walking", "bicycling" or "transit" as well
-            },
-            {
-              key: "dir_action",
-              value: "navigate"       // this instantly initializes navigation using the given travel mode
-            }
-          ],
-          waypoints: [
-            {
-              latitude: -33.8600025,
-              longitude: 18.697452
-            },
-            {
-              latitude: -33.8600026,
-              longitude: 18.697453
-            },
-               {
-              latitude: -33.8600036,
-              longitude: 18.697493
-            }
-          ]
+    useEffect(async () => {
+        const { status } = await Permissions.askAsync(Permissions.LOCATION_FOREGROUND);
+        setPermission(status)
+        if (status !== 'granted') {
+            console.log('PERMISSION NOT GRANTED')
         }
-     
+        const location = await Location.getCurrentPositionAsync();
+        setCurrentLatitude(location.coords.latitude);
+        setCurrentLogitude(location.coords.longitude);
+    })
+
+    const handleGetDirections = () => {
+        const data = {
+            source: {
+                latitude: currentLatitude,
+                longitude: currentLongitude
+            },
+            destination: {
+                latitude: route.params.latitude,
+                longitude: route.params.longitude
+            },
+            params: [
+                {
+                    key: "travelmode",
+                    value: "driving"        // may be "walking", "bicycling" or "transit" as well
+                },
+                {
+                    key: "dir_action",
+                    value: "navigate"       // this instantly initializes navigation using the given travel mode
+                }
+            ],
+            // waypoints: [
+            //     {
+            //         latitude: -33.8600025,
+            //         longitude: 18.697452
+            //     },
+            //     {
+            //         latitude: -33.8600026,
+            //         longitude: 18.697453
+            //     },
+            //     {
+            //         latitude: -33.8600036,
+            //         longitude: 18.697493
+            //     }
+            // ]
+        }
+
         getDirections(data)
-      }
-    
+    }
+
     return (
         <View style={styles.container}>
             <Image
@@ -72,7 +85,7 @@ const FacilityInfo = () => {
                 <Text style={styles.dentistText}>DENTIST</Text>
                 <Text style={styles.aboutText}>ABOUT</Text>
                 <Text style={styles.info}>Mediclinic Kimberley, a multidisciplinary hospital with spacious rooms and excellent nursing and medical care is situated in Kimberley, capital city of the Northern Cape. Mediclinic Kimberley. 177 Du Toitspan Road, Kimberley, 8301. P O Box 2082, Kimberley, 8300. +27 53 838 1111.</Text>
-                <TouchableOpacity  onPress={handleGetDirections} >
+                <TouchableOpacity onPress={handleGetDirections} >
                     <View style={styles.button}>
                         <Text style={styles.directionText}>Get Direction</Text>
 
@@ -92,8 +105,8 @@ const styles = StyleSheet.create({
         flex: 1,
 
         alignSelf: 'center',
-        height:100,
-        
+        height: 100,
+
 
 
     },
@@ -107,7 +120,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginTop: 10,
         marginLeft: 30,
-        fontSize:18
+        fontSize: 18
 
 
     },
@@ -225,7 +238,7 @@ const styles = StyleSheet.create({
         marginRight: 90,
         marginTop: 10,
         fontSize: 16,
-        
+
     },
     button: {
         width: 360,

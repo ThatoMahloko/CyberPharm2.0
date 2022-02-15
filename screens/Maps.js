@@ -1,57 +1,48 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, View, Dimensions, StatusBar } from 'react-native'
+import { StyleSheet, Text, View, Dimensions, StatusBar, TouchableOpacity } from 'react-native'
 import MapView, { Callout, Marker, Circle } from 'react-native-maps';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { db } from '../config/firebase';
+import * as Permissions from 'expo-permissions';
+import * as Location from 'expo-location';
 
+const Maps = ({ navigation }) => {
+    const [permission, setPermission] = useState();
+    const [currentLatitude, setCurrentLatitude] = useState();
+    const [currentLongitude, setCurrentLogitude] = useState();
+    const [medicalLocation, setMedicalLocation] = useState([
 
-const Maps = () => {
-    const [location, setLocation] = useState([
-        {
-            longitude: -28.72186009301135,
-            latitude: 24.7457629814744
-        }
-        ,
-        {
-            latitude: -28.74897770884684,
-            longitude: 24.75232433527708,
-        }
-        ,
-        {
-            latitude: -28.73654265626159,
-            longitude: 24.739557355642322,
-        }
-        ,
-        {
-            latitude: -28.726063385883364,
-            longitude: 24.75580718368292
-        }
-        ,
-        {
-            latitude: -28.713545331482006,
-            longitude: 24.746176376938823
-        }
-        ,
     ])
 
     useEffect(() => {
-        db.collection("MedicalFascilities").get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                // doc.data() is never undefined for query doc snapshots
-                // console.log(doc.data()+"000000000000000000000000000000000000000000");
-                console.log(doc)
-                setLocation(doc)
-
-               
+        db.collection("MedicalFascilities")
+            .onSnapshot((snapshot) => {
+                const dis = snapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
+                }));
+                setMedicalLocation(dis)
             });
-        });
     }, [])
+
+
+    useEffect(async () => {
+        const { status } = await Permissions.askAsync(Permissions.LOCATION_FOREGROUND);
+        setPermission(status)
+        if (status !== 'granted') {
+            console.log('PERMISSION NOT GRANTED')
+        }
+        const location = await Location.getCurrentPositionAsync();
+        setCurrentLatitude(location.coords.latitude);
+        setCurrentLogitude(location.coords.longitude);
+    })
 
 
     const [pin, setPin] = useState({
         latitude: -28.72186009301135,
         longitude: 24.7457629814744,
     })
+
     const [region, setRegion] = useState({
         latitude: -28.72186009301135,
         longitude: 24.7457629814744,
@@ -107,67 +98,104 @@ const Maps = () => {
             >
 
 
+
                 {
-                    location.map(makrkerPointer => {
+                    //constidional render start
+                    permission !== 'granted' ?
+                        <Marker coordinate={{
 
-                        return (
-                            <Marker coordinate={{
+                            latitude: -28.72186009301135,
+                            longitude: 24.7457629814744,
+                        }}
 
-                                latitude: makrkerPointer.latitude,
-                                longitude: makrkerPointer.longitude,
+
+                            draggable={true}
+                            onDragStart={(e) => {
+                                console.log("Drag start", e.nativeEvent.coordinate)
+                            }}
+                            onDragEnd={(e) => {
+                                setPin({
+                                    latitude: e.nativeEvent.coordinate.latitude,
+                                    longitude: e.nativeEvent.coordinate.longitude
+                                })
+                            }}
+                        >
+                            <Callout>
+                                <Text>I'm here</Text>
+                            </Callout>
+                        </Marker>
+                        :
+                        <Marker coordinate={{
+
+                            latitude: currentLatitude,
+                            longitude: currentLongitude,
+                        }}
+
+
+                            draggable={true}
+                            onDragStart={(e) => {
+                                console.log("Drag start", e.nativeEvent.coordinate)
+                                navigation.navigate('FacilityInfo')
+                            }}
+                            onDragEnd={(e) => {
+                                setPin({
+                                    latitude: e.nativeEvent.coordinate.latitude,
+                                    longitude: e.nativeEvent.coordinate.longitude
+                                })
                             }}
 
-
-                                draggable={true}
-                                onDragStart={(e) => {
-                                    console.log("Drag start", e.nativeEvent.coordinate)
-                                }}
-                                onDragEnd={(e) => {
-                                    setPin({
-                                        latitude: e.nativeEvent.coordinate.latitude,
-                                        longitude: e.nativeEvent.coordinate.longitude
-                                    })
-                                }}
-                            >
-                                <Callout>
-                                    <Text>I'm here</Text>
-                                </Callout>
-                            </Marker>
-                        )
-                    })
-
+                        >
+                            <Callout>
+                                <Text>I'm here</Text>
+                            </Callout>
+                        </Marker>
+                    //constidional render end
 
                 }
+
 
                 {
-                    // <Marker coordinate={{
-                    //     latitude: -28.72186009301135,
-                    //     longitude: 24.7457629814744,
-                    // }}
+
+                    medicalLocation.map((medi) => {
+                        console.log(medi.longitude, medi.latitude, "hello")
+                        return (
+                            <>
+                                <Marker coordinate={{
+                                    latitude:parseFloat(medi.latitude) ,
+                                    longitude: parseFloat(medi.longitude),
+                                }}
 
 
-                    //     draggable={true}
-                    //     onDragStart={(e) => {
-                    //         console.log("Drag start", e.nativeEvent.coordinate)
-                    //     }}
-                    //     onDragEnd={(e) => {
-                    //         setPin({
-                    //             latitude: e.nativeEvent.coordinate.latitude,
-                    //             longitude: e.nativeEvent.coordinate.longitude
-                    //         })
-                    //     }}
-                    // >
-                    //     <Callout>
-                    //         <Text>I'm here</Text>
-                    //     </Callout>
-                    // </Marker>
+                                    draggable={true}
+                                    onDragStart={(e) => {
+                                        console.log("Drag start", e.nativeEvent.coordinate)
+                                        navigation.navigate('FacilityInfo', medi)
+                                    }}
+                                    onDragEnd={(e) => {
+                                        setPin({
+                                            latitude: e.nativeEvent.coordinate.latitude,
+                                            longitude: e.nativeEvent.coordinate.longitude
+                                        })
+                                    }}
+                                >
+
+                                    <Callout>
+                                        <Text>MedicalFascility</Text>
+                                    </Callout>
+                                </Marker>
+
+                            </>
+                        )
+                    })
                 }
 
 
 
-                <Circle
-                    center={pin}
-                    radius={1000} />
+                {
+                    // <Circle
+                    //     center={pin}
+                    //     radius={1000} />
+                }
             </MapView>
         </View>
     )
@@ -183,5 +211,19 @@ const styles = StyleSheet.create({
     map: {
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
+    },
+    button: {
+        width: 360,
+        height: 50,
+        backgroundColor: '#3E64FF',
+        justifyContent: 'center',
+        alignContent: 'center',
+        borderRadius: 10,
+        alignSelf: 'center',
+        marginTop: 20
+    },
+    text: {
+        alignSelf: 'center',
+        color: '#fff',
     },
 })
