@@ -4,8 +4,8 @@ import LogoIcon from '../components/LogoIcon'
 import signIn from '../auth/signIn'
 
 const Login = ({ navigation }) => {
-    const [userEmail, setUserEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [userEmail, setUserEmail] = useState("")
+    const [password, setPassword] = useState("")
 
     const onLogin = () => {
         if (userEmail == "" && password == "") {
@@ -25,11 +25,11 @@ const Login = ({ navigation }) => {
                 translucent={false}
             />
 
-            <ImageBackground style={{ width: '100%', height: '100%' }} source={require('../assets/backGroundImages/Login.jpg')}>
+            
                 <View>
                     <LogoIcon />
                 </View>
-                <TextInput placeholder={'Email Address'} style={styles.input} onChangeText={(userEmail) => setUserEmail(userEmail)} />
+                <TextInput placeholder={'Email Address'} style={styles.input} onChangeText={(email) => setUserEmail(email)}/>
                 <TextInput placeholder={'Password'} style={styles.input} secureTextEntry={true} onChangeText={(password) => setPassword(password)} />
                 <TouchableOpacity style={styles.button} onPress={() => onLogin(navigation)}>
                     <Text style={styles.text}>LOGIN</Text>
@@ -50,7 +50,7 @@ const Login = ({ navigation }) => {
                         </TouchableOpacity>
                     </View>
                 </View>
-            </ImageBackground>
+            
         </View>
     )
 
@@ -62,16 +62,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-        height: '100%'
+        height: '100%',
+        backgroundColor:'white'
     },
     input: {
         width: 342,
         height: 52,
         borderRadius: 10,
-        backgroundColor: '#D9D9D9',
+        backgroundColor: '#FFFFFF',
         paddingLeft: 14,
         alignSelf: 'center',
-        marginTop: 30
+        marginTop: 30,
+        boxShadow:'0px 4px 4px rgba(0,0,0,0.25)',
     }
     ,
     button: {

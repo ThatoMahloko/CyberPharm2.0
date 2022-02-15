@@ -16,6 +16,7 @@ const Contacts = ({ navigation }) => {
     ])
 
     const [details, setDetails] = useState([]);
+    
 
     useEffect(() => {
         const ud = getUSER();

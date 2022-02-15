@@ -85,7 +85,6 @@ const Doctors = ({ navigation }) => {
                         doctor.filter(spec => spec.Specialization === specialization)
                             .map((dr) => {
                                 return (
-
                                     <View>
                                         <TouchableOpacity onPress={() => navigation.navigate('Doctor', dr)}>
                                             <View style={styles.doctor}>
