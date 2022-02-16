@@ -16,6 +16,7 @@ const Contacts = ({ navigation }) => {
     ])
 
     const [details, setDetails] = useState([]);
+    
 
     useEffect(() => {
         const ud = getUSER();
@@ -62,10 +63,7 @@ const Contacts = ({ navigation }) => {
 
                 </ScrollView>
             </View>
-            <TouchableOpacity style={styles.add} onPress={() => navigation.navigate('AddContacts')}>
-                <Text style={styles.addText}>add</Text>
-
-            </TouchableOpacity>
+            
         </View>
     )
 }

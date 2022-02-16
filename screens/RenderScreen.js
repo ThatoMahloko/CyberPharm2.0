@@ -87,9 +87,10 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     titleData: {
-        // justifyContent: 'center',
+        textAlign: 'center',
+        justifyContent: 'center',
         fontWeight: 'bold',
-        marginLeft: -70,
+        marginLeft: -50,
     },
     diagnosisData: {
         marginLeft: 2,
