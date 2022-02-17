@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, StatusBar, TextInput, Image, TouchableOpacity } from 'react-native'
 import { DataTable, } from 'react-native-paper'
+
 const Doctors = ({ navigation }) => {
 
     return (
@@ -18,6 +19,7 @@ const Doctors = ({ navigation }) => {
 
                 <TouchableOpacity>
                     <View style={styles.specialtyIcon}>
+
                         <Image style={styles.centerImage} source={require('../assets/icons/brain.png')} />
                         <Text style={styles.specialtyIconText}>Neurology</Text>
                     </View>

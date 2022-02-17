@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, StatusBar, Image, Button, TouchableOpacity, Linking, ScrollView, SafeAreaView } from 'react-native'
 import { Title, Paragraph } from 'react-native-paper'
+import { Avatar, Badge } from 'react-native-elements';
 
 const Doctor = ({ navigation }) => {
     const triggerCall = () => {
@@ -20,7 +21,20 @@ const Doctor = ({ navigation }) => {
             />
 
             <View style={styles.doctorCover}>
-                <Image style={styles.imageIcon} source={require('../assets/image/thato.jpg')} />
+               
+             <Avatar style={styles.imageIcon}
+              rounded
+              source={require('../assets/image/thato.jpg')}
+              size="large"
+             
+            />
+             <Badge
+              status="error"
+              size="xl"
+              containerStyle={{ position: 'absolute', top: 18, left: 209 }}
+            />
+            
+
                 <Title style={styles.drName}>DR. Thato Mahloko</Title>
                 <Text style={styles.drName}>Virologist</Text>
 
@@ -76,7 +90,7 @@ const Doctor = ({ navigation }) => {
                
             </View>
 
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Appointments')}>
+            <TouchableOpacity disabled={false} style={styles.button} onPress={() => navigation.navigate('Appointments')}>
                 <Text style={styles.text}>BOOK APPOINTMENT</Text>
             </TouchableOpacity>
             </ScrollView>

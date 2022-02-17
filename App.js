@@ -22,43 +22,20 @@ import ResetPassword from './screens/ResetPassword';
 import ScanCard from './screens/ScanCard';
 import Profile from './screens/Profile';
 import EditProfile from './screens/EditProfile';
-<<<<<<< HEAD
-import FacilityInfo from './screens/FacilityInfo';
-=======
 import AssetExample from './screens/AssetExample';
 import RenderScreen from './screens/RenderScreen';
->>>>>>> 1225612604c7ae88ca71d871845d7b33c6c306ff
+import FacilityInfo from './screens/FacilityInfo';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-<<<<<<< HEAD
-        <Stack.Screen name="FacilityInfo" component={FacilityInfo} />
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Register" component={Register} />
-      <Stack.Screen name="ResetPassword" component={ResetPassword} />
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Vaccination" component={Vaccination} />
-      <Stack.Screen name="Doctors" component={Doctors} />
-      <Stack.Screen name="Doctor" component={Doctor} />
-      <Stack.Screen name="Appointments" component={Appointments} />
-      <Stack.Screen name="Donate" component={Donate} />
-      <Stack.Screen name="Symptom" component={Symptom} />
-      <Stack.Screen name="Messaging" component={Messaging} />
-      <Stack.Screen name="SOS" component={SOS} />
-      <Stack.Screen name="Contacts" component={Contacts} />
-      <Stack.Screen name="AddContacts" component={AddContacts} />
-      <Stack.Screen name="ScanCard" component={ScanCard} />
-      <Stack.Screen name="Profile" component={Profile} />
-=======
-        <Stack.Screen name="RenderScreen" component={RenderScreen} />
-        <Stack.Screen name="Appointments" component={Appointments} />
+     
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
-        <Stack.Screen name="ResetPassword" component={ResetPassword} />
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="ResetPassword" component={ResetPassword} />
         <Stack.Screen name="Vaccination" component={Vaccination} />
         <Stack.Screen name="Doctors" component={Doctors} />
         <Stack.Screen name="Doctor" component={Doctor} />
@@ -70,8 +47,10 @@ export default function App() {
         <Stack.Screen name="AddContacts" component={AddContacts} />
         <Stack.Screen name="ScanCard" component={ScanCard} />
         <Stack.Screen name="Profile" component={Profile} />
->>>>>>> 1225612604c7ae88ca71d871845d7b33c6c306ff
         <Stack.Screen name="EditProfile" component={EditProfile} />
+        <Stack.Screen name="RenderScreen" component={RenderScreen} />
+        <Stack.Screen name="Appointments" component={Appointments} />
+        <Stack.Screen name="FacilityInfo" component={FacilityInfo} />
       </Stack.Navigator>
     </NavigationContainer>
   );
