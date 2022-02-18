@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
         paddingLeft: 14,
         alignSelf: 'center',
         marginTop: 30,
-        border:'1px solid #000000'
     
     },
     button: {
@@ -78,7 +77,7 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         borderRadius: 10,
         alignSelf: 'center',
-        marginTop: 20
+        marginTop: 10
     },
     text: {
         alignSelf: 'center',
@@ -87,7 +86,7 @@ const styles = StyleSheet.create({
     ,
     linkText: {
         alignSelf: 'center',
-        marginTop: 50,
+        marginTop: 30,
         flexDirection: 'row'
     }
     ,

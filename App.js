@@ -30,7 +30,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {/* <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="ResetPassword" component={ResetPassword} />
       <Stack.Screen name="Home" component={Home} />
@@ -47,7 +47,7 @@ export default function App() {
       <Stack.Screen name="Maps" component={Maps} />
       <Stack.Screen name="ScanCard" component={ScanCard} />
       <Stack.Screen name="Profile" component={Profile} />
-      <Stack.Screen name="EditProfile" component={EditProfile} /> */}
+      <Stack.Screen name="EditProfile" component={EditProfile} />
       <Stack.Screen name="RenderScreen" component={RenderScreen} />
       <Stack.Screen name="FacilityInfo" component={FacilityInfo} />
       <Stack.Screen name="Notifications" component={Notifications} />
