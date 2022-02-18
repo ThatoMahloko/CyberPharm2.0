@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, Image, Dimensions, Modal, TouchableWithoutFeedb
 import { Title, RadioButton, List, Provider, Portal } from 'react-native-paper';
 import SymptomList from '../Api/SymptomList';
 import Treatment_Diagnosis from '../Api/Treatment_Diagnosis';
+import CloseButton from '../components/CloseButton';
 
 const deviceHeight = Dimensions.get('window').height;
 
@@ -179,9 +180,9 @@ export class AssetExample extends Component {
           onRequestClose={this.close}>
 
           <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-            {this.renderOutsideTouchable(onTouchOutside)}
+          {this.renderOutsideTouchable(onTouchOutside)}
             <View style={{ 
-              backgroundColor: '#516BEB', 
+              backgroundColor: 'white', 
               width: '100%',
               borderTopRightRadius: 20, 
               borderTopLeftRadius: 10, 
@@ -189,6 +190,9 @@ export class AssetExample extends Component {
               maxHeight: deviceHeight * 0.5,
               justifyContent:'center',
               }}>
+
+                <CloseButton />
+                 
               {this.renderTitle()}
               {this.renderContent()}
             </View>
