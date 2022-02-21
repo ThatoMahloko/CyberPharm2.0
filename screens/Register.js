@@ -67,8 +67,8 @@ const styles = StyleSheet.create({
         paddingLeft: 14,
         alignSelf: 'center',
         marginTop: 30,
-        border:'1px solid #000000'
-    
+        borderWidth: 1,
+        borderColor: 'black',    
     },
     button: {
         width: 360,
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     ,
     linkText: {
         alignSelf: 'center',
-        marginTop: 50,
+        marginTop: 40,
         flexDirection: 'row'
     }
     ,
