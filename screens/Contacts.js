@@ -10,12 +10,13 @@ const Contacts = ({ navigation }) => {
     const [user, setUser] = useState([
         { FirstName: '' },
     ])
-
+    
     const [contact, setContact] = useState([
         {},
     ])
 
     const [details, setDetails] = useState([]);
+    
 
     useEffect(() => {
         const ud = getUSER();
@@ -32,6 +33,9 @@ const Contacts = ({ navigation }) => {
             });
     }, []);
 
+   
+    
+
     return (
         <View style={styles.container}>
             <View style={styles.containerContent}>
@@ -44,21 +48,22 @@ const Contacts = ({ navigation }) => {
                     />
 
                     {contact.length == 0 ?
-                        <Image style={styles.emptyIcon} source={require('../assets/icons/emptyContacts.png')} />
+                   
+                         <Image style={styles.emptyIcon} source={require('../assets/icons/emptyContacts.png')} />
+                    
+                       
                         :
                         contact.map((data, k) => (
                             <View style={styles.contactItem}>
                                 <ContactItem key={k} data={data} />
                             </View>
                         ))
-
+                       
                     }
 
                 </ScrollView>
             </View>
-            <TouchableOpacity style={styles.add} onPress={() => navigation.navigate('AddContacts')}>
-                <Text style={styles.addText}>+</Text>
-            </TouchableOpacity>
+            
         </View>
     )
 }
@@ -77,7 +82,8 @@ const styles = StyleSheet.create({
     contactItem: {
         alignItems: 'center',
         marginBottom: -40,
-        marginRight: 100,
+        flexDirection:'row',
+        marginLeft:20,
         padding: 0
     }
     ,
@@ -98,16 +104,17 @@ const styles = StyleSheet.create({
         width: 60,
         height: 60,
         borderRadius: 30,
-        justifyContent: 'center',
         end: -310,
         top: -70,
+        justifyContent: 'center',
+        alignContent: 'center',
     },
     addText: {
-        textAlign: 'center',
-        fontSize: 40,
+        fontSize: 15,
         color: '#fff',
-        position: 'relative',
-        zIndex: -1
+        marginLeft: 16, 
+        marginBottom:5
+
     }
 
 })

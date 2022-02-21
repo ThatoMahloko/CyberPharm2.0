@@ -4,8 +4,8 @@ import LogoIcon from '../components/LogoIcon'
 import signIn from '../auth/signIn'
 
 const Login = ({ navigation }) => {
-    const [userEmail, setUserEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [userEmail, setUserEmail] = useState("")
+    const [password, setPassword] = useState("")
 
     const onLogin = () => {
         if (userEmail == "" && password == "") {
@@ -25,32 +25,32 @@ const Login = ({ navigation }) => {
                 translucent={false}
             />
 
-            <ImageBackground style={{ width: '100%', height: '100%' }} source={require('../assets/backGroundImages/Login.jpg')}>
-                <View>
-                    <LogoIcon />
-                </View>
-                <TextInput placeholder={'Email Address'} style={styles.input} onChangeText={(userEmail) => setUserEmail(userEmail)} />
-                <TextInput placeholder={'Password'} style={styles.input} secureTextEntry={true} onChangeText={(password) => setPassword(password)} />
-                <TouchableOpacity style={styles.button} onPress={() => onLogin(navigation)}>
-                    <Text style={styles.text}>LOGIN</Text>
-                </TouchableOpacity>
 
-                <View style={styles.links}>
-                    <View style={styles.linkText}>
-                        <Text style={styles.textLink}>Don't have an account? </Text>
-                        <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-                            <Text style={styles.textLink_}>Register Here</Text>
-                        </TouchableOpacity>
-                    </View>
+            <View>
+                <LogoIcon />
+            </View>
+            <TextInput placeholder={'Email Address'} style={styles.input} onChangeText={(email) => setUserEmail(email)} />
+            <TextInput placeholder={'Password'} style={styles.input} secureTextEntry={true} onChangeText={(password) => setPassword(password)} />
+            <TouchableOpacity style={styles.button} onPress={() => onLogin(navigation)}>
+                <Text style={styles.text}>LOGIN</Text>
+            </TouchableOpacity>
 
-                    <View style={styles.linkTextBottom}>
-                        <Text style={styles.textLink}>Forgot Password? </Text>
-                        <TouchableOpacity onPress={() => navigation.navigate('ResetPassword')}>
-                            <Text style={styles.textLink_}>Reset Here</Text>
-                        </TouchableOpacity>
-                    </View>
+            <View style={styles.links}>
+                <View style={styles.linkText}>
+                    <Text style={styles.textLink}>Don't have an account? </Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+                        <Text style={styles.textLink_}>Register Here</Text>
+                    </TouchableOpacity>
                 </View>
-            </ImageBackground>
+
+                <View style={styles.linkTextBottom}>
+                    <Text style={styles.textLink}>Forgot Password? </Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('ResetPassword')}>
+                        <Text style={styles.textLink_}>Reset Here</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+
         </View>
     )
 
@@ -62,16 +62,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-        height: '100%'
+        height: '100%',
+        backgroundColor: 'white'
     },
     input: {
         width: 342,
         height: 52,
         borderRadius: 10,
-        backgroundColor: '#D9D9D9',
+        backgroundColor: '#FFFFFF',
         paddingLeft: 14,
         alignSelf: 'center',
-        marginTop: 30
+        marginTop: 20,
     }
     ,
     button: {
@@ -89,20 +90,18 @@ const styles = StyleSheet.create({
         color: '#fff',
     }
     ,
-    links:{
-marginTop:140
+    links: {
+        marginTop: 20
     }
     ,
     linkText: {
         alignSelf: 'center',
-        marginTop: 10,
         flexDirection: 'row'
     }
     ,
     linkTextBottom: {
         alignSelf: 'center',
-        marginTop: 15,
-        flexDirection: 'row'
+        flexDirection: 'row',
     }
     ,
     textLink: {

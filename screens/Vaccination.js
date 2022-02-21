@@ -17,9 +17,9 @@ const Vaccination = () => {
 
             <Paragraph style={styles.paragraph}>
                 Vaccination is a safe and effective way to prevent disease and save lives. When we get
-                 vaccinated we are not just protecting ourselves, but also those around us. Some people, 
-                 like those who are seriously ill, are advised not to get certain vaccines – so they depend 
-                 on the rest of us to get vaccinated and help reduce the spread of disease.
+                vaccinated we are not just protecting ourselves, but also those around us. Some people,
+                like those who are seriously ill, are advised not to get certain vaccines – so they depend
+                on the rest of us to get vaccinated and help reduce the spread of disease.
             </Paragraph>
 
             <Title style={styles.Title}>Why is vaccination important?</Title>
@@ -42,15 +42,15 @@ const Vaccination = () => {
                 <View style={styles.infoText}>
                     <Image style={styles.syringIcon} source={require('../assets/icons/syringe.png')} />
                     <Paragraph style={styles.paragraph}>
-                        prodremembers the disease and how to fight  {'\n'}it. If you are then exposed to the germ 
+                        prodremembers the disease and how to fight  {'\n'}it. If you are then exposed to the germ
                         in the  {'\n'}future, your immune system can quickly  {'\n'}destroy it before you become unwell.
                     </Paragraph>
                 </View>
             </View>
 
             <TouchableOpacity style={styles.button} onPress={() => Linking.openURL(url)}>
-                <Text 
-                style={styles.text}
+                <Text
+                    style={styles.text}
                 >
                     REGISTER FOR VACCINATION
                 </Text>
@@ -67,12 +67,12 @@ const styles = StyleSheet.create({
         marginLeft: 16,
         fontSize: 30,
         marginTop: 20,
-        
+
     },
     paragraph: {
         alignSelf: 'center',
         marginTop: 20,
-        marginLeft:10,
+        marginLeft: 10,
 
     },
     info: {
@@ -83,9 +83,9 @@ const styles = StyleSheet.create({
     },
     syringIcon: {
         width: 25,
-        height: 25, 
+        height: 25,
         alignSelf: 'center',
-        marginRight: 10, 
+        marginRight: 10,
         marginLeft: 5
     },
     button: {
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         alignSelf: 'center',
         marginTop: 20,
-        top:20
+        top: 20
 
     },
     text: {

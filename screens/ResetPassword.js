@@ -10,7 +10,7 @@ const ResetPassword = () => {
         resetPassword(userEmail)
     }
     return (
-        <View>
+        <View style={styles.container}>
             <StatusBar
                 animated={false}
                 barStyle='dark-content'
@@ -31,15 +31,22 @@ const ResetPassword = () => {
 export default ResetPassword
 
 const styles = StyleSheet.create({
+    container: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        height: '100%',
+        backgroundColor:'white'
+    },
     
     input: {
         width: 342,
         height: 52,
         borderRadius: 10,
-        backgroundColor: '#D9D9D9',
+        backgroundColor: '#FFFFFF',
         paddingLeft: 14,
         alignSelf: 'center',
-        marginTop: 30
+        marginTop: 20,
     },
     button: {
         width: 360,

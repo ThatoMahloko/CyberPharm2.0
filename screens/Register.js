@@ -23,28 +23,28 @@ const Register = ({ navigation }) => {
                 hidden={false}
                 translucent={false}
             />
-            <ImageBackground style={{ width: '100%', height: '100%' }} source={require('../assets/backGroundImages/Login.jpg')}>
-                <View>
-                    <LogoIcon />
-                </View>
+
+            <View>
+                <LogoIcon />
+            </View>
 
 
-                <TextInput placeholder={'Email Address'} style={styles.input} onChangeText={(userEmail) => setUserEmail(userEmail)} />
-                <TextInput placeholder={'Password'} style={styles.input} onChangeText={(password) => setPassword(password)} />
-                <TextInput placeholder={'Confirm Password'} style={styles.input} onChangeText={(confirmPassword) => setConfirmPassword(confirmPassword)} />
+            <TextInput placeholder={'Email Address'} style={styles.input} onChangeText={(userEmail) => setUserEmail(userEmail)} />
+            <TextInput placeholder={'Password'} style={styles.input} onChangeText={(password) => setPassword(password)} />
+            <TextInput placeholder={'Confirm Password'} style={styles.input} onChangeText={(confirmPassword) => setConfirmPassword(confirmPassword)} />
 
-                <TouchableOpacity style={styles.button} onPress={register}>
-                    <Text style={styles.text}>REGISTER</Text>
+            <TouchableOpacity style={styles.button} onPress={register}>
+                <Text style={styles.text}>REGISTER</Text>
+            </TouchableOpacity>
+
+            <View style={styles.linkText}>
+                <Text style={styles.textLink}>Already have an account? </Text>
+                <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+                    <Text style={styles.textLink_}>Login Here</Text>
                 </TouchableOpacity>
+            </View>
 
-                <View style={styles.linkText}>
-                    <Text style={styles.textLink}>Already have an account? </Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                        <Text style={styles.textLink_}>Login Here</Text>
-                    </TouchableOpacity>
-                </View>
 
-            </ImageBackground>
         </View>
     )
 }
@@ -56,16 +56,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-        height: '100%'
+        height: '100%',
+        backgroundColor: 'white'
     },
     input: {
         width: 342,
         height: 52,
         borderRadius: 10,
-        backgroundColor: '#D9D9D9',
+        backgroundColor: '#FFFFFF',
         paddingLeft: 14,
         alignSelf: 'center',
-        marginTop: 30
+        marginTop: 30,
+    
     },
     button: {
         width: 360,
@@ -75,7 +77,7 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         borderRadius: 10,
         alignSelf: 'center',
-        marginTop: 20
+        marginTop: 10
     },
     text: {
         alignSelf: 'center',
@@ -84,7 +86,7 @@ const styles = StyleSheet.create({
     ,
     linkText: {
         alignSelf: 'center',
-        marginTop: 50,
+        marginTop: 30,
         flexDirection: 'row'
     }
     ,
