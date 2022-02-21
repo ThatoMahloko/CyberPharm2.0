@@ -46,8 +46,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         paddingLeft: 14,
         alignSelf: 'center',
-        marginTop: 30,
-        boxShadow:'0px 4px 4px rgba(0,0,0,0.25)',
+        marginTop: 20,
     },
     button: {
         width: 360,

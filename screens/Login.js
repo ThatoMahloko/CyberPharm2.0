@@ -25,32 +25,32 @@ const Login = ({ navigation }) => {
                 translucent={false}
             />
 
-            
-                <View>
-                    <LogoIcon />
-                </View>
-                <TextInput placeholder={'Email Address'} style={styles.input} onChangeText={(email) => setUserEmail(email)}/>
-                <TextInput placeholder={'Password'} style={styles.input} secureTextEntry={true} onChangeText={(password) => setPassword(password)} />
-                <TouchableOpacity style={styles.button} onPress={() => onLogin(navigation)}>
-                    <Text style={styles.text}>LOGIN</Text>
-                </TouchableOpacity>
 
-                <View style={styles.links}>
-                    <View style={styles.linkText}>
-                        <Text style={styles.textLink}>Don't have an account? </Text>
-                        <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-                            <Text style={styles.textLink_}>Register Here</Text>
-                        </TouchableOpacity>
-                    </View>
+            <View>
+                <LogoIcon />
+            </View>
+            <TextInput placeholder={'Email Address'} style={styles.input} onChangeText={(email) => setUserEmail(email)} />
+            <TextInput placeholder={'Password'} style={styles.input} secureTextEntry={true} onChangeText={(password) => setPassword(password)} />
+            <TouchableOpacity style={styles.button} onPress={() => onLogin(navigation)}>
+                <Text style={styles.text}>LOGIN</Text>
+            </TouchableOpacity>
 
-                    <View style={styles.linkTextBottom}>
-                        <Text style={styles.textLink}>Forgot Password? </Text>
-                        <TouchableOpacity onPress={() => navigation.navigate('ResetPassword')}>
-                            <Text style={styles.textLink_}>Reset Here</Text>
-                        </TouchableOpacity>
-                    </View>
+            <View style={styles.links}>
+                <View style={styles.linkText}>
+                    <Text style={styles.textLink}>Don't have an account? </Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+                        <Text style={styles.textLink_}>Register Here</Text>
+                    </TouchableOpacity>
                 </View>
-            
+
+                <View style={styles.linkTextBottom}>
+                    <Text style={styles.textLink}>Forgot Password? </Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('ResetPassword')}>
+                        <Text style={styles.textLink_}>Reset Here</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+
         </View>
     )
 
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: '100%',
         height: '100%',
-        backgroundColor:'white'
+        backgroundColor: 'white'
     },
     input: {
         width: 342,
@@ -72,8 +72,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         paddingLeft: 14,
         alignSelf: 'center',
-        marginTop: 30,
-        boxShadow:'0px 4px 4px rgba(0,0,0,0.25)',
+        marginTop: 20,
     }
     ,
     button: {
@@ -91,20 +90,18 @@ const styles = StyleSheet.create({
         color: '#fff',
     }
     ,
-    links:{
-        marginTop:140
+    links: {
+        marginTop: 20
     }
     ,
     linkText: {
         alignSelf: 'center',
-        marginTop: 10,
         flexDirection: 'row'
     }
     ,
     linkTextBottom: {
         alignSelf: 'center',
-        marginTop: 15,
-        flexDirection: 'row'
+        flexDirection: 'row',
     }
     ,
     textLink: {
