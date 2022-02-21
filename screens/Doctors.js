@@ -1,8 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, StatusBar, TextInput, Image, TouchableOpacity } from 'react-native'
-import { DataTable, } from 'react-native-paper'
+import { Avatar, Badge } from 'react-native-elements';
+import { db } from '../config/firebase'
 
 const Doctors = ({ navigation }) => {
+    const [phone, setPhone] = useState("")
+    const [doctor, setDoctor] = useState([])
+    const [specialization, setSpecialization] = useState("")
+
+    const getDoctor = (() => {
+        db.collection('Doctors')
+            .onSnapshot((snapshot) => {
+                const dis = snapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data()
+                }))
+
+                setDoctor(dis)
+            })
+    })
+
+    useEffect(() => {
+        getDoctor()
+    })
 
     return (
         <View>
@@ -17,29 +37,28 @@ const Doctors = ({ navigation }) => {
 
             <View style={styles.specialtyList}>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={(specialization) => setSpecialization("Neurology")}>
                     <View style={styles.specialtyIcon}>
-
                         <Image style={styles.centerImage} source={require('../assets/icons/brain.png')} />
                         <Text style={styles.specialtyIconText}>Neurology</Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={(specialization) => setSpecialization("Genetics")}>
                     <View style={styles.specialtyIcon}>
                         <Image style={styles.centerImage} source={require('../assets/icons/dna.png')} />
                         <Text style={styles.specialtyIconText}>Genetics</Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={(specialization) => setSpecialization("Dentistry")}>
                     <View style={styles.specialtyIcon}>
                         <Image style={styles.centerImage} source={require('../assets/icons/dentist.png')} />
                         <Text style={styles.specialtyIconText}>Dentistry</Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={(specialization) => setSpecialization("Surgery")}>
                     <View style={styles.specialtyIcon}>
                         <Image style={styles.centerImage} source={require('../assets/icons/surgery.png')} />
                         <Text style={styles.specialtyIconText}>Surgery</Text>
@@ -47,32 +66,44 @@ const Doctors = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
 
-
             {/*create a table of each doctor & each cell should be a touchable opacity*/}
 
 
-            <View style={styles.doctors}>
-                <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
-                    <View style={styles.doctor}></View>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
-                    <View style={styles.doctor}></View>
-                </TouchableOpacity>
-                <br/>
-                <View >
-                    <TouchableOpacity style={{marginTop:20,marginRight:-90}} onPress={() => navigation.navigate('Doctor')}>
-                        <View style={styles.doctor }></View>
-                    </TouchableOpacity>
+            {
+                <View style={styles.doctors}>
+                    {
+
+                        doctor.filter(spec => spec.Specialization === specialization)
+                            .map((dr) => {
+                                return (
+
+                                    <View key={dr.id}>
+                                        <TouchableOpacity enabled={dr.Status} onPress={() => navigation.navigate('Doctor', dr)}>
+                                            <View style={styles.doctor}>
+                                                <Avatar rounded style={styles.imageIcon} source={{ uri: dr.ProfileImage }} size="large" />
+                                                {
+                                                    dr.Status === false ?
+                                                        <Badge
+                                                            status="error"
+                                                            size="large"
+                                                            containerStyle={{ position: 'relative', top: -80, left: 20, }}
+                                                        />
+                                                        :
+                                                        <Badge
+                                                            status="success"
+                                                            size="large"
+                                                            containerStyle={{ position: 'relative', top: -80, left: 20, }}
+                                                        />
+                                                }
+                                                <Text style={styles.drName}>{dr.Name}</Text>
+                                            </View>
+                                        </TouchableOpacity>
+                                    </View>
+                                )
+                            })
+                    }
                 </View>
-
-                
-               
-                
-
-
-
-                
-            </View>
+            }
 
         </View>
     )
@@ -116,28 +147,30 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 50,
         width: '100%',
-        flexDirection: 'row', justifyContent: 'center'
+        display:'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        flexWrap:"wrap"
     },
-    doctor: {
+    doctor: {//
         backgroundColor: '#1597E5',
         width: 170,
         height: 170,
         margin: 5,
         borderRadius: 20,
-
     },
-
-    doctor2:{
-        backgroundColor: '#1597E5',
-        width: 170,
-        height: 170,
-        margin: 5,
-        borderRadius: 20,
-        marginTop:200,
-        marginRight:120
-
-    }
-
+    imageIcon: {
+        width: 80,
+        height: 80,
+        alignSelf: 'center',
+        borderRadius: 55,
+        marginTop: 15
+    },
+    drName: {
+        alignSelf: 'center',
+        color: '#fff',
+        marginTop: 20
+    },
 
 
 })
