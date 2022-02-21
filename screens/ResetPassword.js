@@ -49,7 +49,9 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginTop: 30,
         borderWidth: 1,
-        borderColor: 'black',    },
+        borderColor: 'black',    
+        marginTop: 20,
+    },
     button: {
         width: 360,
         height: 50,

@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
         marginTop: 30,
         borderWidth: 1,
         borderColor: 'black',
-
+        marginTop: 20,
     }
     ,
     button: {
@@ -94,19 +94,18 @@ const styles = StyleSheet.create({
     }
     ,
     links: {
-        marginTop: 100
+        marginTop: 100,
+        marginTop: 20
     }
     ,
     linkText: {
         alignSelf: 'center',
-        marginTop: 10,
         flexDirection: 'row'
     }
     ,
     linkTextBottom: {
         alignSelf: 'center',
-        marginTop: 15,
-        flexDirection: 'row'
+        flexDirection: 'row',
     }
     ,
     textLink: {
