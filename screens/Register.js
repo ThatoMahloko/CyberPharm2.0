@@ -68,12 +68,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginTop: 30,
         boxShadow:'0px 4px 4px rgba(0,0,0,0.25)',
-        shadowRadius: 4.65,
-        shadowOffset: {
-            height: 4,
-            width: 0,
-        
-        },
+     
     
     },
     button: {
