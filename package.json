@@ -10,11 +10,15 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-community/geolocation": "^2.0.2",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
     "expo": "^44.0.0",
     "expo-cli": "4.7.2",
     "expo-image-picker": "~12.0.1",
+    "expo-location": "^14.0.2",
+    "expo-permissions": "^13.1.1",
+    "expo-sms": "^10.1.0",
     "expo-status-bar": "1.2.0",
     "firebase": "^7.17.1",
     "native-base": "^3.2.2",
@@ -27,15 +31,19 @@
     "react-native-google-places-autocomplete": "^2.4.1",
     "react-native-image-picker": "^4.7.1",
     "react-native-maps": "0.29.4",
+    "react-native-modal-datetime-picker": "^13.0.0",
     "react-native-paper": "^4.9.2",
     "react-native-ratings": "^8.1.0",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
     "react-native-svg": "12.1.1",
     "react-native-web": "0.17.1"
+    
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "react-error-overlay": "^6.0.9"
   },
   "private": true
 }
+

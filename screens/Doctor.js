@@ -29,9 +29,9 @@ const Doctor = ({ navigation }) => {
              
             />
              <Badge
-              status="error"
-              size="xl"
-              containerStyle={{ position: 'absolute', top: 18, left: 209 }}
+              status="success"
+              size="large"
+              containerStyle={{ position: 'relative', top: -80, left: 20,  }}
             />
             
 
