@@ -1,37 +1,8 @@
-import { ScrollView } from 'native-base'
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, StatusBar, TextInput, Image, TouchableOpacity } from 'react-native'
-import { DataTable, List, Title } from 'react-native-paper'
-import { db } from '../config/firebase'
+import { DataTable, } from 'react-native-paper'
 
 const Doctors = ({ navigation }) => {
-    const [phone, setPhone] = useState("");
-    const [doctor, setDoctor] = useState([]);
-    const [specialization, setSpecialization] = useState("");
-
-    const getDoctor = (() => {
-        db.collection('Doctors')
-            .onSnapshot((snapshot) => {
-                const dis = snapshot.docs.map((doc) => ({
-                    id: doc.id,
-                    ...doc.data()
-                }));
-                setDoctor(dis)
-            })
-    })
-
-
-    useEffect(() => {
-        getDoctor()
-    })
-    const fliterDoc = ((value) => {
-        const data = doctor.filter(data => data.spec === value);
-
-        setDoctor(data)
-
-
-
-    })
 
     return (
         <View>
@@ -46,28 +17,29 @@ const Doctors = ({ navigation }) => {
 
             <View style={styles.specialtyList}>
 
-                <TouchableOpacity onPress={(specialization) => setSpecialization("Neurology")}>
+                <TouchableOpacity>
                     <View style={styles.specialtyIcon}>
+
                         <Image style={styles.centerImage} source={require('../assets/icons/brain.png')} />
                         <Text style={styles.specialtyIconText}>Neurology</Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={(specialization) => setSpecialization("Genetics")}>
+                <TouchableOpacity>
                     <View style={styles.specialtyIcon}>
                         <Image style={styles.centerImage} source={require('../assets/icons/dna.png')} />
                         <Text style={styles.specialtyIconText}>Genetics</Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={(specialization) => setSpecialization("Dentistry")}>
+                <TouchableOpacity>
                     <View style={styles.specialtyIcon}>
                         <Image style={styles.centerImage} source={require('../assets/icons/dentist.png')} />
                         <Text style={styles.specialtyIconText}>Dentistry</Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={(specialization) => setSpecialization("Surgery")}>
+                <TouchableOpacity>
                     <View style={styles.specialtyIcon}>
                         <Image style={styles.centerImage} source={require('../assets/icons/surgery.png')} />
                         <Text style={styles.specialtyIconText}>Surgery</Text>
@@ -78,27 +50,29 @@ const Doctors = ({ navigation }) => {
 
             {/*create a table of each doctor & each cell should be a touchable opacity*/}
 
-            {
-                <View style={styles.doctors}>
-                    {
 
-                        doctor.filter(spec => spec.Specialization === specialization)
-                            .map((dr) => {
-                                return (
-                                    <View>
-                                        <TouchableOpacity onPress={() => navigation.navigate('Doctor', dr)}>
-                                            <View style={styles.doctor}>
-                                                <Image style={styles.imageIcon} source={{ uri: dr.ProfileImage }} />
-                                                <Text style={styles.drName}>{dr.Name}</Text>
-                                            </View>
-                                        </TouchableOpacity>
-                                    </View>
-                                )
-                            })
-                    }
+            <View style={styles.doctors}>
+                <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
+                    <View style={styles.doctor}></View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
+                    <View style={styles.doctor}></View>
+                </TouchableOpacity>
+                <br/>
+                <View >
+                    <TouchableOpacity style={{marginTop:20,marginRight:-90}} onPress={() => navigation.navigate('Doctor')}>
+                        <View style={styles.doctor }></View>
+                    </TouchableOpacity>
                 </View>
-            }
 
+                
+               
+                
+
+
+
+                
+            </View>
 
         </View>
     )
@@ -142,9 +116,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 50,
         width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        flex: 0
+        flexDirection: 'row', justifyContent: 'center'
     },
     doctor: {
         backgroundColor: '#1597E5',
@@ -152,18 +124,20 @@ const styles = StyleSheet.create({
         height: 170,
         margin: 5,
         borderRadius: 20,
+
     },
-    imageIcon: {
-        width: 80,
-        height: 80,
-        alignSelf: 'center',
-        borderRadius: 55,
-        marginTop: 15
-    },
-    drName: {
-        alignSelf: 'center',
-        color: '#fff',
-        marginTop: 20
-    },
+
+    doctor2:{
+        backgroundColor: '#1597E5',
+        width: 170,
+        height: 170,
+        margin: 5,
+        borderRadius: 20,
+        marginTop:200,
+        marginRight:120
+
+    }
+
+
 
 })
