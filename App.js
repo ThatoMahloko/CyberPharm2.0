@@ -27,11 +27,14 @@ import RenderScreen from './screens/RenderScreen';
 import Notifications from './screens/Notifications';
 import BookDoctors from './components/BookDoctors';
 import Facility from './components/Facility';
+import DonateBlood from './components/DonateBlood'
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="DonateBlood" component={DonateBlood} />
+      <Stack.Screen name="BookDoctors" component={BookDoctors} />
       <Stack.Screen name="Facility" component={Facility} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Register" component={Register} />

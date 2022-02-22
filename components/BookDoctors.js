@@ -2,15 +2,15 @@ import React from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 
 
-const BookDoctors = () => {
+const BookDoctors = ({navigation}) => {
     return (
         <View style={styles.container}>
         <Image style={styles.icon} source={require('../assets/appointment.png')}/>
         <Text style={styles.heading}>BOOK YOUR DOCTORS APPOINTMENT</Text>
         <Text style={styles.text}> Will be able to book appointments and get notifications before the apooint is due.</Text>
         <View style={styles.btns}>
-        <TouchableOpacity style={styles.button} >Prev</TouchableOpacity>
-        <TouchableOpacity style={styles.button2}>Next</TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('DonateBlood')}>Prev</TouchableOpacity>
+        <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Facility')}>Next</TouchableOpacity>
         </View>
         
     </View>

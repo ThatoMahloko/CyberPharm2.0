@@ -2,15 +2,15 @@ import React from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 
 
-const Facility = () => {
+const Facility = ({navigation}) => {
     return (
         <View style={styles.container}>
         <Image style={styles.icon} source={require('../assets/facility.png')}/>
         <Text style={styles.heading}>MEDICAL FACILITY</Text>
         <Text style={styles.text}>Should be able to find the nearest medical facility based on their current location and get directions</Text>
         <View style={styles.btns}>
-        <TouchableOpacity style={styles.button}>Prev</TouchableOpacity>
-        <TouchableOpacity style={styles.button2}>Next</TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('BookDoctors')}>Prev</TouchableOpacity>
+        <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Login')}>Next</TouchableOpacity>
         </View>
         
     </View>
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         paddingLeft:30,
         paddingTop:8,
         color:'white',
-        marginTop:150
+        marginTop:130
     },
     btns:{
         flexDirection:'row',
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         paddingLeft:15,
         paddingTop:8,
         color:'white',
-        marginTop:150,
+        marginTop:130,
         marginLeft:270
     },
 })

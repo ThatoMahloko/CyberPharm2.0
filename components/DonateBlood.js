@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 
-const DonateBlood = (props) => {
+const DonateBlood = ({navigation}) => {
     return (
         <View style={styles.contactContainer}>
             <View><Image source={require('../assets/donate blood.jpg')} style={styles.img} />
@@ -13,7 +13,7 @@ const DonateBlood = (props) => {
                     of blood donation and will direct you<br />
                     to the SANBS webpage.</Text>
 
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('BookDoctors')}>
                         <Text style={styles.btn}>Next</Text>
                     </TouchableOpacity>
             </View>
@@ -54,11 +54,11 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         backgroundColor: '#3E64FF',
         marginTop: 150, 
-        marginLeft: 360 
+        marginLeft: 340 
     },
     btn: {
         paddingLeft: 15,
         color: '#fff',
-        paddingTop: 4
+        paddingTop: 5
     }
 })
