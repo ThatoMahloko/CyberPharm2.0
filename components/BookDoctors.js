@@ -1,0 +1,75 @@
+import React from 'react'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+
+
+const BookDoctors = ({navigation}) => {
+    return (
+        <View style={styles.container}>
+        <Image style={styles.icon} source={require('../assets/appointment.png')}/>
+        <Text style={styles.heading}>BOOK APPOINTMENT</Text>
+        <Text style={styles.text}> Will be able to book appointments and get notifications before the apooint is due.</Text>
+        <View style={styles.btns}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('DonateBlood')}><Text style={styles.text2}>Prev</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Facility')}><Text style={styles.text2}>Next</Text></TouchableOpacity>
+        </View>
+        
+    </View>
+    )
+}
+
+export default BookDoctors
+
+const styles = StyleSheet.create({
+    container:{
+        backgroundColor:'white',
+        height:'100%'
+    },
+    icon:{
+        marginTop:30,
+        width:300, 
+        height:300, 
+        alignSelf:'center'
+    },
+    heading:{
+        fontSize:35,
+        marginTop:80,
+        textAlign:'center',
+        color:'#054EDE',
+        fontWeight:'bold',
+    },
+    text:{
+        marginTop:50,
+        textAlign:'center',
+        color:'#00A48F',
+        fontSize:20
+    },
+    button:{
+        height:'17%',
+        width:'25%',
+        backgroundColor:'#3E64FF',
+        borderRadius:20,
+        marginLeft:-20,
+        paddingLeft:30,
+        paddingTop:8,
+        color:'white',
+        marginTop:'45%'
+    },
+    btns:{
+        flexDirection:'row',
+    },
+    button2:{
+        height:'17%',
+        width:'35%',
+        backgroundColor:'#3E64FF',
+        borderRadius:20,
+        paddingLeft:15,
+        paddingTop:8,
+        color:'white',
+        marginTop:'45%',
+        marginLeft:240
+    },
+    text2:{
+        color:'white'
+        
+    }
+})
