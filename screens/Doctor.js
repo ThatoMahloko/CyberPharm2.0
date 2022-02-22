@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { StyleSheet, Text, View, StatusBar, Image, Button, TouchableOpacity, Linking, ScrollView, SafeAreaView } from 'react-native'
-import { Title, Paragraph } from 'react-native-paper';
-import { db } from '../config/firebase';
+import { Title, Paragraph } from 'react-native-paper'
+import { Avatar, Badge } from 'react-native-elements';
 
 const Doctor = ({ navigation, route }) => {
-
     const triggerCall = () => {
         Linking.openURL(route.params.Phone)
     };
     const triggerMail = () => {
         Linking.openURL(route.params.Email)
     }
-
 
     return (
         <SafeAreaView>
@@ -24,9 +22,32 @@ const Doctor = ({ navigation, route }) => {
                 />
 
                 <View style={styles.doctorCover}>
-                    <Image style={styles.imageIcon} source={require('../assets/image/thato.jpg')} />
+
+                    <Avatar style={styles.imageIcon}
+                        rounded
+                        source={{ uri: route.params.ProfileImage }}
+                        size="large"
+
+                    />
+
+                    {
+                        route.params.Status === false ?
+                            <Badge
+                                status="error"
+                                size="large"
+                                containerStyle={{ position: 'relative', top: -80, left: 20, }}
+                            />
+                            :
+                            <Badge
+                                status="success"
+                                size="large"
+                                containerStyle={{ position: 'relative', top: -80, left: 20, }}
+                            />
+                    }
+
+
                     <Title style={styles.drName}>{route.params.Name}</Title>
-                    <Text style={styles.drName}>Virologist</Text>
+                    <Text style={styles.drName}>{route.params.Specilization}</Text>
 
                     <View style={styles.medicalHistory}>
                         <View style={styles.hisIcon}>
@@ -50,7 +71,7 @@ const Doctor = ({ navigation, route }) => {
                 <View style={styles.infoContent}>
                     <Title style={styles.infoContentTitle}>About Doctor</Title>
                     <Paragraph>
-                        {route.params.About}
+                    {route.params.About}
                     </Paragraph>
                     <Title style={styles.infoContentTitle}>Working Time</Title>
                     <Paragraph>{route.params.WorkingTime}</Paragraph>
@@ -67,18 +88,16 @@ const Doctor = ({ navigation, route }) => {
                         </View>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.contactGroup} onPress={triggerCall}>
+                    <TouchableOpacity style={styles.contactGroup} onPress={triggerCall} en>
                         <Image style={styles.contactIcon} source={require('../assets/icons/Doctors/contact/call.png')} />
                         <View>
                             <Title>Audio Call</Title>
                             <Paragraph>Call your doctor directly</Paragraph>
                         </View>
                     </TouchableOpacity>
-
-
                 </View>
 
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Appointments', route.params)}>
+                <TouchableOpacity disabled={false} style={styles.button} onPress={() => navigation.navigate('Appointments',route.params)}>
                     <Text style={styles.text}>BOOK APPOINTMENT</Text>
                 </TouchableOpacity>
             </ScrollView>

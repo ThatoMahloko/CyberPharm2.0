@@ -1,13 +1,12 @@
-import { ScrollView } from 'native-base'
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, StatusBar, TextInput, Image, TouchableOpacity } from 'react-native'
-import { DataTable, List, Title } from 'react-native-paper'
+import { Avatar, Badge } from 'react-native-elements';
 import { db } from '../config/firebase'
 
 const Doctors = ({ navigation }) => {
-    const [phone, setPhone] = useState("");
-    const [doctor, setDoctor] = useState([]);
-    const [specialization, setSpecialization] = useState("");
+    const [phone, setPhone] = useState("")
+    const [doctor, setDoctor] = useState([])
+    const [specialization, setSpecialization] = useState("")
 
     const getDoctor = (() => {
         db.collection('Doctors')
@@ -15,22 +14,14 @@ const Doctors = ({ navigation }) => {
                 const dis = snapshot.docs.map((doc) => ({
                     id: doc.id,
                     ...doc.data()
-                }));
+                }))
+
                 setDoctor(dis)
             })
     })
 
-
     useEffect(() => {
         getDoctor()
-    })
-    const fliterDoc = ((value) => {
-        const data = doctor.filter(data => data.spec === value);
-
-        setDoctor(data)
-
-
-
     })
 
     return (
@@ -75,8 +66,8 @@ const Doctors = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
 
-
             {/*create a table of each doctor & each cell should be a touchable opacity*/}
+
 
             {
                 <View style={styles.doctors}>
@@ -85,10 +76,25 @@ const Doctors = ({ navigation }) => {
                         doctor.filter(spec => spec.Specialization === specialization)
                             .map((dr) => {
                                 return (
-                                    <View>
-                                        <TouchableOpacity onPress={() => navigation.navigate('Doctor', dr)}>
+
+                                    <View key={dr.id}>
+                                        <TouchableOpacity enabled={dr.Status} onPress={() => navigation.navigate('Doctor', dr)}>
                                             <View style={styles.doctor}>
-                                                <Image style={styles.imageIcon} source={{ uri: dr.ProfileImage }} />
+                                                <Avatar rounded style={styles.imageIcon} source={{ uri: dr.ProfileImage }} size="large" />
+                                                {
+                                                    dr.Status === false ?
+                                                        <Badge
+                                                            status="error"
+                                                            size="large"
+                                                            containerStyle={{ position: 'relative', top: -80, left: 20, }}
+                                                        />
+                                                        :
+                                                        <Badge
+                                                            status="success"
+                                                            size="large"
+                                                            containerStyle={{ position: 'relative', top: -80, left: 20, }}
+                                                        />
+                                                }
                                                 <Text style={styles.drName}>{dr.Name}</Text>
                                             </View>
                                         </TouchableOpacity>
@@ -98,7 +104,6 @@ const Doctors = ({ navigation }) => {
                     }
                 </View>
             }
-
 
         </View>
     )
@@ -142,11 +147,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 50,
         width: '100%',
+        display:'flex',
         flexDirection: 'row',
         justifyContent: 'center',
-        flex: 0
+        flexWrap:"wrap"
     },
-    doctor: {
+    doctor: {//
         backgroundColor: '#1597E5',
         width: 170,
         height: 170,
@@ -165,5 +171,6 @@ const styles = StyleSheet.create({
         color: '#fff',
         marginTop: 20
     },
+
 
 })
