@@ -1,28 +1,89 @@
 import React from 'react'
-import { StyleSheet, View, StatusBar, Image, TouchableOpacity, ScrollView, SafeAreaView, Text, BottomNavbar } from 'react-native'
+import { StyleSheet, View, StatusBar, Image, TouchableOpacity, ScrollView, SafeAreaView, Text, BottomNavbar, Alert, TextInput } from 'react-native'
 import { useEffect, useState } from 'react'
 import { db } from '../config/firebase'
-import ContactItem from '../components/ContactItem'
-import getUSER from '../config/user'
-import AddButton from '../components/AddButton'
+import { DataTable, Modal, Portal, Provider } from 'react-native-paper'
+import { firebase } from '../config/firebase'
+import { HiTrash } from "react-icons/hi";
+import { Icon, ListItem } from 'react-native-elements'
 
 const Contacts = ({ navigation }) => {
-    const [user, setUser] = useState([
-        { FirstName: '' },
-    ])
-    
+    const [editable, setEditable] = useState()
+    const [documentId, setDocumentId] = useState()
+    const userMail = firebase.auth().currentUser.email
+    const [firstName, setFirstName] = useState()
+    const [phoneNumber, setPhoneNumber] = useState()
     const [contact, setContact] = useState([
         {},
     ])
-
     const [details, setDetails] = useState([]);
-    
+    const [visible, setVisible] = useState(false);
 
+    const showModal = () => setVisible(true);
+    const hideModal = () => setVisible(false);
+    const containerStyle = { backgroundColor: 'white', padding: 20 };
+
+
+    const edit = () => {
+        showModal()
+    }
+
+    const modalEdit = () => {
+        if (firstName === "" && phoneNumber === "") {
+            Alert.alert("Please complete form")
+        } else {
+            db.collection('Contacts')
+                .doc(userMail)
+                .collection('Contact_List')
+                .doc(documentId)
+                .update({
+                    FirstName: firstName,
+                    PhoneNumber: phoneNumber
+                }).then(() => {
+                    console.log("Document successfully updated!");
+                    alert('Phone number successfully updated!')
+                })
+                .catch((error) => {
+                    // The document probably doesn't exist.
+                    console.error("Error updating document: ", error);
+                    alert('Error updating contact!')
+                });
+        }
+    }
+
+
+    const delete_ = (data) => {
+        Alert.alert(
+            "⚠️ Delete Contact ⚠️",
+            "Are you sure you want to delete this contact?",
+            [
+                {
+                    text: "Cancel",
+                    onPress: () => console.log("Cancel Pressed"),
+                    style: "cancel"
+                },
+                {
+                    text: "OK", onPress: () => {
+
+                        db.collection('Contacts')
+                            .doc(userMail)
+                            .collection('Contact_List')
+                            .doc(data)
+                            .delete().then(() => {
+                                console.log("Document successfully deleted!");
+                                alert('Document successfully deleted!')
+                            }).catch((error) => {
+                                console.error("Error removing document: ", error);
+                                alert("Document delete error ", error)
+                            })
+                    }
+                }
+            ]
+        )
+    }
     useEffect(() => {
-        const ud = getUSER();
-        console.log(ud)
         db.collection('Contacts')
-            .doc(ud)
+            .doc(userMail)
             .collection('Contact_List')
             .onSnapshot((snapshot) => {
                 const dis = snapshot.docs.map((doc) => ({
@@ -33,8 +94,7 @@ const Contacts = ({ navigation }) => {
             });
     }, []);
 
-   
-    
+
 
     return (
         <View style={styles.container}>
@@ -46,24 +106,51 @@ const Contacts = ({ navigation }) => {
                         hidden={false}
                         translucent={false}
                     />
+                    <TouchableOpacity style={styles.add} onPress={()=>navigation.navigate('AddContacts')}>
+                        <Icon name="plus" type="ant-design" color="white" />
+                    </TouchableOpacity>
+                    {
+                        contact.length == 0 ?
 
-                    {contact.length == 0 ?
-                   
-                         <Image style={styles.emptyIcon} source={require('../assets/icons/emptyContacts.png')} />
-                    
-                       
-                        :
-                        contact.map((data, k) => (
-                            <View style={styles.contactItem}>
-                                <ContactItem key={k} data={data} />
-                            </View>
-                        ))
-                       
+                            <Image style={styles.emptyIcon} source={require('../assets/icons/emptyContacts.png')} />
+
+
+                            :
+                            contact.map((data, k) => (
+
+                                <DataTable.Row style={styles.row} key={k} >
+                                    <ListItem.Content>
+                                        <Icon name="delete" type="ant-design" color="black" onPress={() => delete_(data.id)} />
+                                    </ListItem.Content>
+                                    <DataTable.Cell>{data.FirstName}</DataTable.Cell>
+                                    <DataTable.Cell>{data.PhoneNumber}</DataTable.Cell>
+                                    <ListItem.Content>
+                                        <Icon name="edit" type="ant-design" color="black" onPress={function () {
+                                            edit();
+                                            setDocumentId(data.id);
+                                        }} />
+                                    </ListItem.Content>
+                                </DataTable.Row>
+
+                            ))
+
                     }
+
 
                 </ScrollView>
             </View>
-            
+            <Provider>
+                <Portal>
+                    <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
+                        <TextInput placeholder={'FirstName'} style={styles.input} onChangeText={(firstName) => setFirstName(firstName)} />
+                        <TextInput keyboardType='number-pad' placeholder={'Phone Number'} style={styles.input} onChangeText={(phoneNumber) => setPhoneNumber(phoneNumber)} />
+                        <TouchableOpacity style={styles.button} onPress={modalEdit}>
+                            <Text style={styles.text}>UPDATE</Text>
+                        </TouchableOpacity>
+                    </Modal>
+                </Portal>
+            </Provider>
+
         </View>
     )
 }
@@ -76,14 +163,14 @@ const styles = StyleSheet.create({
         marginTop: 0,
         paddingBottom: 0,
         marginBottom: 0,
-        height: '100px',
+        // backgroundColor: 'red'
     },
 
     contactItem: {
         alignItems: 'center',
         marginBottom: -40,
-        flexDirection:'row',
-        marginLeft:20,
+        flexDirection: 'row',
+        marginLeft: 20,
         padding: 0
     }
     ,
@@ -104,17 +191,55 @@ const styles = StyleSheet.create({
         width: 60,
         height: 60,
         borderRadius: 30,
-        end: -310,
-        top: -70,
+        end: -320,
+        top: 20,
         justifyContent: 'center',
         alignContent: 'center',
+        position:'relative',
+        zIndex:1,
     },
     addText: {
         fontSize: 15,
         color: '#fff',
-        marginLeft: 16, 
-        marginBottom:5
+        marginLeft: 16,
+        marginBottom: 5
 
+    },
+    row: {
+        marginTop: 5,
+        marginBottom: 5,
+        justifyContent: 'center',
+        height: 70
+    },
+    icon: {
+        height: 10,
+        width: 10,
+    },
+    input: {
+        width: 342,
+        height: 52,
+        borderRadius: 10,
+        backgroundColor: '#FFFFFF',
+        paddingLeft: 14,
+        alignSelf: 'center',
+        marginTop: 30,
+        borderWidth: 1,
+        borderColor: 'black',
+        marginTop: 20,
+    },
+    button: {
+        width: 360,
+        height: 50,
+        backgroundColor: '#3E64FF',
+        justifyContent: 'center',
+        alignContent: 'center',
+        borderRadius: 10,
+        alignSelf: 'center',
+        marginTop: 20
+    },
+    text: {
+        alignSelf: 'center',
+        color: '#fff',
     }
 
 })

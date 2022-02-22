@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { StyleSheet, Text, View, StatusBar, TextInput, TouchableOpacity } from 'react-native'
 import { Title } from 'react-native-paper'
 import getUSER from '../config/user'
-import { db } from '../config/firebase'
+import { db,firebase} from '../config/firebase'
 
 const AddContacts = () => {
 
@@ -10,13 +10,13 @@ const AddContacts = () => {
     const [lastName, setLastName] = useState();
     const [phoneNumber, setPhoneNumber] = useState();
     const [email, setEmail] = useState();
-
+    const userMail = firebase.auth().currentUser.email
 
     function save() {
         const ud = getUSER();
         console.log(ud)
 
-        db.collection('Contacts').doc(ud).collection('Contact_List').add(
+        db.collection('Contacts').doc(userMail).collection('Contact_List').add(
             {
                 Email: email,
                 FirstName: firstName,
