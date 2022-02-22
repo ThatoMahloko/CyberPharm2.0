@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, Text, View, StatusBar, TextInput, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, StatusBar, TextInput, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { Avatar, Badge } from 'react-native-elements';
 import { db } from '../config/firebase'
 
@@ -7,6 +7,7 @@ const Doctors = ({ navigation }) => {
     const [phone, setPhone] = useState("")
     const [doctor, setDoctor] = useState([])
     const [specialization, setSpecialization] = useState("")
+    const [search, setSearch] = useState("")
 
     const getDoctor = (() => {
         db.collection('Doctors')
@@ -33,7 +34,6 @@ const Doctors = ({ navigation }) => {
                 translucent={false}
             />
 
-            <TextInput placeholder={'Search'} style={styles.input} />
 
             <View style={styles.specialtyList}>
 
@@ -70,39 +70,43 @@ const Doctors = ({ navigation }) => {
 
 
             {
-                <View style={styles.doctors}>
-                    {
+                doctor.length === 0 ?
 
-                        doctor.filter(spec => spec.Specialization === specialization)
-                            .map((dr) => {
-                                return (
+                    <ActivityIndicator size={'large'} />
 
-                                    <View key={dr.id}>
-                                        <TouchableOpacity enabled={dr.Status} onPress={() => navigation.navigate('Doctor', dr)}>
-                                            <View style={styles.doctor}>
-                                                <Avatar rounded style={styles.imageIcon} source={{ uri: dr.ProfileImage }} size="large" />
-                                                {
-                                                    dr.Status === false ?
-                                                        <Badge
-                                                            status="error"
-                                                            size="large"
-                                                            containerStyle={{ position: 'relative', top: -80, left: 20, }}
-                                                        />
-                                                        :
-                                                        <Badge
-                                                            status="success"
-                                                            size="large"
-                                                            containerStyle={{ position: 'relative', top: -80, left: 20, }}
-                                                        />
-                                                }
-                                                <Text style={styles.drName}>{dr.Name}</Text>
-                                            </View>
-                                        </TouchableOpacity>
-                                    </View>
-                                )
-                            })
-                    }
-                </View>
+                    :
+
+                    <View style={styles.doctors}>
+                        {
+                            doctor.filter(spec => spec.Specialization === specialization)
+                                .map((dr) => {
+                                    return (
+                                        <View key={dr.id}>
+                                            <TouchableOpacity enabled={dr.Status} onPress={() => navigation.navigate('Doctor', dr)}>
+                                                <View style={styles.doctor}>
+                                                    <Avatar rounded style={styles.imageIcon} source={{ uri: dr.ProfileImage }} size="large" />
+                                                    {
+                                                        dr.Status === false ?
+                                                            <Badge
+                                                                status="error"
+                                                                size="large"
+                                                                containerStyle={{ position: 'relative', top: -80, left: 20, }}
+                                                            />
+                                                            :
+                                                            <Badge
+                                                                status="success"
+                                                                size="large"
+                                                                containerStyle={{ position: 'relative', top: -80, left: 20, }}
+                                                            />
+                                                    }
+                                                    <Text style={styles.drName}>{dr.Name}</Text>
+                                                </View>
+                                            </TouchableOpacity>
+                                        </View>
+                                    )
+                                })
+                        }
+                    </View>
             }
 
         </View>
@@ -147,10 +151,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 50,
         width: '100%',
-        display:'flex',
+        display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
-        flexWrap:"wrap"
+        flexWrap: "wrap"
     },
     doctor: {//
         backgroundColor: '#1597E5',

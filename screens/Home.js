@@ -73,7 +73,7 @@ const Home = ({ navigation }) => {
                     <Image source={require('../assets/icon/contactIcon.png')} />
                     <Text style={styles.imageText}>Contacts</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.clickIcons} onPress={() => navigation.navigate('RenderScreen')}>
+                <TouchableOpacity style={styles.clickIcons} onPress={() => navigation.navigate('Symptom')}>
                     <Image source={require('../assets/icon/selfDiagnose.png')} />
                     <Text style={styles.imageText}>Self Help</Text>
                 </TouchableOpacity>
