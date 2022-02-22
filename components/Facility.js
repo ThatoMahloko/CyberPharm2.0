@@ -9,8 +9,8 @@ const Facility = ({navigation}) => {
         <Text style={styles.heading}>MEDICAL FACILITY</Text>
         <Text style={styles.text}>Should be able to find the nearest medical facility based on their current location and get directions</Text>
         <View style={styles.btns}>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('BookDoctors')}>Prev</TouchableOpacity>
-        <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Login')}>Next</TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('BookDoctors')}><Text style={styles.text2}>Prev</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Login')}><Text style={styles.text2}>Next</Text></TouchableOpacity>
         </View>
         
     </View>
@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
     },
     icon:{
         marginTop:40,
-        width:350, 
-        height:350, 
+        width:300, 
+        height:300, 
         alignSelf:'center'
     },
     heading:{
@@ -52,10 +52,13 @@ const styles = StyleSheet.create({
         paddingLeft:30,
         paddingTop:8,
         color:'white',
-        marginTop:130
+        marginTop:70
     },
     btns:{
         flexDirection:'row',
+    },
+    text2:{
+        color:'white'
     },
     button2:{
         height:33,
@@ -65,7 +68,7 @@ const styles = StyleSheet.create({
         paddingLeft:15,
         paddingTop:8,
         color:'white',
-        marginTop:130,
-        marginLeft:270
+        marginTop:70,
+        marginLeft:240
     },
 })

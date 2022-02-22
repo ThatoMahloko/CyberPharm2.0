@@ -9,8 +9,8 @@ const BookDoctors = ({navigation}) => {
         <Text style={styles.heading}>BOOK YOUR DOCTORS APPOINTMENT</Text>
         <Text style={styles.text}> Will be able to book appointments and get notifications before the apooint is due.</Text>
         <View style={styles.btns}>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('DonateBlood')}>Prev</TouchableOpacity>
-        <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Facility')}>Next</TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('DonateBlood')}><Text style={styles.text2}>Prev</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Facility')}><Text style={styles.text2}>Next</Text></TouchableOpacity>
         </View>
         
     </View>
@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
     },
     icon:{
         marginTop:40,
-        width:350, 
-        height:350, 
+        width:300, 
+        height:300, 
         alignSelf:'center'
     },
     heading:{
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         paddingLeft:30,
         paddingTop:8,
         color:'white',
-        marginTop:100
+        marginTop:70
     },
     btns:{
         flexDirection:'row',
@@ -65,7 +65,10 @@ const styles = StyleSheet.create({
         paddingLeft:15,
         paddingTop:8,
         color:'white',
-        marginTop:100,
-        marginLeft:270
+        marginTop:70,
+        marginLeft:240
     },
+    text2:{
+        color:'white'
+    }
 })

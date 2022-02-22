@@ -4,13 +4,13 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 const DonateBlood = ({navigation}) => {
     return (
         <View style={styles.contactContainer}>
-            <View><Image source={require('../assets/donate blood.jpg')} style={styles.img} />
+            <View><Image source={require('../assets/donate.png')} style={styles.img} />
 
-                <Text style={styles.header}>DONATE BLOOD <br />HELP SAVE A LIFE</Text>
+                <Text style={styles.header}>DONATE BLOOD HELP SAVE A LIFE</Text>
 
 
-                <Text style={styles.text}>Provides information on the importance<br />
-                    of blood donation and will direct you<br />
+                <Text style={styles.text}>Provides information on the importance
+                    of blood donation and will direct you
                     to the SANBS webpage.</Text>
 
                     <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('BookDoctors')}>
@@ -30,16 +30,17 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     img: {
-        width: 350,
-        height: 300,
-        marginTop: 30,
+        marginTop:40,
+        width:300, 
+        height:300, 
+        alignSelf:'center'
     },
     header: {
         marginTop: 60,
         fontSize: 35,
         fontWeight: 'bold',
         color: '#054EDE',
-        marginLeft: 50
+        textAlign:'center'
     },
     text: {
         marginTop: 30,
@@ -53,8 +54,8 @@ const styles = StyleSheet.create({
         height: 33,
         borderRadius: 20,
         backgroundColor: '#3E64FF',
-        marginTop: 150, 
-        marginLeft: 340 
+        marginTop: 70, 
+        marginLeft: 300 
     },
     btn: {
         paddingLeft: 15,
