@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, StatusBar, TextInput, TouchableOpacity } from '
 import resetPassword from '../auth/resetPassword'
 import LogoIcon from '../components/LogoIcon'
 
+
 const ResetPassword = () => {
     const [userEmail, setUserEmail] = useState('')
 
@@ -46,6 +47,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         paddingLeft: 14,
         alignSelf: 'center',
+        marginTop: 30,
+        borderWidth: 1,
+        borderColor: 'black',    
         marginTop: 20,
     },
     button: {

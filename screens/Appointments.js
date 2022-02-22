@@ -71,7 +71,7 @@ const Appointments = ({ route }) => {
       Alert.alert("Appointment Booked Successfully")
     }).catch()
 
-    
+
   }
 
   const handleSubmitAppointment = () => {
@@ -136,7 +136,9 @@ const Appointments = ({ route }) => {
             <List.Item title='15:00PM :: 18:00PM' />
           </TouchableOpacity>
 
-
+          <TouchableOpacity onPress={timeNinen}>
+            <List.Item title='21:00AM :: 22:00PM' />
+          </TouchableOpacity>
 
 
         </List.Accordion>
