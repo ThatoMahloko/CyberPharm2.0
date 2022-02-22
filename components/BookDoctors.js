@@ -6,7 +6,7 @@ const BookDoctors = ({navigation}) => {
     return (
         <View style={styles.container}>
         <Image style={styles.icon} source={require('../assets/appointment.png')}/>
-        <Text style={styles.heading}>BOOK YOUR DOCTORS APPOINTMENT</Text>
+        <Text style={styles.heading}>BOOK APPOINTMENT</Text>
         <Text style={styles.text}> Will be able to book appointments and get notifications before the apooint is due.</Text>
         <View style={styles.btns}>
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('DonateBlood')}><Text style={styles.text2}>Prev</Text></TouchableOpacity>
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         height:'100%'
     },
     icon:{
-        marginTop:40,
+        marginTop:30,
         width:300, 
         height:300, 
         alignSelf:'center'
@@ -44,31 +44,32 @@ const styles = StyleSheet.create({
         fontSize:20
     },
     button:{
-        height:33,
-        width:82,
+        height:'17%',
+        width:'25%',
         backgroundColor:'#3E64FF',
         borderRadius:20,
         marginLeft:-20,
         paddingLeft:30,
         paddingTop:8,
         color:'white',
-        marginTop:70
+        marginTop:'45%'
     },
     btns:{
         flexDirection:'row',
     },
     button2:{
-        height:33,
-        width:82,
+        height:'17%',
+        width:'35%',
         backgroundColor:'#3E64FF',
         borderRadius:20,
         paddingLeft:15,
         paddingTop:8,
         color:'white',
-        marginTop:70,
+        marginTop:'45%',
         marginLeft:240
     },
     text2:{
         color:'white'
+        
     }
 })

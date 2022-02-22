@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         height:'100%'
     },
     icon:{
-        marginTop:40,
+        marginTop:30,
         width:300, 
         height:300, 
         alignSelf:'center'
@@ -44,15 +44,15 @@ const styles = StyleSheet.create({
         fontSize:20
     },
     button:{
-        height:33,
-        width:82,
+        height:'15%',
+        width:'25%',
         backgroundColor:'#3E64FF',
         borderRadius:20,
         marginLeft:-20,
         paddingLeft:30,
         paddingTop:8,
         color:'white',
-        marginTop:70
+        marginTop:'50%'
     },
     btns:{
         flexDirection:'row',
@@ -61,14 +61,14 @@ const styles = StyleSheet.create({
         color:'white'
     },
     button2:{
-        height:33,
-        width:82,
+        height:'15%',
+        width:'35%',
         backgroundColor:'#3E64FF',
         borderRadius:20,
         paddingLeft:15,
         paddingTop:8,
         color:'white',
-        marginTop:70,
+        marginTop:'50%',
         marginLeft:240
     },
 })

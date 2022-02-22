@@ -136,7 +136,7 @@ const Appointments = ({ route }) => {
             <List.Item title='15:00PM :: 18:00PM' />
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={timeNinen}>
+          <TouchableOpacity onPress={timeNine}>
             <List.Item title='21:00AM :: 22:00PM' />
           </TouchableOpacity>
 
