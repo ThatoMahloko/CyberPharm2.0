@@ -72,6 +72,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         paddingLeft: 14,
         alignSelf: 'center',
+        marginTop: 30,
+        borderWidth: 1,
+        borderColor: 'black',
         marginTop: 20,
     }
     ,
@@ -91,6 +94,7 @@ const styles = StyleSheet.create({
     }
     ,
     links: {
+        marginTop: 100,
         marginTop: 20
     }
     ,
