@@ -52,26 +52,19 @@ const Doctors = ({ navigation }) => {
 
 
             <View style={styles.doctors}>
-                <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
+                <TouchableOpacity style={{ marginBottom: -380, marginRight: 360, position:'relative' }} onPress={() => navigation.navigate('Doctor')}>
                     <View style={styles.doctor}></View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('Doctor')}>
+                <TouchableOpacity  onPress={() => navigation.navigate('Doctor')}>
                     <View style={styles.doctor}></View>
                 </TouchableOpacity>
-                <br/>
-                <View >
-                    <TouchableOpacity style={{marginTop:20,marginRight:-90}} onPress={() => navigation.navigate('Doctor')}>
-                        <View style={styles.doctor }></View>
+
+                <TouchableOpacity style={{ marginBottom: -380, alignSelf: 'center'}} onPress={() => navigation.navigate('Doctor')}>
+                    <View style={styles.doctor}></View>
+                </TouchableOpacity>
+                    <TouchableOpacity style={{ marginBottom: -380, marginRight: 390, position:'relative' }} onPress={() => navigation.navigate('Doctor')}>
+                        <View style={styles.doctor}></View>
                     </TouchableOpacity>
-                </View>
-
-                
-               
-                
-
-
-
-                
             </View>
 
         </View>
@@ -124,17 +117,18 @@ const styles = StyleSheet.create({
         height: 170,
         margin: 5,
         borderRadius: 20,
+        
 
     },
 
-    doctor2:{
+    doctor2: {
         backgroundColor: '#1597E5',
         width: 170,
         height: 170,
         margin: 5,
         borderRadius: 20,
-        marginTop:200,
-        marginRight:120
+        marginTop: 200,
+        marginRight: 120
 
     }
 
