@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, StatusBar, Image, TouchableOpacity, ScrollView, SafeAreaView, Text, BottomNavbar } from 'react-native'
+import { StyleSheet, View, StatusBar, Image, TouchableOpacity, ScrollView, SafeAreaView, Text, BottomNavbar, Alert, TextInput } from 'react-native'
 import { useEffect, useState } from 'react'
 import { db } from '../config/firebase'
 import ContactItem from '../components/ContactItem'
@@ -14,10 +14,8 @@ const Contacts = ({ navigation }) => {
     ])
     const [details, setDetails] = useState([]);
     useEffect(() => {
-        const ud = getUSER();
-        console.log(ud)
         db.collection('Contacts')
-            .doc(ud)
+            .doc(userMail)
             .collection('Contact_List')
             .onSnapshot((snapshot) => {
                 const dis = snapshot.docs.map((doc) => ({
@@ -57,13 +55,13 @@ const styles = StyleSheet.create({
         marginTop: 0,
         paddingBottom: 0,
         marginBottom: 0,
-        height: '100px',
+        // backgroundColor: 'red'
     },
     contactItem: {
         alignItems: 'center',
         marginBottom: -40,
-        flexDirection:'row',
-        marginLeft:20,
+        flexDirection: 'row',
+        marginLeft: 20,
         padding: 0
     }
     ,
@@ -83,10 +81,12 @@ const styles = StyleSheet.create({
         width: 60,
         height: 60,
         borderRadius: 30,
-        end: -310,
-        top: -70,
+        end: -320,
+        top: 20,
         justifyContent: 'center',
         alignContent: 'center',
+        position:'relative',
+        zIndex:1,
     },
     addText: {
         fontSize: 15,
