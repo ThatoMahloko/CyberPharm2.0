@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
         marginTop: 0,
         paddingBottom: 0,
         marginBottom: 0,
-        height: '100px',
+        height: '100%',
     },
 
     contactItem: {

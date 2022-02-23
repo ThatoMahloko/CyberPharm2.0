@@ -69,23 +69,6 @@ const Doctors = ({ navigation }) => {
             {/*create a table of each doctor & each cell should be a touchable opacity*/}
 
 
-<<<<<<< HEAD
-            <View style={styles.doctors}>
-                <TouchableOpacity style={{ marginBottom: -380, marginRight: 360, position:'relative' }} onPress={() => navigation.navigate('Doctor')}>
-                    <View style={styles.doctor}></View>
-                </TouchableOpacity>
-                <TouchableOpacity  onPress={() => navigation.navigate('Doctor')}>
-                    <View style={styles.doctor}></View>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={{ marginBottom: -380, alignSelf: 'center'}} onPress={() => navigation.navigate('Doctor')}>
-                    <View style={styles.doctor}></View>
-                </TouchableOpacity>
-                    <TouchableOpacity style={{ marginBottom: -380, marginRight: 390, position:'relative' }} onPress={() => navigation.navigate('Doctor')}>
-                        <View style={styles.doctor}></View>
-                    </TouchableOpacity>
-            </View>
-=======
             {
                 <View style={styles.doctors}>
                     {
@@ -121,7 +104,6 @@ const Doctors = ({ navigation }) => {
                     }
                 </View>
             }
->>>>>>> 5b6eca44a5d496645bad5b9bf60b50da8f9d67f1
 
         </View>
     )
@@ -154,8 +136,10 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     centerImage: {
-        width: 30,
-        height: 30,
+        width: 20,
+        height: 20,
+        marginLeft:-10
+
 
     },
     specialtyIconText: {
@@ -176,23 +160,6 @@ const styles = StyleSheet.create({
         height: 170,
         margin: 5,
         borderRadius: 20,
-<<<<<<< HEAD
-        
-
-    },
-
-    doctor2: {
-        backgroundColor: '#1597E5',
-        width: 170,
-        height: 170,
-        margin: 5,
-        borderRadius: 20,
-        marginTop: 200,
-        marginRight: 120
-
-    }
-
-=======
     },
     imageIcon: {
         width: 80,
@@ -206,7 +173,6 @@ const styles = StyleSheet.create({
         color: '#fff',
         marginTop: 20
     },
->>>>>>> 5b6eca44a5d496645bad5b9bf60b50da8f9d67f1
 
 
 })
