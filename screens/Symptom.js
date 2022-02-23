@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, StatusBar, TextInput, TouchableOpacity, ScrollView, Image } from 'react-native'
-import { Title, RadioButton, List, Modal, Provider, Portal } from 'react-native-paper'
+import { Title, RadioButton, List, Modal, Provider, Portal, Card, Button } from 'react-native-paper'
 import { Spinner, VStack, Cente, NativeBaseProvider, Center } from 'native-base'
+import { Icon } from 'react-native-elements'
 import SymptomList from '../Api/SymptomList'
 import Treatment_Diagnosis from '../Api/Treatment_Diagnosis'
+import { HiX } from "react-icons/hi";
 
 const Symptom = () => {
     var femaleDiagnosis, leastConcerning
+    const [popVisible, setPopVisible] = useState(false)
     const [value, setValue] = useState('female');
     const [expanded, setExpanded] = useState(false);
     const handlePress = () => setExpanded(!expanded);
@@ -16,26 +19,42 @@ const Symptom = () => {
     const containerStyle = { backgroundColor: 'white', padding: 20, height: 400, alignItems: 'center', textAlign: 'center' };
     const generatedData = { alignItems: 'center' }
     const [symptomId, setSymptomId] = useState();
-    const [title, setTitle] = useState('');
+    const [title, setTitle] = useState('Select Symptom');
     const [birthYear, setBirthYear] = useState('');
-
 
     const Pressable = (symptomId, title) => {
         console.log(symptomId, title, value, birthYear)
         setTitle(title)
         setSymptomId(symptomId);
+        setExpanded(false)
     }
+    const display = () => {
+        return (
+            <TouchableOpacity style={styles.dialogClose} >
+                <Image source={require('../assets/icon/dialogClose.png')} />
+            </TouchableOpacity>
+        )
+    }
+    const showPopHidePop = () => {
+        if (title === "Select Symptom") {
+            alert("⚠️Select Symptom⚠️")
+        } else {
 
-
-
-
-
-
+            if (popVisible === false) {
+                setPopVisible(true)
+            } else {
+                setPopVisible(false)
+            }
+        }
+    }
 
     return (
         <View style={styles.container}>
+            <View>
+                <Image style={styles.img} source={require('../assets/icons/diagnose.png')} />
+            </View>
+            <Title style={styles.titleData}>Self Dignosis</Title>
 
-            <Image style={styles.img} source={require('../assets/icons/diagnose.png')} />
             <StatusBar
                 animated={false}
                 barStyle='dark-content'
@@ -43,10 +62,9 @@ const Symptom = () => {
                 translucent={false}
             />
 
-            <TextInput placeholder={'BIRTH YEAR'} style={styles.input} onChangeText={(birthYear) => setBirthYear(birthYear)} />
             <List.Section style={styles.lists}>
                 <List.Accordion
-                    title="SYMPTOM LIST"
+                    title={title}
                     left={props => <List.Icon {...props} icon="" />}
                     expanded={expanded}
                     onPress={handlePress}>
@@ -65,53 +83,67 @@ const Symptom = () => {
                 </List.Accordion>
             </List.Section>
 
-            <Title style={styles.title}>Gender</Title>
-            <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value}>
-                <View style={styles.groupCenter}>
-                    <Title style={styles.titleGender}>male</Title>
-                    <RadioButton value="male" />
-                    <Title style={styles.titleGenderFemale}>female</Title>
-                    <RadioButton value="female" />
-                </View>
-            </RadioButton.Group>
-
-            <TouchableOpacity style={styles.button} onPress={showModal}>
-                <Text style={styles.text}>SUBMIT</Text>
-            </TouchableOpacity>
 
 
-            <Provider>
-                <Portal>
-                    <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-                        <View style={styles.diagnosisData}>
+            {
+                popVisible === true ?
+                    <></>
+                    :
+                    <TouchableOpacity style={styles.button} onPress={showPopHidePop}>
+                        <Text style={styles.text}>SUBMIT</Text>
+                    </TouchableOpacity>
 
-                        </View>
-                        {
-                            Treatment_Diagnosis.filter(userHealthData => userHealthData.tagId === symptomId)
-                                .map(userHealthData =>
-                                    <ScrollView horizontal={false} contentContainerStyle={generatedData}>
-                                        <Title style={styles.titleData}>Birth Year: {birthYear}</Title>
-                                        <Title style={styles.titleData}>Gender: {value}</Title>
-                                        <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Diagnosis:</Title>
-                                        <Text style={styles.diagnosisData}>{userHealthData.leastConcerningDiagnosis}</Text>
-                                        <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Descrpition:</Title>
-                                        <Text style={styles.diagnosisData}>{userHealthData.leastConcerningDescription}</Text>
-                                        <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Specialist:</Title>
-                                        <Text style={styles.diagnosisData}>{userHealthData.leastConcerningSpecialist}</Text>
-                                        <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Diagnosis:</Title>
-                                        <Text style={styles.diagnosisData}>{userHealthData.mostConcerningDiagnosis}</Text>
-                                        <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Description:</Title>
-                                        <Text style={styles.diagnosisData}>{userHealthData.mostConcerningDescription}</Text>
-                                        <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Specialist:</Title>
-                                        <Text style={styles.diagnosisData}>{userHealthData.mostConcerningSpecialist}</Text>
-                                        <Title style={styles.titleData} key={userHealthData.tagId}>Female Diagnosis:</Title>
-                                        <Text style={styles.diagnosisData}>{userHealthData.femaleDiagnosis}</Text>
-                                    </ScrollView>
-                                )
-                        }
-                    </Modal>
-                </Portal>
-            </Provider>
+            }
+            <>
+                {
+                    popVisible === true ?
+                        <ScrollView style={styles.popUpCard} horizontal={false}>
+                            {display}
+
+                            {
+                                Treatment_Diagnosis.filter(userHealthData => userHealthData.tagId === symptomId)
+                                    .map((userHealthData) => {
+                                        return (
+                                            <View key={userHealthData.tagId}>
+                                                <View style={{marginLeft:200}}>
+                                                    <Icon name='close' style={styles.buttonClose} onPress={showPopHidePop} />
+                                                </View>
+                                                <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Diagnosis:</Title>
+                                                <Text style={styles.diagnosisData}>{userHealthData.leastConcerningDiagnosis}</Text>
+                                                <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Descrpition:</Title>
+                                                <Text style={styles.diagnosisData}>{userHealthData.leastConcerningDescription}</Text>
+                                                <Title style={styles.titleData} key={userHealthData.tagId}>Least Concerning Specialist:</Title>
+                                                <Text style={styles.diagnosisData}>{userHealthData.leastConcerningSpecialist}</Text>
+                                                <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Diagnosis:</Title>
+                                                <Text style={styles.diagnosisData}>{userHealthData.mostConcerningDiagnosis}</Text>
+                                                <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Description:</Title>
+                                                <Text style={styles.diagnosisData}>{userHealthData.mostConcerningDescription}</Text>
+                                                <Title style={styles.titleData} key={userHealthData.tagId}>Most Concerning Specialist:</Title>
+                                                <Text style={styles.diagnosisData}>{userHealthData.mostConcerningSpecialist}</Text>
+                                                <Title style={styles.titleData} key={userHealthData.tagId}>Female Diagnosis:</Title>
+                                                <Text style={styles.diagnosisData}>{userHealthData.femaleDiagnosis}</Text>
+                                            </View>
+                                        )
+                                    })
+                            }
+                            <Text styles={{ margin: 10, marginBottom: 50 }}></Text>
+                            <Text styles={{ margin: 10, marginBottom: 50 }}></Text>
+                            <Text styles={{ margin: 10, marginBottom: 50 }}></Text>
+                            <Text styles={{ margin: 10, marginBottom: 50 }}></Text>
+                            <Text styles={{ margin: 10, marginBottom: 50 }}></Text>
+                            <Text styles={{ margin: 10, marginBottom: 50 }}></Text>
+                            <Text styles={{ margin: 10, marginBottom: 50 }}></Text>
+                            <Text styles={{ margin: 10, marginBottom: 50 }}></Text>
+                            <Text styles={{ margin: 10, marginBottom: 50 }}></Text>
+                            <Text styles={{ margin: 10, marginBottom: 50 }}></Text>
+                        </ScrollView>
+                        :
+                        <></>
+                }
+            </>
+
+
+
 
         </View>
     )
@@ -122,7 +154,9 @@ export default Symptom
 const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
-        marginTop: 20
+        marginTop: 0,
+        zIndex: -1,
+        backgroundColor: '#F8F8FA'
     },
     input: {
         width: 342,
@@ -154,9 +188,7 @@ const styles = StyleSheet.create({
     titleGenderFemale: {
         color: '#3E64FF',
         marginLeft: '25%'
-
     },
-
     button: {
         width: 360,
         height: 50,
@@ -168,20 +200,47 @@ const styles = StyleSheet.create({
         marginTop: 20,
 
     },
+    dialogClose: {
+        width: 20,
+        height: 20,
+        left: 300
+    },
+    popUpCard: {
+        height: '60%',
+        width: '100%',
+        borderTopLeftRadius: 40,
+        borderTopRightRadius: 40,
+        padding: 20,
+        backgroundColor: 'white',
+        paddingBottom: 100
+    },
     diagnosisData: {
         alignItems: 'center',
         textAlign: 'center'
     },
     titleData: {
-        // justifyContent: 'center',
+        textAlign: 'center',
         fontWeight: 'bold',
-        backgroundColor: "#fff"
     },
     text: {
         alignSelf: 'center',
         color: '#fff',
     },
     img: {
-        height: 200
+        height: 400,
+        width: '100%',
+        marginTop: 0
     },
+    buttonClose: {
+        width: 60,
+        height: 60,
+        backgroundColor: '#fff',
+        justifyContent: 'center',
+        alignContent: 'center',
+        borderRadius: 25,
+        alignSelf: 'center',
+        marginTop: 20,
+        // left: 150
+
+    }
 })

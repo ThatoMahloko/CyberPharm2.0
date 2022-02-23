@@ -5,10 +5,12 @@ import { firebase } from '../config/firebase'
 import * as SMS from 'expo-sms';
 
 const SOS = ({ navigation }) => {
-    const phoneNUmbers = []
+    const [phoneNUmbers, setPhoneNumbers] = useState([])
     const [contact, setContact] = useState([
         {},
     ])
+
+    const user = firebase.auth().currentUser
     useEffect(() => {
         const ud = getUSER();
         console.log(ud)
@@ -23,10 +25,13 @@ const SOS = ({ navigation }) => {
                     ...doc.data(),
                 }));
                 setContact(dis);
-            });          
+                contact.map((cont) => {
+                    setPhoneNumbers(cont.PhoneNumber)
+                })
+            });
     }, []);
 
-    const SOS = async () => {
+    const SOSPanic = async () => {
         const isAvailable = await SMS.isAvailableAsync();
         if (isAvailable) {
             // do your SMS stuff here
@@ -34,8 +39,12 @@ const SOS = ({ navigation }) => {
                 Alert.alert('You have no contatcs to alert!!, ADD CONTACTS!');
 
             } else {
-                
-                console.log(contact[3])
+
+                SMS.sendSMSAsync(
+                    phoneNUmbers,
+                    ` SOS Alert from user ${user.displayName} Health is at risk! `
+                )
+
             }
         } else {
             // misfortune... there's no SMS available on this device
@@ -53,7 +62,7 @@ const SOS = ({ navigation }) => {
                 translucent={false}
             />
 
-            <TouchableOpacity style={styles.panicView} onPress={SOS}>
+            <TouchableOpacity style={styles.panicView} onPress={SOSPanic}>
                 <Image style={styles.panicButton} source={require('../assets/icons/SOS.png')} />
             </TouchableOpacity>
 

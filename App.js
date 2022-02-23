@@ -24,13 +24,23 @@ import EditProfile from './screens/EditProfile';
 import FacilityInfo from './screens/FacilityInfo';
 import AssetExample from './screens/AssetExample';
 import RenderScreen from './screens/RenderScreen';
-import Notifications from './screens/Notifications'
+import Notifications from './screens/Notifications';
+import BookDoctors from './components/BookDoctors';
+import Facility from './components/Facility';
+import DonateBlood from './components/DonateBlood'
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
+<<<<<<< HEAD
       <Stack.Navigator screenOptions={{ headerShown: true }}>
       
+=======
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="DonateBlood" component={DonateBlood} />
+      <Stack.Screen name="BookDoctors" component={BookDoctors} />
+      <Stack.Screen name="Facility" component={Facility} />
+>>>>>>> cbc2e08211cd64a1fa9480914a4233a8b28b5c6f
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="ResetPassword" component={ResetPassword} />
@@ -49,7 +59,6 @@ export default function App() {
       <Stack.Screen name="ScanCard" component={ScanCard} />
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="EditProfile" component={EditProfile} />
-      <Stack.Screen name="RenderScreen" component={RenderScreen} />
       <Stack.Screen name="FacilityInfo" component={FacilityInfo} />
       <Stack.Screen name="Notifications" component={Notifications} />
       </Stack.Navigator>

@@ -4,6 +4,7 @@ import AssetExample from './AssetExample';
 import Treatment_Diagnosis from '../Api/Treatment_Diagnosis';
 import { Title } from 'react-native-paper';
 const generatedData = { alignItems: 'center', paddingTop: 10 }
+
 const RenderScreen = () => {
     let popupRef = React.createRef();
 
