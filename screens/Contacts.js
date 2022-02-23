@@ -5,19 +5,14 @@ import { db } from '../config/firebase'
 import ContactItem from '../components/ContactItem'
 import getUSER from '../config/user'
 import AddButton from '../components/AddButton'
-
 const Contacts = ({ navigation }) => {
     const [user, setUser] = useState([
         { FirstName: '' },
     ])
-    
     const [contact, setContact] = useState([
         {},
     ])
-
     const [details, setDetails] = useState([]);
-    
-
     useEffect(() => {
         const ud = getUSER();
         console.log(ud)
@@ -32,10 +27,6 @@ const Contacts = ({ navigation }) => {
                 setContact(dis);
             });
     }, []);
-
-   
-    
-
     return (
         <View style={styles.container}>
             <View style={styles.containerContent}>
@@ -46,39 +37,28 @@ const Contacts = ({ navigation }) => {
                         hidden={false}
                         translucent={false}
                     />
-
                     {contact.length == 0 ?
-                   
                          <Image style={styles.emptyIcon} source={require('../assets/icons/emptyContacts.png')} />
-                    
-                       
                         :
                         contact.map((data, k) => (
                             <View style={styles.contactItem}>
                                 <ContactItem key={k} data={data} />
                             </View>
                         ))
-                       
                     }
-
                 </ScrollView>
             </View>
-            
         </View>
     )
 }
-
 export default Contacts
-
 const styles = StyleSheet.create({
-
     container: {
         marginTop: 0,
         paddingBottom: 0,
         marginBottom: 0,
         height: '100px',
     },
-
     contactItem: {
         alignItems: 'center',
         marginBottom: -40,
@@ -93,7 +73,6 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginTop: 100,
     },
-
     scrollView: {
         height: '100%',
         marginTop: 0,
@@ -112,9 +91,7 @@ const styles = StyleSheet.create({
     addText: {
         fontSize: 15,
         color: '#fff',
-        marginLeft: 16, 
+        marginLeft: 16,
         marginBottom:5
-
     }
-
 })
