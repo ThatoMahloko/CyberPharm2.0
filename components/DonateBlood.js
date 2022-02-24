@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         paddingLeft:15,
         paddingTop:6,
         color:'white',
-        marginTop:'35%',
+        marginTop:'25%',
         marginLeft:300
     },
     text2:{

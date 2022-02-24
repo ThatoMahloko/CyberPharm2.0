@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         paddingLeft:30,
         paddingTop:5,
         color:'white',
-        marginTop:'35%'
+        marginTop:'25%'
     },
     btns:{
         flexDirection:'row',
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         paddingLeft:15,
         paddingTop:5,
         color:'white',
-        marginTop:'35%',
+        marginTop:'25%',
         marginLeft:240
     },
     text2:{

@@ -31,7 +31,7 @@ const ScanCard = () => {
     });
     console.log(result);
     if (!result.cancelled) {
-      setImage(result.uri());
+      setImage(result.uri);
     }
   };
 
