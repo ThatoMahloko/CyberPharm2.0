@@ -10,20 +10,20 @@ const Profile = ({ navigation }) => {
     const [image, setImage] = useState('');
     const myUser = firebase.auth().currentUser
 
-    // useEffect(() => {
-    //     var docRef = db.collection('VaxCards').doc(user).collection('SavedCards').doc('Card')
-    //     docRef.get().then((doc) => {
-    //         if (doc.exists) {
-    //             console.log("Document data:", doc.data());
-    //             setFile(doc.data)
-    //         } else {
-    //             // doc.data() will be undefined in this case
-    //             console.log("No such document!");
-    //         }
-    //     }).catch((error) => {
-    //         console.log("Error getting document:", error);
-    //     });
-    // }, [])
+    useEffect(() => {
+        var docRef = db.collection('VaxCards').doc(user).collection('SavedCards').doc('Card')
+        docRef.get().then((doc) => {
+            if (doc.exists) {
+                console.log("Document data:", doc.data());
+                setFile(doc.data)
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
+    }, [])
 
     return (
         <View style={styles.container}>
