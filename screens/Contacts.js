@@ -6,7 +6,6 @@ import { DataTable, Modal, Portal, Provider } from 'react-native-paper'
 import { firebase } from '../config/firebase'
 import { HiTrash } from "react-icons/hi";
 import { Icon, ListItem } from 'react-native-elements'
-
 const Contacts = ({ navigation }) => {
     const [editable, setEditable] = useState()
     const [documentId, setDocumentId] = useState()
@@ -18,16 +17,12 @@ const Contacts = ({ navigation }) => {
     ])
     const [details, setDetails] = useState([]);
     const [visible, setVisible] = useState(false);
-
     const showModal = () => setVisible(true);
     const hideModal = () => setVisible(false);
     const containerStyle = { backgroundColor: 'white', padding: 20 };
-
-
     const edit = () => {
         showModal()
     }
-
     const modalEdit = () => {
         if (firstName === "" && phoneNumber === "") {
             Alert.alert("Please complete form")
@@ -50,11 +45,9 @@ const Contacts = ({ navigation }) => {
                 });
         }
     }
-
-
     const delete_ = (data) => {
         Alert.alert(
-            "⚠️ Delete Contact ⚠️",
+            ":warning: Delete Contact :warning:",
             "Are you sure you want to delete this contact?",
             [
                 {
@@ -64,7 +57,6 @@ const Contacts = ({ navigation }) => {
                 },
                 {
                     text: "OK", onPress: () => {
-
                         db.collection('Contacts')
                             .doc(userMail)
                             .collection('Contact_List')
@@ -93,9 +85,6 @@ const Contacts = ({ navigation }) => {
                 setContact(dis);
             });
     }, []);
-
-
-
     return (
         <View style={styles.container}>
             <View style={styles.containerContent}>
@@ -111,13 +100,9 @@ const Contacts = ({ navigation }) => {
                     </TouchableOpacity>
                     {
                         contact.length == 0 ?
-
                             <Image style={styles.emptyIcon} source={require('../assets/icons/emptyContacts.png')} />
-
-
                             :
                             contact.map((data, k) => (
-
                                 <DataTable.Row style={styles.row} key={k} >
                                     <ListItem.Content>
                                         <Icon name="delete" type="ant-design" color="black" onPress={() => delete_(data.id)} />
@@ -131,12 +116,8 @@ const Contacts = ({ navigation }) => {
                                         }} />
                                     </ListItem.Content>
                                 </DataTable.Row>
-
                             ))
-
                     }
-
-
                 </ScrollView>
             </View>
             <Provider>
@@ -150,22 +131,17 @@ const Contacts = ({ navigation }) => {
                     </Modal>
                 </Portal>
             </Provider>
-
         </View>
     )
 }
-
 export default Contacts
-
 const styles = StyleSheet.create({
-
     container: {
         marginTop: 0,
         paddingBottom: 0,
         marginBottom: 0,
         // backgroundColor: 'red'
     },
-
     contactItem: {
         alignItems: 'center',
         marginBottom: -40,
@@ -180,7 +156,6 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginTop: 100,
     },
-
     scrollView: {
         height: '100%',
         marginTop: 0,
@@ -203,7 +178,6 @@ const styles = StyleSheet.create({
         color: '#fff',
         marginLeft: 16,
         marginBottom: 5
-
     },
     row: {
         marginTop: 5,
@@ -241,5 +215,4 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         color: '#fff',
     }
-
 })

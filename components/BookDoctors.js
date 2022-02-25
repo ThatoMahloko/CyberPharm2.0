@@ -50,9 +50,9 @@ const styles = StyleSheet.create({
         borderRadius:20,
         marginLeft:-20,
         paddingLeft:30,
-        paddingTop:8,
+        paddingTop:5,
         color:'white',
-        marginTop:'45%'
+        marginTop:'25%'
     },
     btns:{
         flexDirection:'row',
@@ -63,9 +63,9 @@ const styles = StyleSheet.create({
         backgroundColor:'#3E64FF',
         borderRadius:20,
         paddingLeft:15,
-        paddingTop:8,
+        paddingTop:5,
         color:'white',
-        marginTop:'45%',
+        marginTop:'25%',
         marginLeft:240
     },
     text2:{

@@ -31,8 +31,7 @@ const ScanCard = () => {
     });
     // console.log(result);
     if (!result.cancelled) {
-      console.log(value)
-     
+      setImage(result.uri);
     }
   };
 
@@ -101,7 +100,7 @@ const ScanCard = () => {
 
       <TouchableOpacity style={styles.button} onPress={openCamera}>
         <Text style={styles.text}>Caputure Image</Text>
-      </TouchableOpacity>
+      </TouchableOpacity>                       bn
 
       <TouchableOpacity style={styles.button} onPress={saveImage}>
         <Text style={styles.text}>Save</Text>

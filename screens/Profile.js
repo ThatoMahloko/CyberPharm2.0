@@ -1,3 +1,4 @@
+//
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { Card, Title } from 'react-native-paper';
 import React, { useState, useEffect } from 'react';
