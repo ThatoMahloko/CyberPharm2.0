@@ -5,19 +5,15 @@ import { firebase } from '../config/firebase'
 import * as SMS from 'expo-sms';
 
 const SOS = ({ navigation }) => {
-    const [phoneNUmbers, setPhoneNumbers] = useState([])
-    const [contact, setContact] = useState([
-        {},
-    ])
+    const [phoneNumbers, setPhoneNumbers] = useState([])
+    const [contact, setContact] = useState([])
 
     const user = firebase.auth().currentUser
     useEffect(() => {
-        const ud = getUSER();
-        console.log(ud)
         firebase
             .firestore()
             .collection('Contacts')
-            .doc(ud)
+            .doc(user.email)
             .collection('Contact_List')
             .onSnapshot((snapshot) => {
                 const dis = snapshot.docs.map((doc) => ({
@@ -25,31 +21,25 @@ const SOS = ({ navigation }) => {
                     ...doc.data(),
                 }));
                 setContact(dis);
-                contact.map((cont) => {
-                    setPhoneNumbers(cont.PhoneNumber)
-                })
             });
+
     }, []);
 
-    const SOSPanic = async () => {
-        const isAvailable = await SMS.isAvailableAsync();
+
+    const SOSPanic = () => {
+        contact.map((data) => {
+            setPhoneNumbers(data.PhoneNumber)
+        })
+        console.log(phoneNumbers)
+        const isAvailable =  SMS.isAvailableAsync();
         if (isAvailable) {
             // do your SMS stuff here
-            if (contact.length == 0) {
-                Alert.alert('You have no contatcs to alert!!, ADD CONTACTS!');
-
-            } else {
-
-                SMS.sendSMSAsync(
-                    phoneNUmbers,
-                    ` SOS Alert from user ${user.displayName} Health is at risk! `
-                )
-
-            }
+            const { result } =  SMS.sendSMSAsync(
+                phoneNumbers,
+                'My sample Hello World message',
+            )
         } else {
             // misfortune... there's no SMS available on this device
-            Alert.alert(" misfortune... there's no SMS available on this device")
-
         }
     }
 
