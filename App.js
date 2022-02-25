@@ -33,7 +33,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {/* <Stack.Screen name="DonateBlood" component={DonateBlood} />
+      <Stack.Screen name="DonateBlood" component={DonateBlood} />
       <Stack.Screen name="BookDoctors" component={BookDoctors} />
       <Stack.Screen name="Facility" component={Facility} />
       <Stack.Screen name="Login" component={Login} />
@@ -50,7 +50,7 @@ export default function App() {
       <Stack.Screen name="SOS" component={SOS} />
       <Stack.Screen name="Contacts" component={Contacts} />
       <Stack.Screen name="AddContacts" component={AddContacts} />
-      <Stack.Screen name="Maps" component={Maps} /> */}
+      <Stack.Screen name="Maps" component={Maps} />
       <Stack.Screen name="ScanCard" component={ScanCard} />
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="EditProfile" component={EditProfile} />
