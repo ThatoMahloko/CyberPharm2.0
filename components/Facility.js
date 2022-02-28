@@ -52,6 +52,7 @@ const Facility = ({ navigation }) => {
 export default Facility;
 
 const styles = StyleSheet.create({
+<<<<<<< HEAD
   container: {
     backgroundColor: "white",
     height: "100%",
@@ -113,3 +114,57 @@ const styles = StyleSheet.create({
     left: 150,
   },
 });
+=======
+    container:{
+        backgroundColor:'white',
+        height:'100%'
+    },
+    icon:{
+        marginTop:30,
+        width:300, 
+        height:300, 
+        alignSelf:'center'
+    },
+    heading:{
+        fontSize:35,
+        marginTop:80,
+        textAlign:'center',
+        color:'#054EDE',
+        fontWeight:'bold',
+    },
+    text:{
+        marginTop:50,
+        textAlign:'center',
+        color:'#00A48F',
+        fontSize:20
+    },
+    button:{
+        height:'15%',
+        width:'25%',
+        backgroundColor:'#3E64FF',
+        borderRadius:20,
+        marginLeft:-20,
+        paddingLeft:30,
+        paddingTop:3,
+        color:'white',
+        marginTop:'25%'
+    },
+    btns:{
+        flexDirection:'row',
+    },
+    text2:{
+        color:'white'
+    },
+    button2:{
+        height:'15%',
+        width:'35%',
+        backgroundColor:'#3E64FF',
+        borderRadius:20,
+        paddingLeft:15,
+        paddingTop:3,
+        color:'white',
+        marginTop:'25%',
+        marginLeft:240
+    },
+})
+>>>>>>> 5e3bf3a16aba7e4dd0b14b637d978db47307c1ae

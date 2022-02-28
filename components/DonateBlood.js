@@ -8,7 +8,7 @@ const DonateBlood = ({navigation}) => {
         <View style={styles.container}>
         <Image style={styles.icon} source={require('../assets/donate.png')}/>
         <Text style={styles.heading}>DONATE BLOOD</Text>
-        <Text style={styles.text}>Provides information on the imporatnce of blood and will direct you to the SANBS webpage.</Text>
+        <Text style={styles.text}>Provides information on the importance of blood and will direct you to the SANBS webpage.</Text>
        
         <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('BookDoctors')}><Text style={styles.text2}>Next</Text></TouchableOpacity>
        
@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
         width:'35%',
         backgroundColor:'#3E64FF',
         borderRadius:20,
+<<<<<<< HEAD
         paddingLeft:50,
         
         paddingTop:5,
@@ -59,6 +60,13 @@ const styles = StyleSheet.create({
         color:'white',
         top:'20%',
         marginLeft:'60%'
+=======
+        paddingLeft:15,
+        paddingTop:6,
+        color:'white',
+        marginTop:'25%',
+        marginLeft:300
+>>>>>>> 5e3bf3a16aba7e4dd0b14b637d978db47307c1ae
     },
     text2:{
         color:'white'

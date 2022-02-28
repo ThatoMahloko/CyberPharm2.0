@@ -79,10 +79,11 @@ const Home = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.covidInfo} onPress={() => navigation.navigate('ScanCard')}>
-                <Title style={styles.covidCardText}>Create A Digital</Title>
+            <TouchableOpacity style={styles.covidInfo} onPress={() => navigation.navigate('VaccineCertificate')}>
+                <Title style={styles.covidCardText}>Covid-19</Title>
+                <Title style={styles.covidCardText}>Coronavirus</Title>
                 <Title style={styles.covidCardText}>Vaccination</Title>
-                <Title style={styles.covidCardText}>Card</Title>
+                <Title style={styles.covidCardText}>Certificate</Title>
                 <Image style={styles.doctorAnime} source={require('../assets/icons/doctorAnime.png')} />
             </TouchableOpacity>
 

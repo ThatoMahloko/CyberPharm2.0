@@ -7,7 +7,7 @@ import getUSER from '../config/user'
 
 const ScanCard = () => {
 
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState(null);
 
 
   useEffect(() => {
@@ -29,9 +29,9 @@ const ScanCard = () => {
       aspect: [4, 3],
       quality: 1,
     });
-    console.log(result);
+    // console.log(result);
     if (!result.cancelled) {
-      setImage(result.uri());
+      setImage(result.uri);
     }
   };
 
@@ -49,14 +49,15 @@ const ScanCard = () => {
 
   const openCamera = async () => {
     let result = await ImagePicker.launchCameraAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [9, 16],
       quality: 1
     });
-    console.log(result);
     if (!result.cancelled) {
-      setImage(result.uri)
+      setImage(result.base64)
+      console.log(image);
+
     }
   }
 
@@ -68,14 +69,14 @@ const ScanCard = () => {
     if (image !== '') {
       db.collection('VaxCards').doc(ud).collection('SavedCards').doc('Card').set(
         {
-          SavedImage: image
+          SavedImage:  image
         }
       ).then(() => {
         Alert.alert('Image has been saved !')
       }).catch((error) => {
         console.log('Error adding document', error)
       })
-    } else  {
+    } else {
       Alert.alert('Image needs to be selected or captured!')
     }
 
@@ -99,7 +100,7 @@ const ScanCard = () => {
 
       <TouchableOpacity style={styles.button} onPress={openCamera}>
         <Text style={styles.text}>Caputure Image</Text>
-      </TouchableOpacity>
+      </TouchableOpacity>                       bn
 
       <TouchableOpacity style={styles.button} onPress={saveImage}>
         <Text style={styles.text}>Save</Text>
