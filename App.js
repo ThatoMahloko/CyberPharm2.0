@@ -28,19 +28,15 @@ import Notifications from './screens/Notifications';
 import BookDoctors from './components/BookDoctors';
 import Facility from './components/Facility';
 import DonateBlood from './components/DonateBlood'
+import { width, height, totalSize } from 'react-native-dimension';
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-<<<<<<< HEAD
-      <Stack.Navigator screenOptions={{ headerShown: true }}>
-      
-=======
       <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="DonateBlood" component={DonateBlood} />
       <Stack.Screen name="BookDoctors" component={BookDoctors} />
       <Stack.Screen name="Facility" component={Facility} />
->>>>>>> cbc2e08211cd64a1fa9480914a4233a8b28b5c6f
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="ResetPassword" component={ResetPassword} />
@@ -71,5 +67,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    height: height(70), // 70% of height device screen
+    width: width(80), 
+    fontSize: totalSize(2)
+    
   },
 });
