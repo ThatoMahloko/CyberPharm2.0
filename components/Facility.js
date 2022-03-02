@@ -1,23 +1,55 @@
-import React from 'react'
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import React from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback
+} from "react-native";
+import { width, height, totalSize } from "react-native-dimension";
 
-
-const Facility = ({navigation}) => {
-    return (
-        <View style={styles.container}>
-        <Image style={styles.icon} source={require('../assets/facility.png')}/>
-        <Text style={styles.heading}>MEDICAL FACILITY</Text>
-        <Text style={styles.text}>Should be able to find the nearest medical facility based on their current location and get directions</Text>
-        <View style={styles.btns}>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('BookDoctors')}><Text style={styles.text2}>Prev</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Login')}><Text style={styles.text2}>Next</Text></TouchableOpacity>
-        </View>
-        
-    </View>
-    )
+const KeyboardAvoidingComponent = () => {
+  return (
+    <KeyboardAvoidingView>
+      behavior ={Platform.OS === "android" ? "height" : "padding"}
+      style={styles.container}
+    </KeyboardAvoidingView>
+  )
 }
 
-export default Facility
+const Facility = ({ navigation }) => {
+  return (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        <Image style={styles.icon} source={require("../assets/facility.png")} />
+        <Text style={styles.heading}>MEDICAL FACILITY</Text>
+        <Text style={styles.text}>
+          Should be able to find the nearest medical facility based on their
+          current location and get directions
+        </Text>
+        <View style={styles.btns}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate("BookDoctors")}
+          >
+            <Text style={styles.text2}>Prev</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button2}
+            onPress={() => navigation.navigate("Login")}
+          >
+            <Text style={styles.text2}>Next</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </TouchableWithoutFeedback>
+  );
+};
+
+export default Facility;
 
 const styles = StyleSheet.create({
     container:{

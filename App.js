@@ -52,7 +52,7 @@ export default function App() {
       <Stack.Screen name="SOS" component={SOS} />
       <Stack.Screen name="Contacts" component={Contacts} />
       <Stack.Screen name="AddContacts" component={AddContacts} />
-      <Stack.Screen name="Maps" component={Maps} /> 
+      <Stack.Screen name="Maps" component={Maps} />
       <Stack.Screen name="ScanCard" component={ScanCard} />
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="EditProfile" component={EditProfile} />
@@ -69,5 +69,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    height: height(70), // 70% of height device screen
+    width: width(80), 
+    fontSize: totalSize(2)
+    
   },
 });

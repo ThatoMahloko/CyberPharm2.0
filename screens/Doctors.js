@@ -140,8 +140,10 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     centerImage: {
-        width: 30,
-        height: 30,
+        width: 20,
+        height: 20,
+        marginLeft:-10
+
 
     },
     specialtyIconText: {

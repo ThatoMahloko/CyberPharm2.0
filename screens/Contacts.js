@@ -95,9 +95,12 @@ const Contacts = ({ navigation }) => {
                         hidden={false}
                         translucent={false}
                     />
-                    <TouchableOpacity style={styles.add} onPress={()=>navigation.navigate('AddContacts')}>
-                        <Icon name="plus" type="ant-design" color="white" />
-                    </TouchableOpacity>
+                    <View style={styles.position}>
+                        <TouchableOpacity style={styles.add} onPress={()=>navigation.navigate('AddContacts')}>
+                            <Icon name="plus" type="ant-design" color="white" />
+                        </TouchableOpacity>
+                    </View>
+                   
                     {
                         contact.length == 0 ?
                             <Image style={styles.emptyIcon} source={require('../assets/icons/emptyContacts.png')} />
@@ -140,6 +143,9 @@ const styles = StyleSheet.create({
         marginTop: 0,
         paddingBottom: 0,
         marginBottom: 0,
+        height: height(100), // 70% of height device screen
+        width: width(100), 
+        fontSize: totalSize(2),
         // backgroundColor: 'red'
     },
     contactItem: {
@@ -163,15 +169,22 @@ const styles = StyleSheet.create({
     },
     add: {
         backgroundColor: '#3E64FF',
-        width: 60,
-        height: 60,
+        width: 40,
+        height: 40,
         borderRadius: 30,
-        end: -320,
-        top: 20,
+        
+        top:'20%',
+        left:325,
         justifyContent: 'center',
         alignContent: 'center',
-        position:'relative',
+        position:'absolute',
         zIndex:1,
+    },
+    position:{ 
+            
+            position: 'absolute',
+           
+            
     },
     addText: {
         fontSize: 15,

@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import { width, height, totalSize } from 'react-native-dimension';
 
 
 const DonateBlood = ({navigation}) => {
@@ -21,9 +22,9 @@ export default DonateBlood
 const styles = StyleSheet.create({
     container:{
         backgroundColor:'white',
-        height:'100%',
-        flex:1
- 
+        height: '100%',
+        width: width(100), 
+        fontSize: totalSize(2),
     },
     icon:{
         marginTop:30,
@@ -33,13 +34,15 @@ const styles = StyleSheet.create({
     },
     heading:{
         fontSize:35,
-        marginTop:80,
+        marginTop:30,
         textAlign:'center',
         color:'#054EDE',
         fontWeight:'bold',
     },
     text:{
-        marginTop:50,
+        marginTop:20,
+        marginLeft:20,
+        marginRight:20,
         textAlign:'center',
         color:'#00A48F',
         fontSize:20

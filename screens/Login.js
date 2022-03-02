@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { StyleSheet, Text, View, StatusBar, ImageBackground, TouchableOpacity, Image, TextInput, Alert } from 'react-native'
 import LogoIcon from '../components/LogoIcon'
 import signIn from '../auth/signIn'
+import { width, height, totalSize } from 'react-native-dimension';
 
 const Login = ({ navigation }) => {
     const [userEmail, setUserEmail] = useState("")
@@ -61,8 +62,9 @@ const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
         justifyContent: 'center',
-        width: '100%',
-        height: '100%',
+        height: height(100), // 70% of height device screen
+        width: width(100), 
+        fontSize: totalSize(2),
         backgroundColor: 'white'
     },
     input: {
