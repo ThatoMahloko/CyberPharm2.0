@@ -6,11 +6,6 @@ import { DataTable, Modal, Portal, Provider } from 'react-native-paper'
 import { firebase } from '../config/firebase'
 import { HiTrash } from "react-icons/hi";
 import { Icon, ListItem } from 'react-native-elements'
-<<<<<<< HEAD
-import { width, height, totalSize } from 'react-native-dimension';
-
-=======
->>>>>>> 5e3bf3a16aba7e4dd0b14b637d978db47307c1ae
 const Contacts = ({ navigation }) => {
     const [editable, setEditable] = useState()
     const [documentId, setDocumentId] = useState()

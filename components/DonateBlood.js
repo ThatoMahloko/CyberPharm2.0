@@ -52,21 +52,11 @@ const styles = StyleSheet.create({
         width:'35%',
         backgroundColor:'#3E64FF',
         borderRadius:20,
-<<<<<<< HEAD
-        paddingLeft:50,
-        
-        paddingTop:5,
-        
-        color:'white',
-        top:'20%',
-        marginLeft:'60%'
-=======
         paddingLeft:15,
         paddingTop:6,
         color:'white',
         marginTop:'25%',
         marginLeft:300
->>>>>>> 5e3bf3a16aba7e4dd0b14b637d978db47307c1ae
     },
     text2:{
         color:'white'

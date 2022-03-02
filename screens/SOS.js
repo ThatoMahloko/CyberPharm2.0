@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     },
     panicButton: {
         width: 250,
-        height: 250,
+        //height: 250,
         alignSelf: 'center',
     },
     add: {

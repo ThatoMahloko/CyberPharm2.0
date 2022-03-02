@@ -55,19 +55,6 @@ const styles = StyleSheet.create({
         marginLeft:20,
         marginRight:20
     },
-<<<<<<< HEAD
-    button: {
-        height: 30,
-        width: '30%',
-        backgroundColor: '#3E64FF',
-        borderRadius: 20,
-        right:-20,
-        paddingLeft: 40,
-        paddingTop: 5,
-        textAlign: 'center',
-        color: 'white',
-        top:'40%',
-=======
     button:{
         height:'17%',
         width:'25%',
@@ -78,7 +65,6 @@ const styles = StyleSheet.create({
         paddingTop:5,
         color:'white',
         marginTop:'25%'
->>>>>>> 5e3bf3a16aba7e4dd0b14b637d978db47307c1ae
     },
     btns: {
         flexDirection: 'row',
@@ -88,21 +74,11 @@ const styles = StyleSheet.create({
         width: '30%',
         backgroundColor:'#3E64FF',
         borderRadius:20,
-<<<<<<< HEAD
-        paddingLeft:50,
-        
-        paddingTop:5,
-        
-        color:'white',
-        top:'40%',
-        marginLeft:'35%'
-=======
         paddingLeft:15,
         paddingTop:5,
         color:'white',
         marginTop:'25%',
         marginLeft:240
->>>>>>> 5e3bf3a16aba7e4dd0b14b637d978db47307c1ae
     },
     text2: {
         color: 'white',

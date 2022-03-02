@@ -28,12 +28,8 @@ import Notifications from './screens/Notifications';
 import BookDoctors from './components/BookDoctors';
 import Facility from './components/Facility';
 import DonateBlood from './components/DonateBlood'
-<<<<<<< HEAD
-import { width, height, totalSize } from 'react-native-dimension';
-=======
 import VaccineCertificate from './screens/VaccineCertificate';
 
->>>>>>> 5e3bf3a16aba7e4dd0b14b637d978db47307c1ae
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
