@@ -22,7 +22,7 @@ export default BookDoctors
 const styles = StyleSheet.create({
     container:{
         backgroundColor:'white',
-        height:'100%'
+        height:'auto'
     },
     icon:{
         marginTop:30,

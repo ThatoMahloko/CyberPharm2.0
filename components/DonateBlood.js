@@ -21,7 +21,9 @@ export default DonateBlood
 const styles = StyleSheet.create({
     container:{
         backgroundColor:'white',
-        height:'100%'
+        height:'100%',
+        flex:1
+ 
     },
     icon:{
         marginTop:30,

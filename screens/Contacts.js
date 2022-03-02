@@ -104,13 +104,13 @@ const Contacts = ({ navigation }) => {
                             :
                             contact.map((data, k) => (
                                 <DataTable.Row style={styles.row} key={k} >
+                                <DataTable.Cell>{data.FirstName}</DataTable.Cell>
+                                <DataTable.Cell>{data.PhoneNumber}</DataTable.Cell>
+                                <ListItem.Content>
+                                    <Icon name="delete" type="ant-design" color="red" onPress={() => delete_(data.id)} />
+                                </ListItem.Content>
                                     <ListItem.Content>
-                                        <Icon name="delete" type="ant-design" color="black" onPress={() => delete_(data.id)} />
-                                    </ListItem.Content>
-                                    <DataTable.Cell>{data.FirstName}</DataTable.Cell>
-                                    <DataTable.Cell>{data.PhoneNumber}</DataTable.Cell>
-                                    <ListItem.Content>
-                                        <Icon name="edit" type="ant-design" color="black" onPress={function () {
+                                        <Icon name="edit" type="ant-design" color="blue" onPress={function () {
                                             edit();
                                             setDocumentId(data.id);
                                         }} />
